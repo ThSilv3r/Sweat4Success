@@ -1,7 +1,7 @@
 # Use-Case Specification: Create workout
 ## 1.Create workout
 ### 1.1 Brief Description
-(tbd)
+This use case describes the creation of a Workout.(CRUD)
 ### 1.2 Mockup
 ![](https://github.com/ThSilv3r/SweatForSuccess/blob/Jonas/Pictures/CreateWorkout.PNG)
 ### 1.3 Screenshot
