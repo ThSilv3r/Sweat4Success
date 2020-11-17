@@ -9,11 +9,15 @@ import kotlinx.android.synthetic.main.login.*
 public class LogIn : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
 
         goToRegister.setOnClickListener {
-            startActivity(Intent(this, CreateAccount::class.java))
+            startActivity(Intent(this, CreateAccount::class.java));
+        }
+
+        logInButton.setOnClickListener {
+            startActivity(Intent(this, Profil::class.java));
         }
         var userName: String = userNameTextBox.text.toString();
         var password: String = passwordTextBox.text.toString();

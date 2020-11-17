@@ -25,7 +25,9 @@ public class CreateAccount: AppCompatActivity() {
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
             createAccountButton.setOnClickListener {
-                insertDataToDatabase()
+                insertDataToDatabase();
+
+                startActivity(Intent(this, Profil::class.java));
             }
 
     }

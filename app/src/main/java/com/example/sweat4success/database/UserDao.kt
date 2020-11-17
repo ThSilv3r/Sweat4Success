@@ -13,8 +13,6 @@ interface UserDao {
     @Query("SELECT * FROM UserDb WHERE username LIKE :user LIMIT 1")
     fun findByName(user: String): UserDb
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(user: UserDb)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUser(user: UserDb)

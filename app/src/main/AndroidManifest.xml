@@ -17,9 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".account.CreateAccount" />
-        <activity android:name=".account.DeleteAccount" />
         <activity android:name=".account.LogIn" />
-        <activity android:name=".account.LogOut" />
         <activity android:name=".account.Profil" />
     </application>
 
