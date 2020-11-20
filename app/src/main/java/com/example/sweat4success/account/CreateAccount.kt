@@ -2,8 +2,11 @@ package com.example.sweat4success.account;
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Telephony
+import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Insert
 import com.example.sweat4success.R;
@@ -26,8 +29,6 @@ public class CreateAccount: AppCompatActivity() {
 
             createAccountButton.setOnClickListener {
                 insertDataToDatabase();
-
-                startActivity(Intent(this, Profil::class.java));
             }
 
     }
@@ -36,10 +37,27 @@ public class CreateAccount: AppCompatActivity() {
         var username: String = userNameTextBoxC.text.toString();
         var password: String = passwordTextBoxC.text.toString();
         var email: String = emailTextBoxC.text.toString();
-        var age: Int = 0;
+        var age: Int;
+        if(ageTextBoxC.text.toString() != ""){
+            age = Integer.parseInt(ageTextBoxC.text.toString());
+        }else{
+            age = 0;
+        }
         //var account: account = account(username, password, email, 0.0, 0.0, 0.0, age);
 
-        var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0);
-        mUserViewModel.addUser(user);
+        if(inputCheck(username, password, email)){
+            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0);
+            mUserViewModel.addUser(user);
+            Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
+
+            startActivity(Intent(this, Profil::class.java));
+        }else{
+            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    private fun inputCheck(username: String, password: String, email: String): Boolean {
+        return !(username == "" && password == "" && email=="")
     }
 }

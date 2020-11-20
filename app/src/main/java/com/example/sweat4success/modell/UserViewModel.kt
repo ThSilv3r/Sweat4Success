@@ -24,4 +24,22 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         }
 
     }
+
+    fun findByName(username: String, password: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.findByName(username, password);
+        }
+    }
+
+    fun deleteUser(user: UserDb){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.delete(user);
+        }
+    }
+
+    fun updateUser(user: UserDb){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateUser(user);
+        }
+    }
 }
