@@ -15,7 +15,7 @@
 
 • First version of the SRS is ready and can be found and updated here:
 
-• The first two Use Cases have been created and the UC Diagram is ready. 
+• The UC Diagram is ready and Use Cases can be implemented next week 
 
 • Our plan is to have the User Login, the create account and the edit account functionality up and running by the end of the semester 
 
