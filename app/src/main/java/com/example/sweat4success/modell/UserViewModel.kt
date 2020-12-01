@@ -19,7 +19,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun addUser(user: UserDb){
-        viewModelScope.launch (Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO){
             repository.addUser(user);
         }
 
