@@ -26,6 +26,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    sourceSets {
+        androidTest {
+            assets {
+                assets.srcDirs = ['src/androidTest/assets']
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -50,6 +58,11 @@ dependencies {
 
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
+    androidTestImplementation "io.cucumber:cucumber-android:4.4.1"
+    androidTestImplementation('com.schibsted.spain:barista:3.3.0') {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+
 
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -60,5 +73,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile 'com.android.support:support-annotations:26.1.0'
+    androidTestCompile 'info.cukes:cucumber-android:1.2.5@jar'
+    androidTestCompile 'info.cukes:cucumber-picocontainer:1.2.4'
 
 }
