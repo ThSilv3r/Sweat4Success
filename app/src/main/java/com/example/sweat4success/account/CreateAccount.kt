@@ -14,6 +14,7 @@ import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.UserViewModel
 import kotlinx.android.synthetic.main.createaccount.*
+import java.io.IOException
 import java.lang.Exception
 
 public class CreateAccount: AppCompatActivity() {
@@ -50,7 +51,7 @@ public class CreateAccount: AppCompatActivity() {
             var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0);
             try {
                 mUserViewModel.addUser(user);
-            }catch (e: Error){
+            }catch (e: IOException){
                 throw e;
             }
             //Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();

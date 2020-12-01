@@ -30,7 +30,7 @@ data class UserDb(
 
 
 
-
+/*
 @Entity(tableName = "WorkoutDb")
 data class WorkoutDb(
     @PrimaryKey val uid: Int,
@@ -55,4 +55,4 @@ data class ExerciseDb(
 
     )
 
-
+*/
