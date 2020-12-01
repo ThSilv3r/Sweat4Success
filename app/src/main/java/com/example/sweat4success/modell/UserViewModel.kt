@@ -18,13 +18,14 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         repository = UserRepository(userDao)
     }
 
+
     fun addUser(user: UserDb){
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(){
             repository.addUser(user);
         }
 
     }
-
+/*
     fun findByName(username: String, password: String){
         viewModelScope.launch(Dispatchers.IO) {
             repository.findByName(username, password);
@@ -42,4 +43,5 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
             repository.updateUser(user);
         }
     }
+*/
 }
