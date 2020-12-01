@@ -29,6 +29,7 @@ public class CreateAccount: AppCompatActivity() {
 
             createAccountButton.setOnClickListener {
                 insertDataToDatabase();
+                startActivity(Intent(this, EditAccount::class.java));
             }
 
     }
@@ -47,10 +48,12 @@ public class CreateAccount: AppCompatActivity() {
 
         if(inputCheck(username, password, email)){
             var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0);
-            mUserViewModel.addUser(user);
-            Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
-
-            startActivity(Intent(this, Profil::class.java));
+            try {
+                mUserViewModel.addUser(user);
+            }catch (e: Error){
+                throw e;
+            }
+            //Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
         }
