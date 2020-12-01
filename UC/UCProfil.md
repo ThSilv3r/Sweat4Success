@@ -1,7 +1,7 @@
 # Use-Case Specification: Profil
 ## 1.Create profil
 ### 1.1 Brief Description
-(tbd)
+This use case describes the updating of a profil. (CRUD)
 ### 1.2 Mockup
 ![](https://github.com/ThSilv3r/SweatForSuccess/blob/Jonas/Pictures/Profil.PNG)
 ### 1.3 Screenshot

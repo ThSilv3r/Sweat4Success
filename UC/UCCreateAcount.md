@@ -1,7 +1,7 @@
 # Use-Case Specification: Create Acount
 ## 1.Create acount
 ### 1.1 Brief Description
-(tbd)
+This use case describes the creation of an account (CRUD).
 ### 1.2 Mockup
 ![](https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/pictures/Create%20Account.png)
 ### 1.3 Screenshot
