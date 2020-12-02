@@ -18,7 +18,7 @@ public class LogIn : AppCompatActivity(){
         }
 
         logInButton.setOnClickListener {
-            startActivity(Intent(this, EditAccount::class.java));
+            startActivity(Intent(this, UserController::class.java));
         }
         var userName: String = userNameTextBox.text.toString();
         var password: String = passwordTextBox.text.toString();
