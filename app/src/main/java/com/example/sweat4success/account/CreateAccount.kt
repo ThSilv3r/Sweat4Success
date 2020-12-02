@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Insert
 import com.example.sweat4success.R;
+import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.UserViewModel
@@ -28,9 +30,16 @@ public class CreateAccount: AppCompatActivity() {
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
+        val userDao = AppDatabase.getDatabase(application).userDao();
+
+        var userList: List<UserDb>
+        val thread = Thread{
+            userList  = userDao.loadAll();
+        }
+        thread.start()
+
             createAccountButton.setOnClickListener {
                 insertDataToDatabase();
-                startActivity(Intent(this, EditAccount::class.java));
             }
 
     }
@@ -54,7 +63,8 @@ public class CreateAccount: AppCompatActivity() {
             }catch (e: IOException){
                 throw e;
             }
-            //Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
+            startActivity(Intent(this, EditAccount::class.java));
+            Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
         }
