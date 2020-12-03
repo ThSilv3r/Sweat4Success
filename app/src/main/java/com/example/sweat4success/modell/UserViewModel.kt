@@ -2,6 +2,7 @@ package com.example.sweat4success.modell
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
@@ -12,16 +13,44 @@ import kotlinx.coroutines.launch
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository: UserRepository
+    val readAllData: LiveData<List<UserDb>>;
 
     init{
         val userDao = AppDatabase.getDatabase(application).userDao();
         repository = UserRepository(userDao)
+        readAllData = repository.readAllData
     }
 
+    fun getAll(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getAll();
+        }
+    }
+
+
     fun addUser(user: UserDb){
-        viewModelScope.launch (Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO){
             repository.addUser(user);
         }
 
     }
+
+    fun findByName(username: String, password: String):UserDb {
+        //viewModelScope.launch(Dispatchers.IO) {
+            return repository.findByName(username, password);
+        //}
+    }
+
+    fun deleteUser(user: UserDb){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.delete(user);
+        }
+    }
+
+    fun updateUser(user: UserDb){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateUser(user);
+        }
+    }
+
 }

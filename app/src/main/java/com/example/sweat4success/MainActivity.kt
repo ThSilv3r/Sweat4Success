@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        applicationContext
-
         goToLogin.setOnClickListener {
             startActivity(Intent(this, LogIn::class.java))
         }

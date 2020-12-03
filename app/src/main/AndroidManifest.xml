@@ -19,6 +19,9 @@
         <activity android:name=".account.CreateAccount" />
         <activity android:name=".account.LogIn" />
         <activity android:name=".account.Profil" />
+        <activity android:name=".account.EditAccount" />
+        <activity android:name=".account.UserController" />
+        <activity android:name=".account.Delete" />
     </application>
 
 </manifest>
