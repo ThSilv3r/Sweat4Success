@@ -8,10 +8,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
 
 public class LogIn : AppCompatActivity(){
+    private var username: String = "val";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
 
         button.setOnClickListener {
             startActivity(Intent(this, CreateAccount::class.java));
@@ -22,5 +24,14 @@ public class LogIn : AppCompatActivity(){
         }
         var userName: String = userNameTextBox.text.toString();
         var password: String = passwordTextBox.text.toString();
+    }
+
+
+    fun getUsername(): String{
+        return this.username;
+    }
+
+    fun setUsername(username: String){
+        this.username = username;
     }
 }

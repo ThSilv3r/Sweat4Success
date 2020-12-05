@@ -21,8 +21,7 @@ import java.lang.Exception
 
 public class CreateAccount: AppCompatActivity() {
     private lateinit var mUserViewModel: UserViewModel;
-
-
+    private var account: Account = Account();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +45,9 @@ public class CreateAccount: AppCompatActivity() {
 
     private fun insertDataToDatabase() {
         var username: String = userNameTextBoxC.text.toString();
+        account.setUsername(username);
+
+
         var password: String = passwordTextBoxC.text.toString();
         var email: String = emailTextBoxC.text.toString();
         var age: Int;
@@ -63,7 +65,7 @@ public class CreateAccount: AppCompatActivity() {
             }catch (e: IOException){
                 throw e;
             }
-            startActivity(Intent(this, EditAccount::class.java));
+            startActivity(Intent(this, UserController::class.java));
             Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
@@ -74,4 +76,5 @@ public class CreateAccount: AppCompatActivity() {
     private fun inputCheck(username: String, password: String, email: String): Boolean {
         return !(username == "" && password == "" && email=="")
     }
+
 }
