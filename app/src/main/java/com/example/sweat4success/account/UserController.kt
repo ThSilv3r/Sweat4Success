@@ -74,11 +74,4 @@ public class UserController: AppCompatActivity(){
         return !(username == "" && password == "")
     }
 
-    fun logOut(){
-
-    }
-
-    fun DeleteAccount(){
-
-    }
 }

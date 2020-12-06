@@ -21,6 +21,9 @@ import kotlinx.android.synthetic.main.createaccount.*
 
 public class LogIn : AppCompatActivity(){
     private lateinit var mUserViewModel: UserViewModel;
+    private var account: Account = Account();
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -41,15 +44,16 @@ public class LogIn : AppCompatActivity(){
 
         logInButton.setOnClickListener {
             //startActivity(Intent(this, UserController::class.java));
-            checkDatainDatabase(userList);
+            checkDataInDatabase(userList);
         }
         //var userName: String = userNameTextBox.text.toString();
         //var password: String = passwordTextBox.text.toString();
     }
 
-    private fun checkDatainDatabase(userList:List<UserDb>) {
+    private fun checkDataInDatabase(userList:List<UserDb>) {
         var username: String = userNameTextBox.text.toString();
         var password: String = passwordTextBox.text.toString();
+        account.setUsername(username);
 
             try {
                 var user = userList.find{it.username == username && it.password == password};
@@ -58,7 +62,7 @@ public class LogIn : AppCompatActivity(){
                 throw e
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show();
             }
-            startActivity(Intent(this, Profil::class.java));
+            startActivity(Intent(this, EditAccount::class.java));
 
     }
 
