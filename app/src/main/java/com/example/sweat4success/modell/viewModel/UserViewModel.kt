@@ -1,4 +1,4 @@
-package com.example.sweat4success.modell
+package com.example.sweat4success.modell.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
