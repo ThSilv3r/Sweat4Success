@@ -1,9 +1,12 @@
 package com.example.sweat4success.modell
 
+import com.example.sweat4success.database.UserDb
+
 public class Account (){
     companion object{
         var username: String = ""
         var password: String = ""
+        lateinit var userList: List<UserDb>
     }
     var email: String = "email";
     var age: Int = 0;
@@ -34,5 +37,13 @@ public class Account (){
 
     fun setPassword(){
         password = password
+    }
+
+    fun getUserList(): List<UserDb> {
+        return userList
+    }
+
+    fun setUserList(newUserList: List<UserDb>){
+        userList = newUserList
     }
 }

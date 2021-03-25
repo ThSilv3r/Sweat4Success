@@ -30,7 +30,7 @@ data class UserDb(
 
 
 
-/*
+
 @Entity(tableName = "WorkoutDb")
 data class WorkoutDb(
     @PrimaryKey val uid: Int,
@@ -43,7 +43,7 @@ data class WorkoutDb(
 @Entity(tableName = "TagDb")
 data class TagDb(
     @PrimaryKey val uid: Int,
-    @ColumnInfo(name = "name") val name: String?
+    @ColumnInfo(name = "name") var name: String?
 )
 
 @Entity(tableName = "ExerciseDb")
@@ -54,5 +54,3 @@ data class ExerciseDb(
     @ColumnInfo(name = "description") val description: String?
 
     )
-
-*/

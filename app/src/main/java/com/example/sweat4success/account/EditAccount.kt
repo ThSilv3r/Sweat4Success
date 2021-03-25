@@ -2,20 +2,15 @@ package com.example.sweat4success.account
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.sweat4success.MainActivity
 import com.example.sweat4success.R
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.modell.UserViewModel
-import kotlinx.android.synthetic.main.createaccount.*
-import kotlinx.android.synthetic.main.delete.*
+import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.editaccount.*
-import kotlinx.android.synthetic.main.editaccount.view.*
-import kotlinx.android.synthetic.main.login.*
-import java.nio.charset.Charset
 
 
 class EditAccount: AppCompatActivity() {
@@ -29,11 +24,7 @@ class EditAccount: AppCompatActivity() {
         val userDao = AppDatabase.getDatabase(application).userDao();
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
-        var userList = listOf<UserDb>();
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start();
+        var userList = account.getUserList();
 
         var username: String = account.getUsername();
 
@@ -57,6 +48,10 @@ class EditAccount: AppCompatActivity() {
 
         editaccount.setOnClickListener {
             updateUser(user)
+        }
+
+        logoutButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java));
         }
 
     }
