@@ -18,10 +18,9 @@
         </activity>
         <activity android:name=".account.CreateAccount" />
         <activity android:name=".account.LogIn" />
-        <activity android:name=".account.Profil" />
         <activity android:name=".account.EditAccount" />
         <activity android:name=".account.UserController" />
-        <activity android:name=".account.Delete" />
+        <activity android:name=".workout.WorkoutListHost" />
     </application>
 
 </manifest>

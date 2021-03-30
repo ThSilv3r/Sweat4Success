@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/my_nav"
+    app:startDestination="@id/workoutListFragment">
+
+    <fragment
+        android:id="@+id/workoutListFragment"
+        android:name="com.example.sweat4success.workout.WorkoutListFragment"
+        android:label="Workout" >
+        <action
+            android:id="@+id/action_workoutListFragment_to_addWorkout"
+            app:destination="@id/addWorkout" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWorkout"
+        android:name="com.example.sweat4success.workout.AddWorkout"
+        android:label="Add Workout"
+        app:startDestination="@id/action_addWorkout_to_workoutListFragment">
+        <action
+            android:id="@+id/action_addWorkout_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
+</navigation>
