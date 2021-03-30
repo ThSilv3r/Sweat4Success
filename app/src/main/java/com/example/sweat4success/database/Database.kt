@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Parcel
 import android.os.Parcelable
+import android.text.Editable
 import androidx.room.*
 import java.sql.Time
 
@@ -37,7 +38,9 @@ data class WorkoutDb(
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "duration") val duration: Int?,
-    @ColumnInfo(name = "tagId") val tagId: Int?
+    @ColumnInfo(name = "tagIds") val tagIds: String?,
+    @ColumnInfo(name = "exerciseIds") val exerciseIds: String?,
+    @ColumnInfo(name = "userId") val userId: Int?
 )
 
 @Entity(tableName = "TagDb")
@@ -52,5 +55,4 @@ data class ExerciseDb(
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "pictureURL") val pictureURL: String?,
     @ColumnInfo(name = "description") val description: String?
-
     )
