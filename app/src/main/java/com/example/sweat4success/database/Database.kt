@@ -15,12 +15,12 @@ data class UserDb(
     @ColumnInfo(name = "username") val username: String?,
     @ColumnInfo(name = "password") val password: String?,
     @ColumnInfo(name = "email") val email: String?,
-    @ColumnInfo(name = "age") val age: Int?,
+    @ColumnInfo(name = "age") var age: Int?,
     @ColumnInfo(name = "bmi") val bmi: Double?,
-    @ColumnInfo(name = "weight") val weight: Double?,
-    @ColumnInfo(name = "height") val height: Double?,
-    @ColumnInfo(name = "stomacheWidth") val stomacheWidth: Double?,
-    @ColumnInfo(name = "bicepsWidth") val bicepsWidth: Double?,
+    @ColumnInfo(name = "weight") var weight: Double?,
+    @ColumnInfo(name = "height") var height: Double?,
+    @ColumnInfo(name = "stomacheWidth") var stomacheWidth: Double?,
+    @ColumnInfo(name = "bicepsWidth") var bicepsWidth: Double?,
     @ColumnInfo(name = "chestWidth") val chestWidth: Double?,
     @ColumnInfo(name = "quadWidth") val quadWidth: Double?,
     @ColumnInfo(name = "friendId") val friendId: Int?,
@@ -30,7 +30,7 @@ data class UserDb(
 
 
 
-/*
+
 @Entity(tableName = "WorkoutDb")
 data class WorkoutDb(
     @PrimaryKey val uid: Int,
@@ -43,7 +43,7 @@ data class WorkoutDb(
 @Entity(tableName = "TagDb")
 data class TagDb(
     @PrimaryKey val uid: Int,
-    @ColumnInfo(name = "name") val name: String?
+    @ColumnInfo(name = "name") var name: String?
 )
 
 @Entity(tableName = "ExerciseDb")
@@ -54,5 +54,3 @@ data class ExerciseDb(
     @ColumnInfo(name = "description") val description: String?
 
     )
-
-*/

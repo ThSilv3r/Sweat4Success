@@ -1,22 +1,17 @@
 package com.example.sweat4success.account
 
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Bundle
-import android.text.Editable
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room.databaseBuilder
 import com.example.sweat4success.MainActivity
 import com.example.sweat4success.R
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.modell.UserViewModel
-import kotlinx.android.synthetic.main.createaccount.*
+import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.delete.*
-import java.io.IOException
 
 
 public class UserController: AppCompatActivity(){
@@ -39,12 +34,12 @@ public class UserController: AppCompatActivity(){
 
         username = account.getUsername();
 
-
         var userList = listOf<UserDb>();
         val thread = Thread{
             userList  = userDao.loadAll();
         }
         thread.start()
+
 
         deleteButton.setOnClickListener {
             deleteDataFromDatabase(userList);
@@ -65,7 +60,7 @@ public class UserController: AppCompatActivity(){
 
 
             startActivity(Intent(this, MainActivity::class.java));
-            Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Succesfully deleted account!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
         }
@@ -74,11 +69,4 @@ public class UserController: AppCompatActivity(){
         return !(username == "" && password == "")
     }
 
-    fun logOut(){
-
-    }
-
-    fun DeleteAccount(){
-
-    }
 }
