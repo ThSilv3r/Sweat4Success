@@ -11,7 +11,6 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.login.*
 import java.io.IOException
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.workout.WorkoutListHost
 
 
 public class LogIn : AppCompatActivity(){
@@ -59,7 +58,7 @@ public class LogIn : AppCompatActivity(){
                 throw e
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show();
             }
-            startActivity(Intent(this, WorkoutListHost::class.java));
+            startActivity(Intent(this, EditAccount::class.java));
 
     }
 

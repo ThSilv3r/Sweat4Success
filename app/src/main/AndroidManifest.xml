@@ -20,7 +20,8 @@
         <activity android:name=".account.LogIn" />
         <activity android:name=".account.EditAccount" />
         <activity android:name=".account.UserController" />
-        <activity android:name=".workout.WorkoutListHost" />
+        <activity android:name=".workout.AddWorkout" />
+        <activity android:name=".workout.ViewWorkout" />
     </application>
 
 </manifest>

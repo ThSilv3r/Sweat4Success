@@ -10,7 +10,6 @@ import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
-import com.example.sweat4success.workout.WorkoutListHost
 import kotlinx.android.synthetic.main.createaccount.*
 import java.io.IOException
 
@@ -40,7 +39,8 @@ public class CreateAccount: AppCompatActivity() {
                 insertDataToDatabase(userList);
             }
 
-    } private fun insertDataToDatabase(userlist:List<UserDb>) {
+    }
+    private fun insertDataToDatabase(userlist:List<UserDb>) {
         var username: String = userNameTextBoxC.text.toString();
         account.setUsername(username);
         account.setUserList(userlist)
@@ -63,7 +63,7 @@ public class CreateAccount: AppCompatActivity() {
             }catch (e: IOException){
                 throw e;
             }
-            startActivity(Intent(this, WorkoutListHost::class.java));
+            startActivity(Intent(this, EditAccount::class.java));
             Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();

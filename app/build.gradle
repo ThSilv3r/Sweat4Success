@@ -20,12 +20,19 @@ android {
         versionName "1.0"
 
         multiDexEnabled true
-        vectorDrawables.useSupportLibrary = true;
+
 
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    sourceSets {
+        androidTest {
+            assets {
+                assets.srcDirs = ['src/androidTest/assets']
+            }
+        }
+    }
 
     buildTypes {
         release {
@@ -36,10 +43,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     def room_version = "2.3.0-alpha03"
 
     implementation "androidx.room:room-runtime:$room_version"
@@ -70,9 +73,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestImplementation 'com.android.support:support-annotations:26.1.0'
-    androidTestImplementation 'info.cukes:cucumber-android:1.2.5@jar'
-    androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile 'com.android.support:support-annotations:26.1.0'
+    androidTestCompile 'info.cukes:cucumber-android:1.2.5@jar'
+    androidTestCompile 'info.cukes:cucumber-picocontainer:1.2.4'
 
 }

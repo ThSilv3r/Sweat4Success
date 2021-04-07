@@ -171,16 +171,4 @@
         app:layout_constraintStart_toEndOf="@+id/editaccount"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/editProfilBackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
