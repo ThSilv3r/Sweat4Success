@@ -22,7 +22,7 @@ abstract class TagDataBase : RoomDatabase(){
                     context.applicationContext,
                     TagDataBase::class.java,
                     "TagDb"
-                ).build();
+                ).allowMainThreadQueries().build();
                 INSTANCE = instance;
                 return instance;
             }

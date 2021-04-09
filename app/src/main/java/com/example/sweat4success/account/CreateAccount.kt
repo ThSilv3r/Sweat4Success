@@ -16,6 +16,7 @@ import java.io.IOException
 public class CreateAccount: AppCompatActivity() {
     private lateinit var mUserViewModel: UserViewModel;
     private var account: Account = Account();
+    private var userList = listOf <UserDb>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +24,7 @@ public class CreateAccount: AppCompatActivity() {
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
-        val userDao = AppDatabase.getDatabase(application).userDao();
-
-        var userList = listOf <UserDb>()
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start()
+        this.getUser();
 
         Login.setOnClickListener {
             startActivity(Intent(this, Login::class.java));
@@ -40,6 +35,16 @@ public class CreateAccount: AppCompatActivity() {
             }
 
     }
+    private fun getUser(){
+        val userDao = AppDatabase.getDatabase(application).userDao();
+
+        val thread = Thread{
+            userList  = userDao.loadAll();
+        }
+        thread.start()
+    }
+
+
     private fun insertDataToDatabase(userlist:List<UserDb>) {
         var username: String = userNameTextBoxC.text.toString();
         account.setUsername(username);

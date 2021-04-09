@@ -22,7 +22,7 @@ abstract class ExerciseDataBase : RoomDatabase() {
                     context.applicationContext,
                     ExerciseDataBase::class.java,
                     "ExerciseDb"
-                ).build();
+                ).allowMainThreadQueries().build();
                 INSTANCE = instance;
                 return instance;
             }

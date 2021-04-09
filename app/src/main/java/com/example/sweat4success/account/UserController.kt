@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.delete.*
 
 public class UserController: AppCompatActivity(){
     private lateinit var mUserViewModel: UserViewModel;
-
+    private var userList = listOf<UserDb>();
     private var account: Account = Account();
 
 
@@ -27,6 +27,14 @@ public class UserController: AppCompatActivity(){
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
+        this.getUser()
+
+        deleteButton.setOnClickListener {
+            deleteDataFromDatabase(userList);
+        }
+
+    }
+    private fun getUser(){
         val userDao = AppDatabase.getDatabase(application).userDao();
 
         var username: String = "";
@@ -34,17 +42,10 @@ public class UserController: AppCompatActivity(){
 
         username = account.getUsername();
 
-        var userList = listOf<UserDb>();
         val thread = Thread{
             userList  = userDao.loadAll();
         }
         thread.start()
-
-
-        deleteButton.setOnClickListener {
-            deleteDataFromDatabase(userList);
-        }
-
     }
 
     private fun deleteDataFromDatabase(userList: List<UserDb>) {

@@ -14,6 +14,8 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 import kotlinx.android.synthetic.main.createworkout.*
 import kotlinx.android.synthetic.main.workout.*
+import kotlinx.android.synthetic.main.workout.textView16
+import kotlinx.android.synthetic.main.workout_without_pic.*
 
 class ViewWorkout: AppCompatActivity() {
 
@@ -23,7 +25,14 @@ class ViewWorkout: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val title = "";
+        setContentView(R.layout.workout_without_pic)
+
+        this.createUIComponents()
+    }
+
+    private fun createUIComponents(){
+
+        val title = "Test";
         val exercises = mutableListOf<ExerciseDb>()
         val tags = mutableListOf<TagDb>()
 
@@ -32,10 +41,14 @@ class ViewWorkout: AppCompatActivity() {
         mTagViewModel = ViewModelProvider(this).get(TagViewModel::class.java);
 
         val workout = mWorkoutViewModel.findByName(title);
+        workout.exerciseIds?.dropLast(1);
+        workout.exerciseIds?.drop(1);
+        workout.tagIds?.drop(1);
+        workout.tagIds?.dropLast(1);
 
-        workoutTitleViewTextBox.setText(workout.title);
-        workoutDescriptionTextbox.setText(workout.description)
-        workoutDurationTextTime.setText(workout.duration.toString())
+        textView24.text = workout.title;
+        textView16.text = workout.description.toString();
+        //workoutDurationTextTime.text = workout.duration.toString();
 
         val exerciseIds = mutableListOf<Int>();
         val exerciseIdsString = exerciseIds.toString()
@@ -75,7 +88,6 @@ class ViewWorkout: AppCompatActivity() {
             exerciseLayout.addView(repetitionTextView);
             workoutListLayout.addView(exerciseLayout);
         }
-
     }
 
 }

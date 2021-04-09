@@ -40,8 +40,9 @@ data class WorkoutDb(
     @ColumnInfo(name = "duration") val duration: Int?,
     @ColumnInfo(name = "tagIds") val tagIds: String?,
     @ColumnInfo(name = "exerciseIds") val exerciseIds: String?,
-    @ColumnInfo(name = "userId") val userId: Int?
-)
+    @ColumnInfo(name = "userId") val userId: Int?,
+    @ColumnInfo(name = "repetitions") val repetitions: String?
+    )
 
 @Entity(tableName = "TagDb")
 data class TagDb(

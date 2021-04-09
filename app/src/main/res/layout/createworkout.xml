@@ -99,22 +99,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/exerciseWorkoutLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/exerciseChipGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </com.google.android.material.chip.ChipGroup>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView12"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -122,37 +114,17 @@
         android:layout_height="wrap_content"
         android:text="Tags:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/exerciseWorkoutLayout" />
 
     <LinearLayout
+        android:id="@+id/tagWorkouotLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/tagsChipGroup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </com.google.android.material.chip.ChipGroup>
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="47dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:clickable="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test"
-        tools:srcCompat="@drawable/abc_vector_test" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13"/>
 
     <Button
         android:id="@+id/addWorkoutButton"
