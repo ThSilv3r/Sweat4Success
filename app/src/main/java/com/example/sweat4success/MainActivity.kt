@@ -60,14 +60,11 @@ class MainActivity : AppCompatActivity() {
         var exerciseDb: ExerciseDb = ExerciseDb(0,"Liegestütze", "", "",0);
         mExerciseViewModel.addExercise(exerciseDb);
 
-        val thread = Thread{
-            userList  = userDao.loadAll();
-            exerciseList = exerciseDao.loadAll();
-            tagList =  tagDao.loadAll();
-            account.setUserList(userList);
-            exercise.setExerciseList(exerciseList);
-            tag.setTagList(tagList);
-        }
-        thread.start()
+        userList  = userDao.loadAll();
+        exerciseList = exerciseDao.loadAll();
+        tagList =  tagDao.loadAll();
+        account.setUserList(userList);
+        exercise.setExerciseList(exerciseList);
+        tag.setTagList(tagList);
     }
 }

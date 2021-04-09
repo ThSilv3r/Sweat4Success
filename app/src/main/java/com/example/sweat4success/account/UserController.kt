@@ -42,10 +42,7 @@ public class UserController: AppCompatActivity(){
 
         username = account.getUsername();
 
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start()
+        userList  = userDao.loadAll();
     }
 
     private fun deleteDataFromDatabase(userList: List<UserDb>) {

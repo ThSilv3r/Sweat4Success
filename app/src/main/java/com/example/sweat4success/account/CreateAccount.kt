@@ -38,10 +38,7 @@ public class CreateAccount: AppCompatActivity() {
     private fun getUser(){
         val userDao = AppDatabase.getDatabase(application).userDao();
 
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start()
+        userList  = userDao.loadAll();
     }
 
 
