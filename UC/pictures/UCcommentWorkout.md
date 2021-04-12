@@ -8,7 +8,7 @@ This use case describes the process of comment a Workout.(CRUD)
 (tbd)
 ## 2. Flow of Events
 ### 2.1 Basic Flow
-
+![Activity Diagram] (https://github.com/ThSilv3r/SweatForSuccess/blob/develop/Pictures/UCcommentWorkout.png)
 ### 2.2 Narative
     Scenario: Comment a workout
     Given: The user is logged in
