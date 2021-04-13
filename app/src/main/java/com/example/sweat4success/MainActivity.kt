@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         this.getDatabaseItems();
 
 
+
         goToLogin.setOnClickListener {
             startActivity(Intent(this, LogIn::class.java))
         }

@@ -16,7 +16,7 @@ import com.example.sweat4success.modell.Account
 public class LogIn : AppCompatActivity(){
     private lateinit var mUserViewModel: UserViewModel;
     private var account: Account = Account();
-    private var userList = listOf <UserDb>()
+    private var userList = listOf <UserDb>();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
