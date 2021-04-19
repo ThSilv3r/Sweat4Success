@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
@@ -30,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -52,7 +40,7 @@
             android:textSize="16dp" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/descriptionWorkout"
             android:layout_width="289dp"
             android:layout_height="141dp"
             android:layout_weight="1"
@@ -61,19 +49,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/workoutExerciseList2"
+        android:id="@+id/workoutExercises2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:id="@+id/exerciseLayout"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView17"
@@ -83,6 +72,13 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/repetitionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView18"
@@ -93,5 +89,18 @@
                 android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/workoutUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:text="UserName"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

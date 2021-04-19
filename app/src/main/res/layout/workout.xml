@@ -59,7 +59,7 @@
             android:textSize="16dp" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/descriptionWorkout"
             android:layout_width="289dp"
             android:layout_height="141dp"
             android:layout_weight="1"

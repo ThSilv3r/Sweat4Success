@@ -13,7 +13,6 @@ import com.example.sweat4success.modell.viewModel.ExerciseViewModel
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 import kotlinx.android.synthetic.main.createworkout.*
-import kotlinx.android.synthetic.main.createworkout.view.*
 import java.io.IOException
 
 class AddWorkout: AppCompatActivity() {
@@ -52,7 +51,7 @@ class AddWorkout: AppCompatActivity() {
 
         tagList.forEach{
                 tag ->
-            var tagLayout: LinearLayout = findViewById(R.id.tagWorkouotLayout);
+            var tagLayout: LinearLayout = findViewById(R.id.addTagLayout);
             var tagSwitchButton = Switch(this);
             tagSwitchButton.text = tag.name;
             tagLayout.addView(tagSwitchButton);
@@ -63,7 +62,7 @@ class AddWorkout: AppCompatActivity() {
 
         exerciseList.forEach{
                 exercise ->
-            var exerciseListLayout: LinearLayout = findViewById(R.id.exerciseWorkoutLayout);
+            var exerciseListLayout: LinearLayout = findViewById(R.id.addExerciseLayout);
             var exerciseLayout: LinearLayout = LinearLayout(this);
 
 
@@ -118,9 +117,9 @@ class AddWorkout: AppCompatActivity() {
             repetitions.add(Integer.parseInt(repetitionsEditText?.text.toString()))
         }
 
-        var title: String = workoutTitleTextBox.text.toString();
-        var description: String = workoutDescriptionTextbox.text.toString();
-        var duration: Editable? = workoutDurationTextTime.text;
+        var title: String = editWorkoutitle.text.toString();
+        var description: String = editWorkoutDescription.text.toString();
+        var duration: Editable? = editWorkoutDuration.text;
         var tagIds: String = tagId.toString();
         var exerciseIds: String = exerciseId.toString();
 

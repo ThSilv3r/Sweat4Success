@@ -1,20 +1,21 @@
 package com.example.sweat4success.workout
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.sweat4success.MainActivity
 import com.example.sweat4success.R
+import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.database.ExerciseDb
 import com.example.sweat4success.database.TagDb
 import com.example.sweat4success.modell.viewModel.ExerciseViewModel
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
-import kotlinx.android.synthetic.main.createworkout.*
-import kotlinx.android.synthetic.main.workout.*
-import kotlinx.android.synthetic.main.workout.textView16
+import kotlinx.android.synthetic.main.workout.descriptionWorkout
 import kotlinx.android.synthetic.main.workout_without_pic.*
 
 class ViewWorkout: AppCompatActivity() {
@@ -26,6 +27,10 @@ class ViewWorkout: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.workout_without_pic)
+
+        workoutUser.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         this.createUIComponents()
     }
@@ -52,7 +57,7 @@ class ViewWorkout: AppCompatActivity() {
         workoutRepetitions = workoutRepetitions?.dropLast(1);
 
         textView24.text = workout.title;
-        textView16.text = workout.description.toString();
+        descriptionWorkout.text = workout.description.toString();
         //workoutDurationTextTime.text = workout.duration.toString();
 
         val exerciseIds = mutableListOf<Int>();
@@ -83,7 +88,8 @@ class ViewWorkout: AppCompatActivity() {
 
         if(!exercises.isEmpty()){
             exercises.forEach{exercise ->
-                var workoutListLayout: LinearLayout = findViewById(R.id.workoutExerciseList2);
+                var workoutListLayout: LinearLayout = findViewById(R.id.exerciseLayout);
+                var workoutExerciseRepetitionLayout: LinearLayout = findViewById(R.id.repetitionLayout);
                 var exerciseLayout: LinearLayout = LinearLayout(this);
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -98,7 +104,7 @@ class ViewWorkout: AppCompatActivity() {
                 exerciseTextView.text = exercise.title
                 repetitionTextView.text = repetitions[0].toString();
                 exerciseLayout.addView(exerciseTextView);
-                exerciseLayout.addView(repetitionTextView);
+                workoutExerciseRepetitionLayout.addView(repetitionTextView);
                 workoutListLayout.addView(exerciseLayout);
                 repetitions.drop(1);
             }

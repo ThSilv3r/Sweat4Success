@@ -40,7 +40,7 @@
                 android:text="Title:" />
 
             <EditText
-                android:id="@+id/workoutTitleTextBox"
+                android:id="@+id/editWorkoutitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -60,7 +60,7 @@
                 android:text="Description:" />
 
             <EditText
-                android:id="@+id/workoutDescriptionTextbox"
+                android:id="@+id/editWorkoutDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -81,7 +81,7 @@
                 android:text="Duration:" />
 
             <EditText
-                android:id="@+id/workoutDurationTextTime"
+                android:id="@+id/editWorkoutDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <LinearLayout
-        android:id="@+id/exerciseWorkoutLayout"
+        android:id="@+id/addExerciseLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -114,10 +114,10 @@
         android:layout_height="wrap_content"
         android:text="Tags:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exerciseWorkoutLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/addExerciseLayout" />
 
     <LinearLayout
-        android:id="@+id/tagWorkouotLayout"
+        android:id="@+id/addTagLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

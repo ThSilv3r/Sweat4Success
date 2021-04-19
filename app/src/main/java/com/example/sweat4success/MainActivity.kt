@@ -11,11 +11,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Exercise
+import com.example.sweat4success.modell.Tag
 import com.example.sweat4success.modell.Workouts
+import com.example.sweat4success.modell.viewModel.ExerciseViewModel
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.navigation.NavigationView
@@ -27,13 +31,20 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView :NavigationView
 
-    //lateinit var toggle: ActionBarDrawerToggle
     private var account: Account = Account();
+    private var tag: Tag = Tag();
+    private var exercise: Exercise = Exercise();
     private lateinit var tagViewModel: TagViewModel;
+    private lateinit var mExerciseViewModel: ExerciseViewModel;
+    private lateinit var mTagViewModel: TagViewModel;
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.getUser();
+
+
+        this.getDatabaseItems();
 
         toolbar = findViewById(R.id.toolbar)
 
@@ -55,11 +66,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
-
         /*toggle = ActionBarDrawerToggle(this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)*/
+
 
 
 
@@ -71,7 +82,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_profile -> {
                 Toast.makeText(baseContext, "Clicked profile", Toast.LENGTH_SHORT).show()
@@ -123,16 +134,30 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
-    private fun getUser(){
+    private fun getDatabaseItems(){
         val userDao = AppDatabase.getDatabase(application).userDao();
-        var userList = listOf<UserDb>();
+        val tagDao = TagDataBase.getDatabase(application).tagDao();
+        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao();
 
-        val thread = Thread{
-            userList  = userDao.loadAll();
-            account.setUserList(userList);
-        }
-        thread.start()
+        var exerciseList = listOf<ExerciseDb>();
+        var tagList = listOf<TagDb>();
+        var userList = listOf<UserDb>();
+        mExerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java);
+        mTagViewModel = ViewModelProvider(this).get(TagViewModel::class.java);
+        var tagDb = TagDb(0, "Bizeps");
+        mTagViewModel.addTag(tagDb);
+        var exerciseDb: ExerciseDb = ExerciseDb(0,"Liegestütze", "", "",0);
+        mExerciseViewModel.addExercise(exerciseDb);
+
+        userList  = userDao.loadAll();
+        exerciseList = exerciseDao.loadAll();
+        tagList =  tagDao.loadAll();
+        account.setUserList(userList);
+        exercise.setExerciseList(exerciseList);
+        tag.setTagList(tagList);
     }
+}
+
 
 
 
