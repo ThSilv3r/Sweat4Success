@@ -51,12 +51,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         toolbar.setNavigationIcon(R.drawable.workouts_icon)
         setSupportActionBar(toolbar)
 
-
-
-        /*toolbar.setNavigationOnClickListener {
-            Toast.makeText(this, "Navigation clicked", Toast.LENGTH_SHORT).show()
-        }*/
-
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
 
@@ -66,10 +60,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
-        /*toggle = ActionBarDrawerToggle(this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)*/
 
 
 
@@ -82,7 +72,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
-    fun onNavigationItemSelected(item: MenuItem): Boolean {
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_profile -> {
                 Toast.makeText(baseContext, "Clicked profile", Toast.LENGTH_SHORT).show()
@@ -92,39 +82,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 "Clicked Friends",
                 Toast.LENGTH_SHORT
             ).show()
-            /*R.id.nav_workouts -> {
-                wor = Workouts()
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id., workout)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit()
 
-                Toast.makeText(applicationContext, "Clicked Item 1", Toast.LENGTH_SHORT).show()
-            }*/
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }*/
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var itemview = item.itemId
-        when(itemview){
-
-        }
-    }*/
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -156,10 +119,4 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         exercise.setExerciseList(exerciseList);
         tag.setTagList(tagList);
     }
-}
-
-
-
-
-
 }

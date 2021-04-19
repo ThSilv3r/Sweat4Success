@@ -45,7 +45,8 @@ public class CreateAccount: AppCompatActivity() {
     private fun insertDataToDatabase(userlist:List<UserDb>) {
         var username: String = userNameTextBoxC.text.toString();
         account.setUsername(username);
-        account.setUserList(userlist)
+        account.setUserList(userlist);
+        var userList = account.getUserList();
 
 
         var password: String = passwordTextBoxC.text.toString();
@@ -59,9 +60,11 @@ public class CreateAccount: AppCompatActivity() {
         //var account: account = account(username, password, email, 0.0, 0.0, 0.0, age);
 
         if(inputCheck(username, password, email)){
-            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0);
+            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"0","0","0");
             try {
                 mUserViewModel.addUser(user);
+                userList += user;
+                account.setUserList(userList);
             }catch (e: IOException){
                 throw e;
             }
