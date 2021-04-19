@@ -8,6 +8,7 @@ This use case describes the process of showing a workout (CRUD).
 
 ## 2. Flow of Events
 ### 2.1 Basic Flow
+![Activity Diagram] (https://github.com/ThSilv3r/SweatForSuccess/blob/develop/Pictures/UCshowWorkout.png)
 Activity Diagram
 ### 2.2 Narative
       Scenario: show a workout
