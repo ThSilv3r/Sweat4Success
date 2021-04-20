@@ -11,6 +11,9 @@ interface ExerciseDao {
     @Query("SELECT * FROM ExerciseDb")
     fun loadAll(): List<ExerciseDb>
 
+    @Query("SELECT * FROM ExerciseDb WHERE uid LIKE :id")
+    fun findById(id: Int):  ExerciseDb
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addExercise(user: ExerciseDb)
 

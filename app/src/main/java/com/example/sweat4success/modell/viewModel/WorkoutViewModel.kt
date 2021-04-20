@@ -39,6 +39,18 @@ class WorkoutViewModel(application: Application):AndroidViewModel(application) {
         //}
     }
 
+    fun findByTagId(tagId: Int): List<WorkoutDb> {
+        //viewModelScope.launch(Dispatchers.IO) {
+        return repository.findByTag(tagId);
+        //}
+    }
+
+    fun findById(id: Int): WorkoutDb {
+        //viewModelScope.launch(Dispatchers.IO) {
+        return repository.findById(id);
+        //}
+    }
+
     fun deleteWorkout(workout: WorkoutDb){
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(workout);

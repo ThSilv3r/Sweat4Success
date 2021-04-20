@@ -13,6 +13,10 @@ class ExerciseRepository(private val exerciseDao: ExerciseDao) {
         exerciseDao.addExercise(exercise);
     }
 
+    fun findById(id: Int): ExerciseDb {
+        return exerciseDao.findById(id);
+    }
+
     fun delete(exercise: ExerciseDb){
         exerciseDao.delete(exercise);
     }

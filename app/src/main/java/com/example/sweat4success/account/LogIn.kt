@@ -16,32 +16,27 @@ import com.example.sweat4success.modell.Account
 public class LogIn : AppCompatActivity(){
     private lateinit var mUserViewModel: UserViewModel;
     private var account: Account = Account();
+    private var userList = listOf <UserDb>();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
-        val userDao = AppDatabase.getDatabase(application).userDao();
-
-        var userList = listOf <UserDb>()
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start()
+        this.getUser();
 
         button.setOnClickListener {
             startActivity(Intent(this, CreateAccount::class.java));
-
         }
 
         logInButton.setOnClickListener {
-            //startActivity(Intent(this, UserController::class.java));
             checkDataInDatabase(userList);
         }
-        //var userName: String = userNameTextBox.text.toString();
-        //var password: String = passwordTextBox.text.toString();
+    }
+
+    private fun getUser(){
+        val userDao = AppDatabase.getDatabase(application).userDao();
+        userList  = userDao.loadAll();
     }
 
     private fun checkDataInDatabase(userList:List<UserDb>) {

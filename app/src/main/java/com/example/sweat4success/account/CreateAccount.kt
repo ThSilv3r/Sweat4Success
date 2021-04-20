@@ -16,6 +16,7 @@ import java.io.IOException
 public class CreateAccount: AppCompatActivity() {
     private lateinit var mUserViewModel: UserViewModel;
     private var account: Account = Account();
+    private var userList = listOf <UserDb>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +24,7 @@ public class CreateAccount: AppCompatActivity() {
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
-        val userDao = AppDatabase.getDatabase(application).userDao();
-
-        var userList = listOf <UserDb>()
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start()
+        this.getUser();
 
         Login.setOnClickListener {
             startActivity(Intent(this, Login::class.java));
@@ -40,11 +35,18 @@ public class CreateAccount: AppCompatActivity() {
             }
 
     }
+    private fun getUser(){
+        val userDao = AppDatabase.getDatabase(application).userDao();
+
+        userList  = userDao.loadAll();
+    }
+
 
     private fun insertDataToDatabase(userlist:List<UserDb>) {
         var username: String = userNameTextBoxC.text.toString();
         account.setUsername(username);
-        account.setUserList(userlist)
+        account.setUserList(userlist);
+        var userList = account.getUserList();
 
 
         var password: String = passwordTextBoxC.text.toString();
@@ -58,9 +60,11 @@ public class CreateAccount: AppCompatActivity() {
         //var account: account = account(username, password, email, 0.0, 0.0, 0.0, age);
 
         if(inputCheck(username, password, email)){
-            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0);
+            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"0","0","0");
             try {
                 mUserViewModel.addUser(user);
+                userList += user;
+                account.setUserList(userList);
             }catch (e: IOException){
                 throw e;
             }
@@ -75,5 +79,7 @@ public class CreateAccount: AppCompatActivity() {
     private fun inputCheck(username: String, password: String, email: String): Boolean {
         return !(username == "" && password == "" && email=="")
     }
+
+
 
 }
