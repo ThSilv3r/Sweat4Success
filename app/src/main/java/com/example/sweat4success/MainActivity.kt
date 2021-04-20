@@ -11,36 +11,39 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.Workouts
+import com.example.sweat4success.modell.viewModel.ExerciseViewModel
 import com.example.sweat4success.modell.viewModel.TagViewModel
+import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
+class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
-    lateinit var navView :NavigationView
+    lateinit var navView: NavigationView
 
     //lateinit var toggle: ActionBarDrawerToggle
     private var account: Account = Account();
     private lateinit var tagViewModel: TagViewModel;
+    private lateinit var exerciseViewModel: ExerciseViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.getUser();
+        this.getDatabaseItems();
 
         toolbar = findViewById(R.id.toolbar)
 
         toolbar.setNavigationIcon(R.drawable.workouts_icon)
         setSupportActionBar(toolbar)
-
 
 
         /*toolbar.setNavigationOnClickListener {
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.nav_profile -> {
                 Toast.makeText(baseContext, "Clicked profile", Toast.LENGTH_SHORT).show()
             }
@@ -124,18 +127,19 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
-    private fun getUser(){
+    private fun getDatabaseItems() {
         val userDao = AppDatabase.getDatabase(application).userDao();
+        tagViewModel = ViewModelProvider(this).get(TagViewModel::class.java);
+        exerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java);
+        var tag = TagDb(0, "Bizeps")
+        tagViewModel.addTag(tag);
+
+        var exercise = ExerciseDb(0, "Liegestütze", "","",0);
+        exerciseViewModel.addExercise(exercise);
+
         var userList = listOf<UserDb>();
+        userList = userDao.loadAll();
+        account.setUserList(userList);
 
-        val thread = Thread{
-            userList  = userDao.loadAll();
-            account.setUserList(userList);
-        }
-        thread.start()
     }
-
-
-
-
 }
