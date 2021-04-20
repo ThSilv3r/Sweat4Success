@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [TagDb::class], version = 1, exportSchema = false)
+@Database(entities = [TagDb::class], version = 2, exportSchema = false)
 abstract class TagDataBase : RoomDatabase(){
     abstract fun tagDao(): TagDao
 
@@ -22,7 +22,7 @@ abstract class TagDataBase : RoomDatabase(){
                     context.applicationContext,
                     TagDataBase::class.java,
                     "TagDb"
-                ).build();
+                ).allowMainThreadQueries().build();
                 INSTANCE = instance;
                 return instance;
             }

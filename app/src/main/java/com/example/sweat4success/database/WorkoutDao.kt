@@ -14,8 +14,11 @@ interface WorkoutDao {
     @Query("SELECT * FROM WorkoutDb WHERE title LIKE :title LIMIT 1")
     fun findByName(title: String): WorkoutDb
 
-    @Query("SELECT * FROM WorkoutDb WHERE tagId LIKE :tagId")
+    @Query("SELECT * FROM WorkoutDb WHERE tagIds LIKE :tagId")
     fun findByTag(tagId: Int):  List<WorkoutDb>
+
+    @Query("SELECT * FROM WorkoutDb WHERE uid LIKE :id")
+    fun findById(id: Int): WorkoutDb
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addWorkout(workout: WorkoutDb)

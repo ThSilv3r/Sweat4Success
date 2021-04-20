@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Parcel
 import android.os.Parcelable
+import android.text.Editable
 import androidx.room.*
 import java.sql.Time
 
@@ -23,9 +24,9 @@ data class UserDb(
     @ColumnInfo(name = "bicepsWidth") var bicepsWidth: Double?,
     @ColumnInfo(name = "chestWidth") val chestWidth: Double?,
     @ColumnInfo(name = "quadWidth") val quadWidth: Double?,
-    @ColumnInfo(name = "friendId") val friendId: Int?,
-    @ColumnInfo(name = "workoutId") val workoutId: Int?,
-    @ColumnInfo(name = "favoritesId") val favoritesId: Int?
+    @ColumnInfo(name = "friendId") val friendId: String?,
+    @ColumnInfo(name = "workoutId") val workoutId: String?,
+    @ColumnInfo(name = "favoritesId") val favoritesId: String?
     )
 
 
@@ -37,8 +38,11 @@ data class WorkoutDb(
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "duration") val duration: Int?,
-    @ColumnInfo(name = "tagId") val tagId: Int?
-)
+    @ColumnInfo(name = "tagIds") val tagIds: String?,
+    @ColumnInfo(name = "exerciseIds") val exerciseIds: String?,
+    @ColumnInfo(name = "userId") val userId: Int?,
+    @ColumnInfo(name = "repetitions") val repetitions: String?
+    )
 
 @Entity(tableName = "TagDb")
 data class TagDb(
@@ -51,6 +55,6 @@ data class ExerciseDb(
     @PrimaryKey val uid: Int,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "pictureURL") val pictureURL: String?,
-    @ColumnInfo(name = "description") val description: String?
-
+    @ColumnInfo(name = "description") val description: String?,
+    @ColumnInfo(name = "repetitions") val repetitions: Int?
     )
