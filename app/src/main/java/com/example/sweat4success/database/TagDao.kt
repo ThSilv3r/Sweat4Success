@@ -11,6 +11,9 @@ interface TagDao {
     @Query("SELECT * FROM TagDb")
     fun loadAll(): List<TagDb>
 
+    @Query("SELECT * FROM TagDb WHERE uid LIKE :id")
+    fun findById(id: Int):  TagDb
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addTag(user: TagDb)
 

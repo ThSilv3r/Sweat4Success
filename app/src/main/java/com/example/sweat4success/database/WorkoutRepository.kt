@@ -21,6 +21,10 @@ class WorkoutRepository(private val workoutDao: WorkoutDao) {
         return workoutDao.findByTag(tagId);
     }
 
+    fun findById(id: Int): WorkoutDb{
+        return workoutDao.findById(id);
+    }
+
     fun delete(workout: WorkoutDb){
         workoutDao.delete(workout);
     }

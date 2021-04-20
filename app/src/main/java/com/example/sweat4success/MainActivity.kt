@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     //lateinit var toggle: ActionBarDrawerToggle
     private var account: Account = Account();
     private lateinit var tagViewModel: TagViewModel;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
