@@ -19,6 +19,10 @@ class UserRepository (private val userDao: UserDao){
         return userDao.findByName(username, password);
     }
 
+    fun findById(id: Int): UserDb {
+        return userDao.findById(id);
+    }
+
     fun delete(user: UserDb){
         userDao.delete(user);
     }

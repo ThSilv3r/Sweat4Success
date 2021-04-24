@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.sweat4success.database.AppDatabase
+import com.example.sweat4success.database.ExerciseDb
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.database.UserRepository
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +38,10 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
 
     fun findByName(username: String, password: String):UserDb {
             return repository.findByName(username, password);
+    }
+
+    fun getById(id: Int): UserDb {
+        return repository.findById(id);
     }
 
     fun deleteUser(user: UserDb){

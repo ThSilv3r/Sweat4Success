@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/grey">
 
     <include
         android:id="@+id/toolbar"
@@ -18,10 +19,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/emailTextBoxC"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77" />
 
     <EditText
         android:id="@+id/passwordTextBoxC"
@@ -29,10 +33,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/ageTextBoxC"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailTextBoxC" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextBoxC"
+        app:layout_constraintVertical_bias="0.724" />
 
     <Button
         android:id="@+id/createAccountButton"
@@ -50,16 +57,20 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/ageTextBoxC"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.637" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UserName"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/userNameTextBoxC"
         app:layout_constraintStart_toStartOf="@+id/userNameTextBoxC" />
 
@@ -68,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="E-Mail"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/emailTextBoxC"
         app:layout_constraintStart_toStartOf="@+id/emailTextBoxC" />
 
@@ -76,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/passwordTextBoxC"
         app:layout_constraintStart_toStartOf="@+id/passwordTextBoxC" />
 
@@ -85,16 +98,20 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.536" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/ageTextBoxC"
         app:layout_constraintStart_toStartOf="@+id/ageTextBoxC" />
 

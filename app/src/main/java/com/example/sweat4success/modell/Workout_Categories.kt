@@ -20,6 +20,7 @@ class Workout_Categories:AppCompatActivity() {
 
 
         // register all the card views with their appropriate IDs
+        /*
         val armsCard: CardView = findViewById(R.id.armsCard)
         val stretchingCard: CardView = findViewById(R.id.stretchingCard)
         val cardioCard: CardView = findViewById(R.id.cardioCard)
@@ -49,5 +50,6 @@ class Workout_Categories:AppCompatActivity() {
         legsCard.setOnClickListener {
             Toast.makeText(this, "Legs", Toast.LENGTH_SHORT).show()
         }
+         */
     }
 }
