@@ -38,6 +38,12 @@ public class FriendController: AppCompatActivity() {
         return friends;
     }
 
+    public fun addFriend(friend: UserDb){
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
+        user.friendId = user.friendId + ","+ friend.uid.toString();
+        mUserViewModel.updateUser(user);
+    }
+
     public fun getFriend(id: Int): UserDb{
         getFriends();
 
