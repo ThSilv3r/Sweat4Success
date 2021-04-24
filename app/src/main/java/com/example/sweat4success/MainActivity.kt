@@ -16,10 +16,13 @@ import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Exercise
+import com.example.sweat4success.modell.Tag
 import com.example.sweat4success.modell.Workouts
 import com.example.sweat4success.modell.viewModel.ExerciseViewModel
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.example.sweat4success.modell.viewModel.UserViewModel
+import com.example.sweat4success.workout.AddWorkout
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,6 +35,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     //lateinit var toggle: ActionBarDrawerToggle
     private var account: Account = Account();
+    private var tag1: Tag = Tag();
+    private var exercise1: Exercise  =  Exercise();
     private lateinit var tagViewModel: TagViewModel;
     private lateinit var exerciseViewModel: ExerciseViewModel;
 
@@ -129,6 +134,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private fun getDatabaseItems() {
         val userDao = AppDatabase.getDatabase(application).userDao();
+        val tagdao = TagDataBase.getDatabase(application).tagDao();
+        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao();
         tagViewModel = ViewModelProvider(this).get(TagViewModel::class.java);
         exerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java);
         var tag = TagDb(0, "Bizeps")
@@ -136,6 +143,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         var exercise = ExerciseDb(0, "Liegestütze", "","",0);
         exerciseViewModel.addExercise(exercise);
+
+        var taglist = listOf<TagDb>()
+        taglist  = tagdao.loadAll();
+        tag1.setTagList(taglist);
+
+        var exerciseList = listOf<ExerciseDb>();
+        exerciseList = exerciseDao.loadAll();
+        exercise1.setExerciseList(exerciseList);
 
         var userList = listOf<UserDb>();
         userList = userDao.loadAll();

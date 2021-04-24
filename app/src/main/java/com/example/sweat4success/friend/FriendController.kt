@@ -8,7 +8,7 @@ import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
-public class FriendControlle: AppCompatActivity() {
+public class FriendController: AppCompatActivity() {
     private var account: Account = Account();
     private lateinit var user: UserDb;
     private val friends = mutableListOf<UserDb>();
@@ -38,11 +38,23 @@ public class FriendControlle: AppCompatActivity() {
         return friends;
     }
 
+    public fun addFriend(friend: UserDb){
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
+        user.friendId = user.friendId + ","+ friend.uid.toString();
+        mUserViewModel.updateUser(user);
+    }
+
     public fun getFriend(id: Int): UserDb{
         getFriends();
 
         var user: UserDb = friends.find { it.uid == id }as UserDb;
 
         return user;
+    }
+
+    public fun isFriend(friend: UserDb): Boolean{
+        var friendList = getFriends();
+        var isFriend: Boolean = friendList.contains(friend);
+        return isFriend;
     }
 }

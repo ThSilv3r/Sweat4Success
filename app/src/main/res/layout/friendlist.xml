@@ -7,7 +7,7 @@
     android:background="@drawable/grey">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/searchFriendName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -31,7 +31,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/searchFriendName">
 
         <LinearLayout
             android:id="@+id/friendLayout"
@@ -50,12 +50,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/friendSearchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toEndOf="@+id/searchFriendName"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

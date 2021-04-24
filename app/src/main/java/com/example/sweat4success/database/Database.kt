@@ -24,8 +24,8 @@ data class UserDb(
     @ColumnInfo(name = "bicepsWidth") var bicepsWidth: Double?,
     @ColumnInfo(name = "chestWidth") val chestWidth: Double?,
     @ColumnInfo(name = "quadWidth") val quadWidth: Double?,
-    @ColumnInfo(name = "friendId") val friendId: String?,
-    @ColumnInfo(name = "workoutId") val workoutId: String?,
+    @ColumnInfo(name = "friendId") var friendId: String?,
+    @ColumnInfo(name = "workoutId") var workoutId: String?,
     @ColumnInfo(name = "favoritesId") val favoritesId: String?
     )
 
