@@ -15,12 +15,8 @@ public class DataController: AppCompatActivity() {
     private val workouts = mutableListOf<WorkoutDb>();
 
 
-    public fun getFavorites(): List<WorkoutDb> {
+    public fun getFavorites(user: UserDb): List<WorkoutDb> {
         mWorkoutViewModel = ViewModelProvider(this).get(WorkoutViewModel::class.java);
-
-        var userList = account.getUserList();
-        var username: String = account.getUsername();
-        var user = userList.find { it.username == username };
 
         var favoritesIdString = user?.favoritesId;
         favoritesIdString = favoritesIdString?.drop(1);
@@ -37,12 +33,8 @@ public class DataController: AppCompatActivity() {
         return favorites;
     }
 
-    public fun getWorkouts(): List<WorkoutDb> {
+    public fun getWorkouts(user: UserDb): List<WorkoutDb> {
         mWorkoutViewModel = ViewModelProvider(this).get(WorkoutViewModel::class.java);
-
-        var userList = account.getUserList();
-        var username: String = account.getUsername();
-        var user = userList.find { it.username == username };
 
         var workoutsIdString = user?.workoutId;
         workoutsIdString = workoutsIdString?.drop(1);
