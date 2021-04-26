@@ -1,12 +1,10 @@
-package com.example.sweat4success.friend
+package com.example.sweat4success.controller
 
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
-import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
 public class FriendController: AppCompatActivity() {
     private var account: Account = Account();
