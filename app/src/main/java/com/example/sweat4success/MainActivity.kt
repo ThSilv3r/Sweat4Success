@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
+import com.example.sweat4success.friends.Userprofile
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.Exercise
 import com.example.sweat4success.modell.Tag
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         goToCreate.setOnClickListener {
             startActivity(Intent(this, CreateAccount::class.java))
         }
+       
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
