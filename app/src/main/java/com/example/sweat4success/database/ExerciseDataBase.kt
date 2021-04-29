@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [ExerciseDb::class], version = 1, exportSchema = false)
+@Database(entities = [ExerciseDb::class], version = 2, exportSchema = false)
 abstract class ExerciseDataBase : RoomDatabase() {
     abstract fun exerciseDao(): ExerciseDao;
 
@@ -22,7 +22,7 @@ abstract class ExerciseDataBase : RoomDatabase() {
                     context.applicationContext,
                     ExerciseDataBase::class.java,
                     "ExerciseDb"
-                ).build();
+                ).allowMainThreadQueries().build();
                 INSTANCE = instance;
                 return instance;
             }

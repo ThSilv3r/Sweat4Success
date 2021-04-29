@@ -17,6 +17,9 @@ interface WorkoutDao {
     @Query("SELECT * FROM WorkoutDb WHERE tagIds LIKE :tagId")
     fun findByTag(tagId: Int):  List<WorkoutDb>
 
+    @Query("SELECT * FROM WorkoutDb WHERE uid LIKE :id")
+    fun findById(id: Int): WorkoutDb
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addWorkout(workout: WorkoutDb)
 

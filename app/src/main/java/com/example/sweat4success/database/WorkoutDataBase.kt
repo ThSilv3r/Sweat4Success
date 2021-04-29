@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [WorkoutDb::class], version = 1, exportSchema = false)
+@Database(entities = [WorkoutDb::class], version = 2, exportSchema = false)
 abstract class WorkoutDataBase : RoomDatabase() {
     abstract fun workoutDao(): WorkoutDao
 
@@ -22,7 +22,7 @@ abstract class WorkoutDataBase : RoomDatabase() {
                     context.applicationContext,
                     WorkoutDataBase::class.java,
                     "WorkoutDb"
-                ).build();
+                ).allowMainThreadQueries().build();
                 INSTANCE = instance;
                 return instance;
             }

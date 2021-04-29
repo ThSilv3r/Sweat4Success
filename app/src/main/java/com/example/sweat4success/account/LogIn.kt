@@ -11,38 +11,32 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.login.*
 import java.io.IOException
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.workout.WorkoutListHost
 
 
 public class LogIn : AppCompatActivity(){
     private lateinit var mUserViewModel: UserViewModel;
     private var account: Account = Account();
+    private var userList = listOf <UserDb>();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
-        val userDao = AppDatabase.getDatabase(application).userDao();
-
-        var userList = listOf <UserDb>()
-        val thread = Thread{
-            userList  = userDao.loadAll();
-        }
-        thread.start()
+        this.getUser();
 
         button.setOnClickListener {
             startActivity(Intent(this, CreateAccount::class.java));
-
         }
 
         logInButton.setOnClickListener {
-            //startActivity(Intent(this, UserController::class.java));
             checkDataInDatabase(userList);
         }
-        //var userName: String = userNameTextBox.text.toString();
-        //var password: String = passwordTextBox.text.toString();
+    }
+
+    private fun getUser(){
+        val userDao = AppDatabase.getDatabase(application).userDao();
+        userList  = userDao.loadAll();
     }
 
     private fun checkDataInDatabase(userList:List<UserDb>) {
@@ -59,7 +53,7 @@ public class LogIn : AppCompatActivity(){
                 throw e
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show();
             }
-            startActivity(Intent(this, WorkoutListHost::class.java));
+            startActivity(Intent(this, EditAccount::class.java));
 
     }
 
