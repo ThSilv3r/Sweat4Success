@@ -197,15 +197,18 @@ The app will be runnable on Android 9 and higher. iOS won’t be featured at the
 <em>3.9.4 Communications Interfaces</em><br>
 TBD</p>
 <h3 id="licensing-requirements">3.10 Licensing Requirements</h3>
+<p>We plan to publish the source code under an open-source license.</p>
 <h3 id="legal-copyright-and-other-notices">3.11 Legal, Copyright and Other Notices</h3>
 <p>We only provide a free service and do not take responsibility for any errors or incorrect data that results from the use of this app</p>
 <h3 id="applicable-standards">3.12 Applicable Standards</h3>
-<p>TBD</p>
+<p>The development will follow the common clean code standards and naming conventions. Also, we will create a definition of which will be added here as soon as it's complete.</p>
 <h2 id="supporting-information">4. Supporting Information</h2>
 <p>For any further information you can contact the Sweat for Success Team or check our Sweat for Success Blog. The Team Members are:<br>
 • Marina Vollmer<br>
 • Jonas Hirsch<br>
 • Nils Wendland</p>
+<h2>5. Risk Management</h2>
+<p>Here you can find our <a href="https://docs.google.com/spreadsheets/d/1YKo4JbgF9-odv0a7gLjXTu9sZWTNeWPUqmwJyrtMoKo/edit#gid=0">Risk Management</a>.</p>
 
   </div>
 </body>
