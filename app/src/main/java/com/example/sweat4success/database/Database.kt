@@ -13,7 +13,7 @@ import java.sql.Time
 @Entity(tableName = "UserDb")
 data class UserDb(
     @PrimaryKey(autoGenerate = true) val uid: Int,
-    @ColumnInfo(name = "username") val username: String?,
+    @ColumnInfo(name = "username") var username: String?,
     @ColumnInfo(name = "password") val password: String?,
     @ColumnInfo(name = "email") val email: String?,
     @ColumnInfo(name = "age") var age: Int?,
