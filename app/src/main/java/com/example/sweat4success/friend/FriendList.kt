@@ -6,12 +6,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sweat4success.R
-import com.example.sweat4success.database.ExerciseDb
+import com.example.sweat4success.controller.FriendController
 import com.example.sweat4success.database.UserDb
-import com.example.sweat4success.modell.Account
 import kotlinx.android.synthetic.main.friendlist.*
-import kotlinx.android.synthetic.main.friendlist.view.*
-import org.w3c.dom.Text
 
 class FriendList: AppCompatActivity() {
 
