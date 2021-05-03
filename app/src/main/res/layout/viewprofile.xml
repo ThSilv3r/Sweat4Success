@@ -50,35 +50,17 @@
                 android:textColor="#FFFFFFFF" />
 
             <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Wohnort"
-                android:textColor="#FFFFFFFF" />
-
-            <TextView
-                android:id="@+id/friendWohnort"
-                android:layout_width="match_parent"
-                android:layout_height="38dp" />
-
-            <TextView
                 android:id="@+id/favoriteworkouts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="favoriteworkouts"
                 android:textColor="#FFFFFFFF" />
 
-            <EditText
-                android:id="@+id/favoriteWorkouts"
+            <LinearLayout
+                android:id="@+id/favoriteWorkoutLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:linksClickable="true"
-                android:text="list of favorite workouts"
-                android:textColor="#FFFFFFFF" />
+                android:orientation="vertical"></LinearLayout>
 
             <TextView
                 android:id="@+id/hochgeladeneWorkouts"
@@ -87,16 +69,11 @@
                 android:text="TextView"
                 android:textColor="#FFFFFFFF" />
 
-            <EditText
-                android:id="@+id/hochgeladeneWorkoutsList"
+            <LinearLayout
+                android:id="@+id/workouts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:text="Liste aller hochgeladenen Workouts"
-                android:textColor="#FFFFFFFF" />
+                android:orientation="vertical"></LinearLayout>
 
             <ToggleButton
                 android:id="@+id/addFriend"
