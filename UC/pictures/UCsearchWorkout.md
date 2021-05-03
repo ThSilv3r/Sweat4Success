@@ -8,7 +8,7 @@ This use case describes the creation of a Workout.(CRUD)
 (tbd)
 ## 2. Flow of Events
 ### 2.1 Basic Flow
-
+![Activity Diagram] (https://github.com/ThSilv3r/SweatForSuccess/blob/develop/Pictures/UC%20searchWorkout.png)
 ### 2.2 Narative
     Scenario: Search a workout
     Given: The user is logged in

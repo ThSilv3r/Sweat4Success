@@ -8,7 +8,7 @@ This use case describes the process of showing a list of workouts.(CRUD)
 (tbd)
 ## 2. Flow of Events
 ### 2.1 Basic Flow
-
+![Activity Diagram] (https://github.com/ThSilv3r/SweatForSuccess/blob/develop/Pictures/UC%20showsListOfWorkouts.png)
 ### 2.2 Narative
     Scenario: show a list of workouts
     Given: The user is logged in

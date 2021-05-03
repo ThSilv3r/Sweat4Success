@@ -24,6 +24,10 @@ class ExerciseViewModel (application: Application): AndroidViewModel(application
         }
     }
 
+    fun getById(id: Int): ExerciseDb{
+            return repository.findById(id);
+    }
+
 
     fun addExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO){

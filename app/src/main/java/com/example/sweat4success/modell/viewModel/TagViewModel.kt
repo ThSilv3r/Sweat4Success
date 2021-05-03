@@ -24,8 +24,11 @@ class TagViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun getById(id: Int): TagDb{
+            return repository.findById(id);
+    }
 
-    fun addUTag(tag: TagDb){
+    fun addTag(tag: TagDb){
         viewModelScope.launch(Dispatchers.IO){
             repository.addTag(tag);
         }

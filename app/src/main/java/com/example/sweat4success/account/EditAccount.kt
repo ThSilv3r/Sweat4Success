@@ -21,13 +21,31 @@ class EditAccount: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.editaccount)
-        val userDao = AppDatabase.getDatabase(application).userDao();
+
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
+        this.setUITexts()
+
+        deleteAccountButton.setOnClickListener {
+            startActivity(Intent(this, UserController::class.java));
+        }
+
+        editaccount.setOnClickListener {
+            var userList = account.getUserList();
+            var username: String = account.getUsername();
+            var user = userList.find{it.username == username}as UserDb;
+            updateUser(user)
+        }
+
+        logoutButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java));
+        }
+
+    }
+
+    private fun setUITexts(){
         var userList = account.getUserList();
-
         var username: String = account.getUsername();
-
         var user = userList.find{it.username == username}as UserDb;
 
         var age = user.age.toString();
@@ -41,23 +59,10 @@ class EditAccount: AppCompatActivity() {
         weightTextBoxeditacc.setText(weight as CharSequence)
         bizepsTextBoxeditacc.setText(biceps as CharSequence)
         waistTextBoxeditacc.setText(stomache as CharSequence)
-
-        deleteAccountButton.setOnClickListener {
-            startActivity(Intent(this, UserController::class.java));
-        }
-
-        editaccount.setOnClickListener {
-            updateUser(user)
-        }
-
-        logoutButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java));
-        }
-
     }
 
 
-    fun updateUser(user: UserDb){
+    private fun updateUser(user: UserDb){
         var age: Int = dateOfBirthTextBoxeditacc.text.toString().toInt()
         var height: Double = heightTextBoxeditacc.text.toString().toDouble()
         var weight: Double = weightTextBoxeditacc.text.toString().toDouble()

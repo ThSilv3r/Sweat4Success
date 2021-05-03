@@ -14,6 +14,10 @@ class TagRepository (private val tagDao: TagDao){
         tagDao.addTag(tag);
     }
 
+    fun findById(id: Int): TagDb {
+        return tagDao.findById(id);
+    }
+
     fun delete(tag: TagDb){
         tagDao.delete(tag);
     }
