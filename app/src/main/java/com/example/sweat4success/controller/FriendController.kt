@@ -50,7 +50,7 @@ public class FriendController: AppCompatActivity() {
         return user;
     }
 
-    public fun isFriend(friend: UserDb): Boolean{
+    public fun isFriend(friend: CharSequence): Boolean{
         var friendList = getFriends();
         var isFriend: Boolean = friendList.contains(friend);
         return isFriend;
