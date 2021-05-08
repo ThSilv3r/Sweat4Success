@@ -6,30 +6,30 @@ class WorkoutRepository(private val workoutDao: WorkoutDao) {
     val readAllData: LiveData<List<WorkoutDb>> = workoutDao.readAllData()
 
     fun getAll(){
-        workoutDao.loadAll();
+        workoutDao.loadAll()
     }
 
     suspend fun addWorkout(workout:WorkoutDb){
-        workoutDao.addWorkout(workout);
+        workoutDao.addWorkout(workout)
     }
 
     fun findByName(title: String): WorkoutDb{
-        return workoutDao.findByName(title);
+        return workoutDao.findByName(title)
     }
 
     fun findByTag(tagId: Int): List<WorkoutDb>{
-        return workoutDao.findByTag(tagId);
+        return workoutDao.findByTag(tagId)
     }
 
     fun findById(id: Int): WorkoutDb{
-        return workoutDao.findById(id);
+        return workoutDao.findById(id)
     }
 
     fun delete(workout: WorkoutDb){
-        workoutDao.delete(workout);
+        workoutDao.delete(workout)
     }
 
     fun updateWorkout(workout: WorkoutDb){
-        workoutDao.updateWorkout(workout);
+        workoutDao.updateWorkout(workout)
     }
 }

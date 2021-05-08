@@ -1,13 +1,8 @@
-package com.example.sweat4success.database;
+package com.example.sweat4success.database
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Parcel
-import android.os.Parcelable
-import android.text.Editable
-import androidx.room.*
-import java.sql.Time
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "UserDb")

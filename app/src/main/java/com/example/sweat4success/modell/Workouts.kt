@@ -2,9 +2,9 @@ package com.example.sweat4success.modell
 
 import com.example.sweat4success.database.UserDb
 
-public class Workouts(){
+class Workouts {
     companion object{
-        var workoutName = "";
+        var workoutName = ""
     }
 
     fun getWorkoutname(): String{

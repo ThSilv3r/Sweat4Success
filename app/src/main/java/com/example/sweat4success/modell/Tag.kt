@@ -3,11 +3,11 @@ package com.example.sweat4success.modell
 import com.example.sweat4success.database.ExerciseDb
 import com.example.sweat4success.database.TagDb
 
-class Tag (){
+class Tag {
         companion object{
                 lateinit var tagList: List<TagDb>
         }
-        var name: String = "";
+        var name: String = ""
 
         fun getTagList(): List<TagDb> {
                 return Tag.tagList

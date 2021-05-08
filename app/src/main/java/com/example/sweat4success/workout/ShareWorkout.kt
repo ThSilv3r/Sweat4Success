@@ -10,7 +10,7 @@ import com.example.sweat4success.friend.FriendList
 import com.example.sweat4success.modell.Account
 
 class ShareWorkout:AppCompatActivity() {
-    private var account: Account = Account();
+    private var account: Account = Account()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.shareworkout)
@@ -18,8 +18,8 @@ class ShareWorkout:AppCompatActivity() {
 
     fun setUI() {
         val dc: DataController = DataController()
-        var userList = account.getUserList();
-        var username = "";
-        var user = userList.find { it.username == username } as UserDb;
+        var userList = account.getUserList()
+        var username = ""
+        var user = userList.find { it.username == username } as UserDb
     }
 }
