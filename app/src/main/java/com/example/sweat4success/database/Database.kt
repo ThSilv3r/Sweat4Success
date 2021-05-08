@@ -12,7 +12,7 @@ import java.sql.Time
 
 @Entity(tableName = "UserDb")
 data class UserDb(
-    @PrimaryKey(autoGenerate = true) val uid: Int,
+    @PrimaryKey(autoGenerate = true) var uid: Int,
     @ColumnInfo(name = "username") var username: String?,
     @ColumnInfo(name = "password") val password: String?,
     @ColumnInfo(name = "email") val email: String?,
@@ -35,7 +35,7 @@ data class UserDb(
 
 @Entity(tableName = "WorkoutDb")
 data class WorkoutDb(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "duration") val duration: Int?,
@@ -47,13 +47,13 @@ data class WorkoutDb(
 
 @Entity(tableName = "TagDb")
 data class TagDb(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "name") var name: String?
 )
 
 @Entity(tableName = "ExerciseDb")
 data class ExerciseDb(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "pictureURL") val pictureURL: String?,
     @ColumnInfo(name = "description") val description: String?,

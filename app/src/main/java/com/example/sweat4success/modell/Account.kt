@@ -7,6 +7,7 @@ public class Account (){
         var username: String = ""
         var password: String = ""
         lateinit var userList: List<UserDb>
+        var friendName: String = ""
     }
     var email: String = "email";
     var age: Int = 0;
@@ -46,4 +47,13 @@ public class Account (){
     fun setUserList(newUserList: List<UserDb>){
         userList = newUserList
     }
+    fun getFriendName(): String{
+        return friendName
+    }
+
+
+    fun setFriendName(name: String) {
+        friendName = name
+    }
+
 }

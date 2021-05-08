@@ -22,8 +22,8 @@
         <activity android:name=".account.UserController" />
         <activity android:name=".workout.AddWorkout" />
         <activity android:name=".workout.ViewWorkout" />
-        <activity android:name=".friend.FriendController" />
         <activity android:name=".friends.Userprofile" />
+        <activity android:name=".controller.DataController" />
     </application>
 
 </manifest>

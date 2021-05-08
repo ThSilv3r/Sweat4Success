@@ -2,6 +2,7 @@ package com.example.sweat4success.controller
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.sweat4success.database.UserDao
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
@@ -10,11 +11,10 @@ public class FriendController: AppCompatActivity() {
     private var account: Account = Account();
     private lateinit var user: UserDb;
     private val friends = mutableListOf<UserDb>();
-    private lateinit var mUserViewModel: UserViewModel;
+    private lateinit var userDao: UserDao;
 
 
     public fun getFriends(): List<UserDb>{
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
 
         var userList = account.getUserList()
         var username = account.getUsername();
@@ -25,11 +25,14 @@ public class FriendController: AppCompatActivity() {
         friendIdListString = friendIdListString?.dropLast(1);
 
         val friendIds = mutableListOf<Int>();
-        val friendIdStrings = friendIdListString?.split(",");
-        friendIdStrings?.forEach { friendId -> friendIds += friendId.toInt()}
+        var friendIdStrings = friendIdListString?.split(",");
+        friendIdStrings = friendIdStrings?.drop(1);
+        friendIdStrings?.forEach { friendId ->
+            var id = friendId.replace("\\s".toRegex(), "")
+            friendIds += id.toInt()}
         friendIds.forEach {
                 friendId ->
-            var friend: UserDb = mUserViewModel.getById(friendId)
+            var friend: UserDb = userDao.findById(friendId)
             friends += friend
         }
 
@@ -37,9 +40,8 @@ public class FriendController: AppCompatActivity() {
     }
 
     public fun addFriend(friend: UserDb){
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
         user.friendId = user.friendId + ","+ friend.uid.toString();
-        mUserViewModel.updateUser(user);
+        userDao.updateUser(user);
     }
 
     public fun getFriend(id: Int): UserDb{

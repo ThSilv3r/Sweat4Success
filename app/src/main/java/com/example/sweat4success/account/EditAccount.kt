@@ -10,6 +10,8 @@ import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
+import com.example.sweat4success.workout.AddWorkout
+import com.example.sweat4success.workout.ViewWorkout
 import kotlinx.android.synthetic.main.editaccount.*
 
 
@@ -39,6 +41,9 @@ class EditAccount: AppCompatActivity() {
 
         logoutButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java));
+        }
+        testbutton.setOnClickListener {
+            startActivity(Intent(this, ViewWorkout::class.java));
         }
 
     }

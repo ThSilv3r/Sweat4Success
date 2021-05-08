@@ -35,7 +35,7 @@ class UserTest {
 
     private var userDao: UserDao? = null;
     private var db: AppDatabase? = null;
-    var user: UserDb = UserDb(1,"TestUser","TestPasswort", "test@gmai.com", 20, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","");
+    var user: UserDb = UserDb(1,"TestUser","TestPasswort", "test@gmai.com", 20, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","","");
 
     @Before
     fun onCreateDb() = runBlocking{

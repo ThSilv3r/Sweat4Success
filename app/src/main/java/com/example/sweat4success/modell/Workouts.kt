@@ -1,9 +1,18 @@
 package com.example.sweat4success.modell
 
-class Workouts(
-    var title: String,
-    var description: String,
-    var duration: Int,
-    var exerciseId: Int,
-    var tagId: Int
-)
+import com.example.sweat4success.database.UserDb
+
+public class Workouts(){
+    companion object{
+        var workoutName = "";
+    }
+
+    fun getWorkoutname(): String{
+        return Workouts.workoutName
+    }
+
+
+    fun setWorkoutname(name: String) {
+        Workouts.workoutName = name
+    }
+}

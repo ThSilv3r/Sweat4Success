@@ -49,9 +49,9 @@ class AddWorkout: AppCompatActivity() {
     }
 
     private fun createUIComponents(){
-        var i = 0;
-        var id = 1000;
-        var id2 = 2000;
+        var i = 1;
+        var id = 1001;
+        var id2 = 2001;
 
         var tagList = Tag.getTagList();
         var exerciseList = Exercise.getExerciseList();
@@ -143,15 +143,17 @@ class AddWorkout: AppCompatActivity() {
         var exerciseIds: String = exerciseId.toString();
 
         if(inputCheck(title, description, duration, tagIds, exerciseIds)){
-            var workout: WorkoutDb = WorkoutDb(0, title, description, 0, tagIds, exerciseIds, 0, repetitions.toString());
+            var workout: WorkoutDb = WorkoutDb(0, title, description, 0, tagIds, exerciseIds, user.uid, repetitions.toString());
             try {
                 mWorkoutViewModel.addWorkout(workout);
+                workout = mWorkoutViewModel.findByName(workout.title.toString())
+                user.uid = user.uid;
                 user.workoutId  = user.workoutId + "," + workout.uid;
                 mUserViewModel.updateUser(user);
             }catch (e: IOException){
                 throw e;
             }
-            Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Succesfully created workout!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
         }

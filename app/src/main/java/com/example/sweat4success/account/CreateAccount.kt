@@ -60,9 +60,10 @@ public class CreateAccount: AppCompatActivity() {
         //var account: account = account(username, password, email, 0.0, 0.0, 0.0, age);
 
         if(inputCheck(username, password, email)){
-            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"0","0","0");
+            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","","");
             try {
                 mUserViewModel.addUser(user);
+                user = mUserViewModel.findByName(user.username.toString(), user.password.toString()) as UserDb
                 userList += user;
                 account.setUserList(userList);
             }catch (e: IOException){

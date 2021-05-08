@@ -1,13 +1,17 @@
 package com.example.sweat4success.friend
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sweat4success.MainActivity
 import com.example.sweat4success.R
 import com.example.sweat4success.controller.FriendController
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.friends.Userprofile
+import com.example.sweat4success.modell.Account
 import kotlinx.android.synthetic.main.friendlist.*
 
 class FriendList: AppCompatActivity() {
@@ -15,6 +19,7 @@ class FriendList: AppCompatActivity() {
     private var friends  = mutableListOf<UserDb>();
     private val friendController: FriendController = FriendController();
     private val friendTextViews = mutableListOf<TextView>()
+    private var account = Account();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +58,8 @@ class FriendList: AppCompatActivity() {
 
 
                 friendName.setOnClickListener{
-
+                    account.setFriendName(friend.username.toString())
+                    startActivity(Intent(this, Userprofile::class.java));
                 }
                 friendListLayout.addView(friendName);
                 friendTextViews += friendName;
