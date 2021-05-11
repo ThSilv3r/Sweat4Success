@@ -17,15 +17,15 @@ import java.io.IOException
 @RunWith(RobolectricTestRunner::class)
 @Config(maxSdk = Build.VERSION_CODES.P, minSdk = Build.VERSION_CODES.P)
 class TagTests {
-    private var tagDao: TagDao? = null;
-    private var db: TagDataBase? = null;
-    var tag: TagDb = TagDb(1,"TestUser");
+    private var tagDao: TagDao? = null
+    private var db: TagDataBase? = null
+    var tag: TagDb = TagDb(1,"TestUser")
 
     @Before
     fun onCreateDb() = runBlocking{
-        val context = InstrumentationRegistry.getInstrumentation().context;
-        db = Room.inMemoryDatabaseBuilder(context, TagDataBase::class.java).allowMainThreadQueries().build();
-        tagDao = db!!.tagDao();
+        val context = InstrumentationRegistry.getInstrumentation().context
+        db = Room.inMemoryDatabaseBuilder(context, TagDataBase::class.java).allowMainThreadQueries().build()
+        tagDao = db!!.tagDao()
     }
 
     @After
@@ -36,28 +36,34 @@ class TagTests {
 
     @Test
     fun testGetTag() = runBlocking{
-        tagDao?.addTag(tag);
-        var foundTag = tagDao?.findById(tag.uid);
-        Assert.assertEquals(tag, foundTag);
+        tagDao?.addTag(tag)
+        val foundTag = tagDao?.findById(tag.uid)
+        Assert.assertEquals(tag, foundTag)
 
-        var a = tagDao?.delete(tag);
+        var a = tagDao?.delete(tag)
     }
 
     @Test
     fun testAddTag() = runBlocking{
-        tagDao?.addTag(tag);
-        var foundTag = tagDao?.findById(tag.uid);
-        Assert.assertEquals(tag, foundTag);
+        tagDao?.addTag(tag)
+        val foundTag = tagDao?.findById(tag.uid)
+        Assert.assertEquals(tag, foundTag)
 
-        var a = tagDao?.delete(tag);
+        var a = tagDao?.delete(tag)
     }
 
     @Test
     fun testDelteTag() = runBlocking{
-        tagDao?.addTag(tag);
-        var a = tagDao?.delete(tag);
-        var foundTag = tagDao?.findById(tag.uid);
-        Assert.assertNull(foundTag);
+        tagDao?.addTag(tag)
+        var a = tagDao?.delete(tag)
+        val foundTag = tagDao?.findById(tag.uid)
+        Assert.assertNull(foundTag)
+    }
+    @Test
+    fun testLoadAllTags() = runBlocking{
+        tagDao?.addTag(tag)
+        val tags = tagDao?.loadAll()
+        Assert.assertNotNull(tags)
     }
 
 }

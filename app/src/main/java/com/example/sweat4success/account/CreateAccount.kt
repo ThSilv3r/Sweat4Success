@@ -13,7 +13,7 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.createaccount.*
 import java.io.IOException
 
-public class CreateAccount: AppCompatActivity() {
+class CreateAccount: AppCompatActivity() {
     private lateinit var mUserViewModel: UserViewModel
     private var account: Account = Account()
     private var userList = listOf <UserDb>()
@@ -43,15 +43,15 @@ public class CreateAccount: AppCompatActivity() {
 
 
     private fun insertDataToDatabase(userlist:List<UserDb>) {
-        var username: String = userNameTextBoxC.text.toString()
+        val username: String = userNameTextBoxC.text.toString()
         account.setUsername(username)
         account.setUserList(userlist)
-        var userList = account.getUserList()
+        val userList = account.getUserList().toMutableList()
 
 
-        var password: String = passwordTextBoxC.text.toString()
-        var email: String = emailTextBoxC.text.toString()
-        var age: Int
+        val password: String = passwordTextBoxC.text.toString()
+        val email: String = emailTextBoxC.text.toString()
+        val age: Int
         if(ageTextBoxC.text.toString() != ""){
             age = Integer.parseInt(ageTextBoxC.text.toString())
         }else{
@@ -59,14 +59,13 @@ public class CreateAccount: AppCompatActivity() {
         }
 
         if(inputCheck(username, password, email)){
-            var user: UserDb = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","","")
+            var user = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","","")
             try {
                 mUserViewModel.addUser(user)
                 user = mUserViewModel.findByName(user.username.toString(), user.password.toString())
                 userList += user
                 account.setUserList(userList)
             }catch (e: IOException){
-                throw e
             }
             startActivity(Intent(this, EditAccount::class.java))
             Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show()

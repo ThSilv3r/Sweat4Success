@@ -49,7 +49,7 @@ data class TagDb(
 @Entity(tableName = "ExerciseDb")
 data class ExerciseDb(
     @PrimaryKey(autoGenerate = true) val uid: Int,
-    @ColumnInfo(name = "title") val title: String?,
+    @ColumnInfo(name = "title") var title: String?,
     @ColumnInfo(name = "pictureURL") val pictureURL: String?,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "repetitions") val repetitions: Int?

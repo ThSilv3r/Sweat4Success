@@ -41,7 +41,7 @@ class ViewWorkout: AppCompatActivity() {
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         workoutUser.setOnClickListener{
-            var user = mUserViewModel.getById(workout.userId as Int)
+            val user = mUserViewModel.getById(workout.userId as Int)
             account.setFriendName(user.username.toString())
             startActivity(Intent(this, Userprofile::class.java))
         }
@@ -71,17 +71,16 @@ class ViewWorkout: AppCompatActivity() {
 
         textView24.text = workout.title
         descriptionWorkout.text = workout.description.toString()
-        //workoutDurationTextTime.text = workout.duration.toString();
 
         val exerciseIds = mutableListOf<Int>()
         val exerciseIdsString = workoutExerciseIds.toString()
         val exerciseIdsStrings = exerciseIdsString.split(",")
         exerciseIdsStrings.forEach { exerciseId ->
-            var id = exerciseId.replace("\\s".toRegex(), "")
+            val id = exerciseId.replace("\\s".toRegex(), "")
             exerciseIds += id.toInt()}
         exerciseIds.forEach {
                 exerciseId ->
-            var exercise: ExerciseDb = mExerciseViewModel.getById(exerciseId-1000)
+            val exercise: ExerciseDb = mExerciseViewModel.getById(exerciseId-1000)
             exercises += exercise
         }
 
@@ -89,27 +88,27 @@ class ViewWorkout: AppCompatActivity() {
         val repetitionsString = workoutRepetitions.toString()
         val repetitionStrings = repetitionsString.split(",")
         repetitionStrings.forEach { repetition ->
-            var rep = repetition.replace("\\s".toRegex(), "")
+            val rep = repetition.replace("\\s".toRegex(), "")
             repetitions += rep.toInt()}
 
         val tagIds = mutableListOf<Int>()
         val tagIdsString = workoutTagIds.toString()
         val tagIdsStrings = tagIdsString.split(",")
         tagIdsStrings.forEach { tagId ->
-            var id = tagId.replace("\\s".toRegex(), "")
+            val id = tagId.replace("\\s".toRegex(), "")
             tagIds += id.toInt()}
         tagIds.forEach {
                 tagId ->
-            var tag: TagDb = mTagViewModel.getById(tagId)
+            val tag: TagDb = mTagViewModel.getById(tagId)
             tags += tag
         }
 
 
         if(!exercises.isEmpty()){
             exercises.forEach{exercise ->
-                var workoutListLayout: LinearLayout = findViewById(R.id.exerciseLayout)
-                var workoutExerciseRepetitionLayout: LinearLayout = findViewById(R.id.repetitionLayout)
-                var exerciseLayout: LinearLayout = LinearLayout(this)
+                val workoutListLayout: LinearLayout = findViewById(R.id.exerciseLayout)
+                val workoutExerciseRepetitionLayout: LinearLayout = findViewById(R.id.repetitionLayout)
+                val exerciseLayout = LinearLayout(this)
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT)
