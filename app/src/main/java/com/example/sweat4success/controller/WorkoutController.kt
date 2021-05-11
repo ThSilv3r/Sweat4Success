@@ -11,7 +11,7 @@ import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
-class DataController: AppCompatActivity() {
+class WorkoutController: AppCompatActivity() {
     private var account: Account = Account()
     private lateinit var workoutDao: WorkoutDao
     private val favorites = mutableListOf<WorkoutDb>()

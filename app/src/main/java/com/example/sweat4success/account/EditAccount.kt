@@ -27,7 +27,7 @@ class EditAccount: AppCompatActivity() {
         this.setUITexts()
 
         deleteAccountButton.setOnClickListener {
-            startActivity(Intent(this, UserController::class.java))
+            startActivity(Intent(this, DeleteAccount::class.java))
         }
 
         editaccount.setOnClickListener {

@@ -19,11 +19,11 @@
         <activity android:name=".account.CreateAccount" />
         <activity android:name=".account.LogIn" />
         <activity android:name=".account.EditAccount" />
-        <activity android:name=".account.UserController" />
+        <activity android:name=".account.DeleteAccount" />
         <activity android:name=".workout.AddWorkout" />
         <activity android:name=".workout.ViewWorkout" />
         <activity android:name=".friends.Userprofile" />
-        <activity android:name=".controller.DataController" />
+        <activity android:name=".controller.WorkoutController" />
     </application>
 
 </manifest>

@@ -50,7 +50,6 @@ class LogIn : AppCompatActivity(){
                 var user = userList.find{it.username == username && it.password == password}
 
             }catch (e: IOException){
-                throw e
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show()
             }
             startActivity(Intent(this, EditAccount::class.java))

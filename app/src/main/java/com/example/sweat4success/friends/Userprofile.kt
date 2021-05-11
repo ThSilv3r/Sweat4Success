@@ -9,7 +9,7 @@ import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
-import com.example.sweat4success.controller.DataController
+import com.example.sweat4success.controller.WorkoutController
 import com.example.sweat4success.controller.FriendController
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
@@ -34,7 +34,7 @@ class Userprofile:AppCompatActivity() {
     }
 
     fun setUI() {
-        val dc: DataController = DataController()
+        val dc: WorkoutController = WorkoutController()
         var userList = account.getUserList()
         var username = account.getFriendName()
         var user = userList.find { it.username == username } as UserDb

@@ -14,11 +14,9 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.delete.*
 
 
-class UserController: AppCompatActivity(){
+class DeleteAccount: AppCompatActivity(){
     private lateinit var mUserViewModel: UserViewModel
     private var userList = listOf<UserDb>()
-    private var account: Account = Account()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,29 +24,21 @@ class UserController: AppCompatActivity(){
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        this.getUser()
+        this.getUsers()
 
         deleteButton.setOnClickListener {
             deleteDataFromDatabase(userList)
         }
 
     }
-    private fun getUser(){
+    private fun getUsers(){
         val userDao = AppDatabase.getDatabase(application).userDao()
-
-        var username: String = ""
-        var account = account
-
-        username = account.getUsername()
-
         userList  = userDao.loadAll()
     }
 
     private fun deleteDataFromDatabase(userList: List<UserDb>) {
         var username: String = usernameTextBoxD.text.toString()
         var password: String = passwordTextBoxD.text.toString()
-        var age: Int
-
 
         if(inputCheck(username, password)){
 
