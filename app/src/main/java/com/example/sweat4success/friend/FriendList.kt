@@ -27,7 +27,7 @@ class FriendList: AppCompatActivity() {
         fillUI()
 
         friendSearchButton.setOnClickListener {
-            var name: String = searchFriendName.text.toString()
+            val name: String = searchFriendName.text.toString()
             searchFriend(name)
         }
 
@@ -36,17 +36,17 @@ class FriendList: AppCompatActivity() {
     }
 
 
-    fun loadFriends(){
+    private fun loadFriends(){
         friends = friendController.getFriends()as MutableList<UserDb>
     }
 
-    fun fillUI(){
+    private fun fillUI(){
         friendTextViews.removeAll(friendTextViews)
         if (!friends.isEmpty()){
             friends.forEach{
                 friend ->
-                var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
-                var friendName: TextView = TextView(this)
+                val friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
+                val friendName = TextView(this)
                 friendName.text = friend.username
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -68,14 +68,14 @@ class FriendList: AppCompatActivity() {
 
     private fun searchFriend(name: String){
         if(name != ""){
-            var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
+            val friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
             friendListLayout.removeAllViews()
             friendTextViews.removeAll(friendTextViews)
-            var filterdFriends = friends.filter { it.username == name }
+            val filterdFriends = friends.filter { it.username == name }
             filterdFriends.forEach{
                     friend ->
-                var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
-                var friendName: TextView = TextView(this)
+                val friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
+                val friendName = TextView(this)
                 friendName.text = friend.username
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,

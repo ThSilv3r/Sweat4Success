@@ -33,21 +33,19 @@ class Userprofile:AppCompatActivity() {
         setUI()
     }
 
-    fun setUI() {
-        val dc: WorkoutController = WorkoutController()
-        var userList = account.getUserList()
-        var username = account.getFriendName()
-        var user = userList.find { it.username == username } as UserDb
-        val favoritesid = user.favoritesId
+    private fun setUI() {
+        val dc = WorkoutController()
+        val userList = account.getUserList()
+        val username = account.getFriendName()
+        val user = userList.find { it.username == username } as UserDb
         friendUserName.text = user.username
         friendAge.text = user.age.toString()
-        var favorites = dc.getFavorites(user, workoutViewModel)
-        var favoritesliste = ""
+        val favorites = dc.getFavorites(user, workoutViewModel)
 
         favorites.forEach{
                 favorite ->
-            var favoriteListLayout: LinearLayout = findViewById(R.id.favoriteWorkoutLayout)
-            var favoriteName: TextView = TextView(this)
+            val favoriteListLayout: LinearLayout = findViewById(R.id.favoriteWorkoutLayout)
+            val favoriteName = TextView(this)
             favoriteName.text = favorite.title
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -63,13 +61,12 @@ class Userprofile:AppCompatActivity() {
             }
             favoriteListLayout.addView(favoriteName)
         }
-        var workouts = dc.getWorkouts(user, workoutViewModel)
-        var workoutliste = ""
+        val workouts = dc.getWorkouts(user, workoutViewModel)
 
         workouts.forEach{
                 workout ->
-            var workoutListLayout: LinearLayout = findViewById(R.id.workouts)
-            var workoutName: TextView = TextView(this)
+            val workoutListLayout: LinearLayout = findViewById(R.id.workouts)
+            val workoutName = TextView(this)
             workoutName.text = workout.title
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -86,16 +83,14 @@ class Userprofile:AppCompatActivity() {
             workoutListLayout.addView(workoutName)
         }
 
-        var friendcont: FriendController = FriendController()
+        val friendcont = FriendController()
         addFriend.isSelected = friendcont.isFriend(user)
 
         addFriend.setOnClickListener()
     }
-
-}
-
-private fun ToggleButton.setOnClickListener() {
-    isSelected = !isSelected
+    private fun ToggleButton.setOnClickListener() {
+        isSelected = !isSelected
+    }
 }
 
 
