@@ -37,7 +37,7 @@ class FriendList: AppCompatActivity() {
 
 
     private fun loadFriends(){
-        friends = friendController.getFriends()as MutableList<UserDb>
+        friends = friendController.getItems()as MutableList<UserDb>
     }
 
     private fun fillUI(){

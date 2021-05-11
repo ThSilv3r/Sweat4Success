@@ -109,9 +109,9 @@ class AddWorkout: AppCompatActivity() {
 
 
     private fun insertDataToDatabase() {
-        var userList = account.getUserList()
         var username = account.getUsername()
-        var user: UserDb = userList.find { it.username == username } as UserDb
+        var password = account.getPassword()
+        var user: UserDb = mUserViewModel.findByName(username, password)as UserDb
 
 
         val exercises = exerciseSwitchList.filter { exerercise -> exerercise.isChecked }
