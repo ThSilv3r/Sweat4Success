@@ -18,15 +18,15 @@ import java.io.IOException
 @Config(maxSdk = Build.VERSION_CODES.P, minSdk = Build.VERSION_CODES.P)
 class WorkoutTests {
 
-    private var workoutDao: WorkoutDao? = null;
-    private var db: WorkoutDataBase? = null;
-    var workout: WorkoutDb = WorkoutDb(1,"TestUser","TestPasswort", 0, "", "",0,"");
+    private var workoutDao: WorkoutDao? = null
+    private var db: WorkoutDataBase? = null
+    var workout: WorkoutDb = WorkoutDb(1,"TestUser","TestPasswort", 0, "", "",0,"")
 
     @Before
     fun onCreateDb() = runBlocking{
-        val context = InstrumentationRegistry.getInstrumentation().context;
-        db = Room.inMemoryDatabaseBuilder(context, WorkoutDataBase::class.java).allowMainThreadQueries().build();
-        workoutDao = db!!.workoutDao();
+        val context = InstrumentationRegistry.getInstrumentation().context
+        db = Room.inMemoryDatabaseBuilder(context, WorkoutDataBase::class.java).allowMainThreadQueries().build()
+        workoutDao = db!!.workoutDao()
     }
 
     @After
@@ -36,28 +36,44 @@ class WorkoutTests {
     }
     @Test
     fun testGetWorkout() = runBlocking{
-        workoutDao?.addWorkout(workout);
-        var foundWorkout = workoutDao?.findById(workout.uid);
-        Assert.assertEquals(workout, foundWorkout);
+        workoutDao?.addWorkout(workout)
+        val foundWorkout = workoutDao?.findById(workout.uid)
+        Assert.assertEquals(workout, foundWorkout)
 
-        var a = workoutDao?.delete(workout);
+        var a = workoutDao?.delete(workout)
     }
 
     @Test
     fun testAddWorkout() = runBlocking{
-        workoutDao?.addWorkout(workout);
-        var foundWorkout = workoutDao?.findById(workout.uid);
-        Assert.assertEquals(workout, foundWorkout);
+        workoutDao?.addWorkout(workout)
+        val foundWorkout = workoutDao?.findById(workout.uid)
+        Assert.assertEquals(workout, foundWorkout)
 
-        var a = workoutDao?.delete(workout);
+        var a = workoutDao?.delete(workout)
     }
 
     @Test
     fun testDeleteWorkout() = runBlocking{
-        workoutDao?.addWorkout(workout);
-        var a = workoutDao?.delete(workout);
-        var foundWorkout = workoutDao?.findById(workout.uid);
-        Assert.assertNull(foundWorkout);
+        workoutDao?.addWorkout(workout)
+        var a = workoutDao?.delete(workout)
+        val foundWorkout = workoutDao?.findById(workout.uid)
+        Assert.assertNull(foundWorkout)
+    }
+
+    @Test
+    fun testLoadAllWorkout() = runBlocking{
+        workoutDao?.addWorkout(workout)
+        val workouts = workoutDao?.loadAll()
+        Assert.assertNotNull(workouts)
+    }
+
+    @Test
+    fun testGetWorkoutByName() = runBlocking{
+        workoutDao?.addWorkout(workout)
+        val foundWorkout = workoutDao?.findByName(workout.title.toString())
+        Assert.assertEquals(workout, foundWorkout)
+
+        var a = workoutDao?.delete(workout)
     }
 
 
