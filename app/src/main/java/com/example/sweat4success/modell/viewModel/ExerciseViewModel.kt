@@ -10,41 +10,41 @@ import kotlinx.coroutines.launch
 
 class ExerciseViewModel (application: Application): AndroidViewModel(application){
     private val repository: ExerciseRepository
-    val readAllData: LiveData<List<ExerciseDb>>;
+    val readAllData: LiveData<List<ExerciseDb>>
 
     init{
-        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao();
+        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao()
         repository = ExerciseRepository(exerciseDao)
         readAllData = repository.readAllData
     }
 
     fun getAll(){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getAll();
+            repository.getAll()
         }
     }
 
     fun getById(id: Int): ExerciseDb{
-            return repository.findById(id);
+            return repository.findById(id)
     }
 
 
     fun addExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO){
-            repository.addExercise(exercise);
+            repository.addExercise(exercise)
         }
 
     }
 
     fun deleteExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.delete(exercise);
+            repository.delete(exercise)
         }
     }
 
     fun updateExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateExercise(exercise);
+            repository.updateExercise(exercise)
         }
     }
 

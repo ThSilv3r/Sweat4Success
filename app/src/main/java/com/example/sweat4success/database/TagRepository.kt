@@ -4,22 +4,22 @@ import androidx.lifecycle.LiveData
 
 class TagRepository (private val tagDao: TagDao){
 
-    val readAllData: LiveData<List<TagDb>> = tagDao.readAllData();
+    val readAllData: LiveData<List<TagDb>> = tagDao.readAllData()
 
     fun getAll(){
-        tagDao.loadAll();
+        tagDao.loadAll()
     }
 
     suspend fun addTag(tag:TagDb){
-        tagDao.addTag(tag);
+        tagDao.addTag(tag)
     }
 
     fun findById(id: Int): TagDb {
-        return tagDao.findById(id);
+        return tagDao.findById(id)
     }
 
     fun delete(tag: TagDb){
-        tagDao.delete(tag);
+        tagDao.delete(tag)
     }
 
 

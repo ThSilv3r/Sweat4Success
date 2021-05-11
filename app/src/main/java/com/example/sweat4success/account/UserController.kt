@@ -14,53 +14,52 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.delete.*
 
 
-public class UserController: AppCompatActivity(){
-    private lateinit var mUserViewModel: UserViewModel;
-    private var userList = listOf<UserDb>();
-    private var account: Account = Account();
-
+class UserController: AppCompatActivity(){
+    private lateinit var mUserViewModel: UserViewModel
+    private var userList = listOf<UserDb>()
+    private var account: Account = Account()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.delete)
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         this.getUser()
 
         deleteButton.setOnClickListener {
-            deleteDataFromDatabase(userList);
+            deleteDataFromDatabase(userList)
         }
 
     }
     private fun getUser(){
-        val userDao = AppDatabase.getDatabase(application).userDao();
+        val userDao = AppDatabase.getDatabase(application).userDao()
 
-        var username: String = "";
-        var account = account;
+        var username: String = ""
+        var account = account
 
-        username = account.getUsername();
+        username = account.getUsername()
 
-        userList  = userDao.loadAll();
+        userList  = userDao.loadAll()
     }
 
     private fun deleteDataFromDatabase(userList: List<UserDb>) {
-        var username: String = usernameTextBoxD.text.toString();
-        var password: String = passwordTextBoxD.text.toString();
-        var age: Int;
+        var username: String = usernameTextBoxD.text.toString()
+        var password: String = passwordTextBoxD.text.toString()
+        var age: Int
 
 
         if(inputCheck(username, password)){
 
-            var user: UserDb = userList.find { it.username == username && it.password ==  password} as UserDb;
-            mUserViewModel.deleteUser(user);
+            var user: UserDb = userList.find { it.username == username && it.password ==  password} as UserDb
+            mUserViewModel.deleteUser(user)
 
 
-            startActivity(Intent(this, MainActivity::class.java));
-            Toast.makeText(this, "Succesfully deleted account!", Toast.LENGTH_LONG).show();
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "Succesfully deleted account!", Toast.LENGTH_LONG).show()
         }else{
-            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show()
         }
     }
     private fun inputCheck(username: String, password: String): Boolean {

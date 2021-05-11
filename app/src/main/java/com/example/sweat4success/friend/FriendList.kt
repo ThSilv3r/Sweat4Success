@@ -1,5 +1,6 @@
 package com.example.sweat4success.friend
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -8,23 +9,26 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.sweat4success.R
 import com.example.sweat4success.controller.FriendController
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.friends.Userprofile
+import com.example.sweat4success.modell.Account
 import kotlinx.android.synthetic.main.friendlist.*
 
 class FriendList: AppCompatActivity() {
 
-    private var friends  = mutableListOf<UserDb>();
-    private val friendController: FriendController = FriendController();
+    private var friends  = mutableListOf<UserDb>()
+    private val friendController: FriendController = FriendController()
     private val friendTextViews = mutableListOf<TextView>()
+    private var account = Account()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        loadFriends();
-        fillUI();
+        loadFriends()
+        fillUI()
 
         friendSearchButton.setOnClickListener {
-            var name: String = searchFriendName.text.toString();
-            searchFriend(name);
+            var name: String = searchFriendName.text.toString()
+            searchFriend(name)
         }
 
         loadFriends()
@@ -33,30 +37,31 @@ class FriendList: AppCompatActivity() {
 
 
     fun loadFriends(){
-        friends = friendController.getFriends()as MutableList<UserDb>;
+        friends = friendController.getFriends()as MutableList<UserDb>
     }
 
     fun fillUI(){
-        friendTextViews.removeAll(friendTextViews);
+        friendTextViews.removeAll(friendTextViews)
         if (!friends.isEmpty()){
             friends.forEach{
                 friend ->
-                var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout);
-                var friendName: TextView = TextView(this);
-                friendName.text = friend.username;
+                var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
+                var friendName: TextView = TextView(this)
+                friendName.text = friend.username
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-                friendName.layoutParams = params;
-                friendName.setTextColor(Color.WHITE);
-                friendName.isClickable = true;
+                    LinearLayout.LayoutParams.WRAP_CONTENT)
+                friendName.layoutParams = params
+                friendName.setTextColor(Color.WHITE)
+                friendName.isClickable = true
 
 
                 friendName.setOnClickListener{
-
+                    account.setFriendName(friend.username.toString())
+                    startActivity(Intent(this, Userprofile::class.java))
                 }
-                friendListLayout.addView(friendName);
-                friendTextViews += friendName;
+                friendListLayout.addView(friendName)
+                friendTextViews += friendName
             }
         }
     }
@@ -64,27 +69,27 @@ class FriendList: AppCompatActivity() {
     private fun searchFriend(name: String){
         if(name != ""){
             var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
-            friendListLayout.removeAllViews();
-            friendTextViews.removeAll(friendTextViews);
+            friendListLayout.removeAllViews()
+            friendTextViews.removeAll(friendTextViews)
             var filterdFriends = friends.filter { it.username == name }
             filterdFriends.forEach{
                     friend ->
-                var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout);
-                var friendName: TextView = TextView(this);
-                friendName.text = friend.username;
+                var friendListLayout: LinearLayout = findViewById(R.id.friendListLayout)
+                var friendName: TextView = TextView(this)
+                friendName.text = friend.username
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-                friendName.layoutParams = params;
-                friendName.setTextColor(Color.WHITE);
-                friendName.isClickable = true;
+                    LinearLayout.LayoutParams.WRAP_CONTENT)
+                friendName.layoutParams = params
+                friendName.setTextColor(Color.WHITE)
+                friendName.isClickable = true
 
 
                 friendName.setOnClickListener{
 
                 }
-                friendListLayout.addView(friendName);
-                friendTextViews += friendName;
+                friendListLayout.addView(friendName)
+                friendTextViews += friendName
             }
         }
     }
