@@ -42,7 +42,7 @@ class DeleteAccount: AppCompatActivity(){
 
         if(inputCheck(username, password)){
 
-            var user: UserDb = userList.find { it.username == username && it.password ==  password} as UserDb
+            var user: UserDb = mUserViewModel.findByName(username, password) as UserDb
             mUserViewModel.deleteUser(user)
 
 

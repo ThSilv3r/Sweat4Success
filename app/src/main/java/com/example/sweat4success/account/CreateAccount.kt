@@ -65,6 +65,8 @@ class CreateAccount: AppCompatActivity() {
                 user = mUserViewModel.findByName(user.username.toString(), user.password.toString())
                 userList += user
                 account.setUserList(userList)
+                account.setUsername(username)
+                account.setPassword(password)
             }catch (e: IOException){
             }
             startActivity(Intent(this, EditAccount::class.java))

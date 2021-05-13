@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
@@ -22,7 +23,7 @@ class LogIn : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
-
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         this.getUser()
 
         button.setOnClickListener {
@@ -43,11 +44,12 @@ class LogIn : AppCompatActivity(){
         var username: String = userNameTextBox.text.toString()
         var password: String = passwordTextBox.text.toString()
         account.setUsername(username)
+        account.setPassword(password)
         account.setUserList(userList)
         var a = account.getUserList()
 
         try {
-                var user = userList.find{it.username == username && it.password == password}
+                var user = mUserViewModel.findByName(username, password)
 
             }catch (e: IOException){
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show()

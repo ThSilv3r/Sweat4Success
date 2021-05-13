@@ -24,6 +24,7 @@
         <activity android:name=".workout.ViewWorkout" />
         <activity android:name=".friends.Userprofile" />
         <activity android:name=".controller.WorkoutController" />
+        <activity android:name=".friends.FriendList" />
     </application>
 
 </manifest>

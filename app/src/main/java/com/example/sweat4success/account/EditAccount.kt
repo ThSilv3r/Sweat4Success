@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.MainActivity
 import com.example.sweat4success.R
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.friends.FriendList
+import com.example.sweat4success.friends.Userprofile
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.workout.AddWorkout
@@ -34,7 +36,8 @@ class EditAccount: AppCompatActivity() {
         editaccount.setOnClickListener {
             var userList = account.getUserList()
             var username: String = account.getUsername()
-            var user = userList.find{it.username == username}as UserDb
+            var password = account.getPassword()
+            var user = mUserViewModel.findByName(username, password)as UserDb
             updateUser(user)
         }
 
@@ -42,7 +45,8 @@ class EditAccount: AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
         testbutton.setOnClickListener {
-            startActivity(Intent(this, ViewWorkout::class.java))
+            account.setFriendName("Test3")
+            startActivity(Intent(this, FriendList::class.java))
         }
 
     }

@@ -53,7 +53,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/username_e_mail"
+        android:text="UserName"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/userNameTextBox"
         app:layout_constraintStart_toStartOf="@+id/userNameTextBox" />
