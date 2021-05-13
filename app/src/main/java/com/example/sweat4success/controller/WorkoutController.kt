@@ -37,7 +37,7 @@ class WorkoutController: AppCompatActivity() {
         return workouts
     }
 
-    fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
+    private fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
         val workoutsIds = mutableListOf<Int>()
         var workoutsIdStrings = workoutString?.split(",")
         var i = workoutsIdStrings?.count()
