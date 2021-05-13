@@ -14,33 +14,32 @@ import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 class WorkoutController: AppCompatActivity() {
     private var account: Account = Account()
     private lateinit var workoutDao: WorkoutDao
-    private val favorites = mutableListOf<WorkoutDb>()
     private val workouts = mutableListOf<WorkoutDb>()
 
 
     fun getFavorites(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
         var favoritesIdString = user.favoritesId
-
-        val favoritesIds = mutableListOf<Int>()
-        var favoritesIdStrings = favoritesIdString?.split(",")
-        favoritesIdStrings = favoritesIdStrings?.drop(1)
-        favoritesIdStrings?.forEach { favoriteId ->
-            var id = favoriteId.replace("\\s".toRegex(), "")
-            favoritesIds += id.toInt() }
-        favoritesIds.forEach { favoriteId ->
-            var favorite: WorkoutDb = workoutViewModel.findById(favoriteId)
-            favorites += favorite
-        }
+        var favorites = loadWorkouts(favoritesIdString.toString(), workoutViewModel)
 
         return favorites
+    }
+    fun getRecievedWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+        var workoutsIdString = user.recievedWorkouts
+        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
+        return workouts
     }
 
     fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
 
         var workoutsIdString = user.workoutId
+        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel);
 
+        return workouts
+    }
+
+    fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
         val workoutsIds = mutableListOf<Int>()
-        var workoutsIdStrings = workoutsIdString?.split(",")
+        var workoutsIdStrings = workoutString?.split(",")
         var i = workoutsIdStrings?.count()
         workoutsIdStrings = workoutsIdStrings?.drop(1)
         workoutsIdStrings?.forEach { workoutId ->

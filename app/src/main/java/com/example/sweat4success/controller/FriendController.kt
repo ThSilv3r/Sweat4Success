@@ -3,8 +3,10 @@ package com.example.sweat4success.controller
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sweat4success.database.UserDao
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.database.WorkoutDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
+import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
 class FriendController: AppCompatActivity(), DataController {
     private var account: Account = Account()
@@ -23,6 +25,17 @@ class FriendController: AppCompatActivity(), DataController {
         var user: UserDb = friends.find { it.uid == id }as UserDb
 
         return user
+    }
+    fun sendWorkout(workout: WorkoutDb, friendId: Int, userViewModel: UserViewModel, workoutViewModel: WorkoutViewModel){
+        var friend = userViewModel.getById(friendId);
+        val workoutController = WorkoutController();
+        var recievedWorkouts = workoutController.getRecievedWorkouts(friend, workoutViewModel)
+        recievedWorkouts += workout
+        recievedWorkouts.forEach{
+                it  ->
+            friend.recievedWorkouts = friend.recievedWorkouts +  "," + it.uid
+        }
+        userViewModel.updateUser(friend)
     }
 
     fun isFriend(friend: UserDb, userViewModel: UserViewModel): Boolean{
