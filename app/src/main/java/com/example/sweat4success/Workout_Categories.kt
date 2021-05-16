@@ -1,4 +1,4 @@
-package com.example.sweat4success.modell
+package com.example.sweat4success
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.sweat4success.BaseActivity
 import com.example.sweat4success.R
+import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.viewModel.UserViewModel
@@ -43,9 +44,11 @@ class Workout_Categories:AppCompatActivity() {
         // handle each of the cards with the OnClickListener
         armsCard.setOnClickListener {
             Toast.makeText(this, "Arms", Toast.LENGTH_SHORT).show()
+            //startActivity(Intent(this, arms_Card::class.java))
         }
         stretchingCard.setOnClickListener {
             Toast.makeText(this, "Stretching", Toast.LENGTH_SHORT).show()
+            //startActivity(Intent(this, stretching_Card::class.java))
         }
         cardioCard.setOnClickListener {
             Toast.makeText(this, "Cardio", Toast.LENGTH_SHORT).show()
