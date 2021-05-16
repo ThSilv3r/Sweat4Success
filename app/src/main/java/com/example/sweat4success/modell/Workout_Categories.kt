@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
+import androidx.drawerlayout.widget.DrawerLayout
+import com.example.sweat4success.BaseActivity
 import com.example.sweat4success.R
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
@@ -12,8 +15,15 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.login.*
 import java.io.IOException
 import com.example.sweat4success.modell.Account
+import com.google.android.material.internal.NavigationMenuItemView
+import com.google.android.material.navigation.NavigationView
 
 class Workout_Categories:AppCompatActivity() {
+
+    lateinit var toolbar: Toolbar
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navView : NavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.workout_categories)

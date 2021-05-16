@@ -2,6 +2,7 @@ package com.example.sweat4success
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Workout_Categories
 import com.example.sweat4success.modell.Workouts
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -41,27 +43,21 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         toolbar.setNavigationIcon(R.drawable.workouts_icon)
         setSupportActionBar(toolbar)
 
-
-
         /*toolbar.setNavigationOnClickListener {
             Toast.makeText(this, "Navigation clicked", Toast.LENGTH_SHORT).show()
         }*/
 
         drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav_view)
+
 
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0, 0
+            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        navView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener(this)
-
-        /*toggle = ActionBarDrawerToggle(this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)*/
-
 
 
         goToLogin.setOnClickListener {
@@ -75,46 +71,36 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_profile -> {
-                Toast.makeText(baseContext, "Clicked profile", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "Profile", Toast.LENGTH_SHORT).show()
+                //startActivity(Intent(this, ContactsContract.Profile::class.java))
             }
             R.id.nav_friends -> Toast.makeText(
                 baseContext,
-                "Clicked Friends",
+                "Friends",
                 Toast.LENGTH_SHORT
             ).show()
-            /*R.id.nav_workouts -> {
-                wor = Workouts()
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id., workout)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit()
+            R.id.nav_login -> {
+                startActivity(Intent(this, LogIn::class.java))
+                Toast.makeText(
+                    baseContext,
+                    "Login",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            R.id.nav_workouts -> {
+                startActivity(Intent(this, Workout_Categories::class.java))
+                Toast.makeText(
+                    baseContext,
+                    "Workout Categories",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
-                Toast.makeText(applicationContext, "Clicked Item 1", Toast.LENGTH_SHORT).show()
-            }*/
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }*/
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var itemview = item.itemId
-        when(itemview){
-
-        }
-    }*/
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
