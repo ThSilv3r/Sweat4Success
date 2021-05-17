@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
+import com.example.sweat4success.friend.FriendList
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.google.android.material.navigation.NavigationView
@@ -64,11 +65,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 Toast.makeText(baseContext, "Profile", Toast.LENGTH_SHORT).show()
                 //startActivity(Intent(this, ContactsContract.Profile::class.java))
             }
-            R.id.nav_friends -> Toast.makeText(
-                baseContext,
-                "Friends",
-                Toast.LENGTH_SHORT
-            ).show()
+            R.id.nav_friends -> {
+                startActivity(Intent(this, FriendList::class.java))
+                Toast.makeText(
+                    baseContext,
+                    "Friends",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             R.id.nav_login -> {
                 startActivity(Intent(this, LogIn::class.java))
                 Toast.makeText(

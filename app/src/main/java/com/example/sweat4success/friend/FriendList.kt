@@ -32,7 +32,6 @@ class FriendList: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         loadFriends()
         fillUI()
 
@@ -104,11 +103,13 @@ class FriendList: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 Toast.makeText(baseContext, "Profile", Toast.LENGTH_SHORT).show()
                 //startActivity(Intent(this, ContactsContract.Profile::class.java))
             }
-            R.id.nav_friends -> Toast.makeText(
+            R.id.nav_friends -> {
+                startActivity(Intent(this, FriendList::class.java))
+                Toast.makeText(
                 baseContext,
                 "Friends",
                 Toast.LENGTH_SHORT
-            ).show()
+            ).show()}
             R.id.nav_login -> {
                 startActivity(Intent(this, LogIn::class.java))
                 Toast.makeText(
