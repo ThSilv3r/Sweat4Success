@@ -36,9 +36,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         toolbar.setNavigationIcon(R.drawable.workouts_icon)
         setSupportActionBar(toolbar)
 
-        /*toolbar.setNavigationOnClickListener {
-            Toast.makeText(this, "Navigation clicked", Toast.LENGTH_SHORT).show()
-        }*/
 
         drawerLayout = findViewById(R.id.drawer_layout)
 
