@@ -31,11 +31,6 @@ open class BaseActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
         setSupportActionBar(toolbar)
 
 
-
-        /*toolbar.setNavigationOnClickListener {
-            Toast.makeText(this, "Navigation clicked", Toast.LENGTH_SHORT).show()
-        }*/
-
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
 
@@ -46,10 +41,6 @@ open class BaseActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-        /*toggle = ActionBarDrawerToggle(this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)*/
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -77,24 +68,6 @@ open class BaseActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
         return true
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }*/
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var itemview = item.itemId
-        when(itemview){
-
-        }
-    }*/
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
