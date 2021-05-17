@@ -9,11 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.*
-import com.example.sweat4success.friend.FriendList
+import com.example.sweat4success.friends.FriendList
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Exercise
+import com.example.sweat4success.modell.Tag
+import com.example.sweat4success.modell.viewModel.ExerciseViewModel
 import com.example.sweat4success.modell.viewModel.TagViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,7 +30,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     //lateinit var toggle: ActionBarDrawerToggle
     private var account: Account = Account()
     private var tag1: Tag = Tag()
-    private var exercise1: Exercise  =  Exercise()
+    private var exercise1: Exercise =  Exercise()
     private lateinit var tagViewModel: TagViewModel
     private lateinit var exerciseViewModel: ExerciseViewModel
 
@@ -104,9 +108,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 ).show()
             }
 
-                Toast.makeText(applicationContext, "Clicked Item 1", Toast.LENGTH_SHORT).show()
-            }*/
-        }
+
+            }
+
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
