@@ -78,7 +78,7 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var a = account.getUserList();
 
             try {
-                var user = userList.find{it.username == username && it.password == password};
+                var user = mUserViewModel.findByName(username, password)
 
             }catch (e: IOException){
                 throw e

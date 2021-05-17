@@ -10,184 +10,197 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/ConstraintLayoutMaineditacc"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayoutMaineditacc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grey">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2editacc"
-        android:layout_width="366dp"
-        android:layout_height="577dp"
-        android:layout_marginBottom="100dp"
-        android:scrollbarStyle="insideOverlay"
-        android:verticalScrollbarPosition="right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        <ScrollView
+            android:id="@+id/scrollView2editacc"
+            android:layout_width="366dp"
+            android:layout_height="577dp"
+            android:layout_marginBottom="100dp"
+            android:scrollbarStyle="insideOverlay"
+            android:verticalScrollbarPosition="right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
-            android:id="@+id/LinearLayouteditacc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/userNameLabeleditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="5dp"
-                android:text="Username" />
-
-            <EditText
-                android:id="@+id/userNameTextBoxeditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:editable="false"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Your Username" />
-
-            <TextView
-                android:id="@+id/dateOfBirthLabeleditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Date of Birth / Age" />
-
-            <EditText
-                android:id="@+id/dateOfBirthTextBoxeditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:enabled="true"
-                android:inputType="textPersonName"
-                android:text="Enter youe Birthday/Age" />
-
-            <TextView
-                android:id="@+id/heigthLabeleditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Height" />
-
-            <EditText
-                android:id="@+id/heightTextBoxeditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:enabled="true"
-                android:inputType="textPersonName"
-                android:text="EnterHeight" />
-
-            <TextView
-                android:id="@+id/weightLabeleditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Weight" />
-
-            <EditText
-                android:id="@+id/weightTextBoxeditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:enabled="true"
-                android:inputType="textPersonName"
-                android:text="Enter Weight" />
-
-            <HorizontalScrollView
-                android:id="@+id/HorizontalScrollVieweditacc"
+            <LinearLayout
+                android:id="@+id/LinearLayouteditacc"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp" />
-
-            <TextView
-                android:id="@+id/waistLabeleditacc"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="waist" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/waistTextBoxeditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:enabled="true"
-                android:inputType="textPersonName"
-                android:text="waistnumber" />
+                <TextView
+                    android:id="@+id/userNameLabeleditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Username"
+                    android:textColor="#FFFFFF" />
 
-            <TextView
-                android:id="@+id/bizepsLabeleditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="biceps" />
+                <EditText
+                    android:id="@+id/userNameTextBoxeditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Your Username"
+                    android:textColor="#FFFFFF" />
 
-            <EditText
-                android:id="@+id/bizepsTextBoxeditacc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:editable="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="bizepsnumber" />
+                <TextView
+                    android:id="@+id/dateOfBirthLabeleditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Date of Birth / Age"
+                    android:textColor="#FFFFFF" />
 
-        </LinearLayout>
-    </ScrollView>
+                <EditText
+                    android:id="@+id/dateOfBirthTextBoxeditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:inputType="textPersonName"
+                    android:text="Enter youe Birthday/Age"
+                    android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/editaccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="Edit Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc"
-        tools:text="edit account" />
+                <TextView
+                    android:id="@+id/heigthLabeleditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Height"
+                    android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/deleteAccountButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Delete Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc" />
+                <EditText
+                    android:id="@+id/heightTextBoxeditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:inputType="textPersonName"
+                    android:text="EnterHeight"
+                    android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log Out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deleteAccountButton"
-        app:layout_constraintStart_toEndOf="@+id/editaccount"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc" />
+                <TextView
+                    android:id="@+id/weightLabeleditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Weight"
+                    android:textColor="#FFFFFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/weightTextBoxeditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:inputType="textPersonName"
+                    android:text="Enter Weight"
+                    android:textColor="#FFFFFF" />
+
+                <HorizontalScrollView
+                    android:id="@+id/HorizontalScrollVieweditacc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/waistLabeleditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="waist"
+                    android:textColor="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/waistTextBoxeditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:inputType="textPersonName"
+                    android:text="waistnumber"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/bizepsLabeleditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="biceps"
+                    android:textColor="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/bizepsTextBoxeditacc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:editable="true"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="bizepsnumber"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/editaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Edit Account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc"
+            tools:text="edit account" />
+
+        <Button
+            android:id="@+id/deleteAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Delete Account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc" />
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/deleteAccountButton"
+            app:layout_constraintStart_toEndOf="@+id/editaccount"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2editacc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <include
         android:id="@+id/nav_view"
         layout="@layout/activity_base" />

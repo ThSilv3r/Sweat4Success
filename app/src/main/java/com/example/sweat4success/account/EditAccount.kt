@@ -77,7 +77,8 @@ class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     private fun setUITexts(){
         var userList = account.getUserList();
         var username: String = account.getUsername();
-        var user = userList.find{it.username == username}as UserDb;
+        var password: String = account.getPassword()
+        var user = mUserViewModel.findByName(username, password);
 
         var age = user.age.toString();
         var height = user.height.toString();
