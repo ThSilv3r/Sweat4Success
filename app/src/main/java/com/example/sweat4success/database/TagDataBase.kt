@@ -11,20 +11,20 @@ abstract class TagDataBase : RoomDatabase(){
 
     companion object{
         @Volatile
-        private var INSTANCE: TagDataBase? = null;
+        private var INSTANCE: TagDataBase? = null
         fun getDatabase(context: Application): TagDataBase{
-            val tempInstance = INSTANCE;
+            val tempInstance = INSTANCE
             if(tempInstance != null){
-                return tempInstance;
+                return tempInstance
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     TagDataBase::class.java,
                     "TagDb"
-                ).allowMainThreadQueries().build();
-                INSTANCE = instance;
-                return instance;
+                ).allowMainThreadQueries().build()
+                INSTANCE = instance
+                return instance
             }
         }
 

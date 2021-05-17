@@ -24,19 +24,27 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     lateinit var navView :NavigationView
 
     //lateinit var toggle: ActionBarDrawerToggle
-    private var account: Account = Account();
-    private lateinit var tagViewModel: TagViewModel;
+    private var account: Account = Account()
+    private var tag1: Tag = Tag()
+    private var exercise1: Exercise  =  Exercise()
+    private lateinit var tagViewModel: TagViewModel
+    private lateinit var exerciseViewModel: ExerciseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.getUser();
+        this.getDatabaseItems()
 
         toolbar = findViewById(R.id.toolbar)
 
         toolbar.setNavigationIcon(R.drawable.workouts_icon)
         setSupportActionBar(toolbar)
 
+
+
+        /*toolbar.setNavigationOnClickListener {
+            Toast.makeText(this, "Navigation clicked", Toast.LENGTH_SHORT).show()
+        }*/
 
         drawerLayout = findViewById(R.id.drawer_layout)
 
@@ -50,6 +58,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener(this)
 
+        /*toggle = ActionBarDrawerToggle(this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)*/
+
+
 
         goToLogin.setOnClickListener {
             startActivity(Intent(this, LogIn::class.java))
@@ -60,7 +74,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.nav_profile -> {
                 Toast.makeText(baseContext, "Profile", Toast.LENGTH_SHORT).show()
                 //startActivity(Intent(this, ContactsContract.Profile::class.java))
@@ -90,11 +104,31 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 ).show()
             }
 
+                Toast.makeText(applicationContext, "Clicked Item 1", Toast.LENGTH_SHORT).show()
+            }*/
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }*/
+
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var itemview = item.itemId
+        when(itemview){
+
+        }
+    }*/
+
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }*/
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -104,18 +138,29 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
-    private fun getUser(){
-        val userDao = AppDatabase.getDatabase(application).userDao();
-        var userList = listOf<UserDb>();
+    private fun getDatabaseItems() {
+        val userDao = AppDatabase.getDatabase(application).userDao()
+        val tagdao = TagDataBase.getDatabase(application).tagDao()
+        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao()
+        tagViewModel = ViewModelProvider(this).get(TagViewModel::class.java)
+        exerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java)
+        var tag = TagDb(0, "Bizeps")
+        tagViewModel.addTag(tag)
 
-        val thread = Thread{
-            userList  = userDao.loadAll();
-            account.setUserList(userList);
-        }
-        thread.start()
+        var exercise = ExerciseDb(0, "Liegestütze", "","",0)
+        exerciseViewModel.addExercise(exercise)
+
+        var taglist = listOf<TagDb>()
+        taglist  = tagdao.loadAll()
+        tag1.setTagList(taglist)
+
+        var exerciseList = listOf<ExerciseDb>()
+        exerciseList = exerciseDao.loadAll()
+        exercise1.setExerciseList(exerciseList)
+
+        var userList = listOf<UserDb>()
+        userList = userDao.loadAll()
+        account.setUserList(userList)
+
     }
-
-
-
-
 }

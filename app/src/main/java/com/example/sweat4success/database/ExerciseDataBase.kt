@@ -7,24 +7,24 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [ExerciseDb::class], version = 2, exportSchema = false)
 abstract class ExerciseDataBase : RoomDatabase() {
-    abstract fun exerciseDao(): ExerciseDao;
+    abstract fun exerciseDao(): ExerciseDao
 
     companion object{
         @Volatile
-        private var INSTANCE: ExerciseDataBase? = null;
+        private var INSTANCE: ExerciseDataBase? = null
         fun getDatabase(context: Application): ExerciseDataBase{
-            val tempInstance = INSTANCE;
+            val tempInstance = INSTANCE
             if(tempInstance != null){
-                return tempInstance;
+                return tempInstance
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ExerciseDataBase::class.java,
                     "ExerciseDb"
-                ).allowMainThreadQueries().build();
-                INSTANCE = instance;
-                return instance;
+                ).allowMainThreadQueries().build()
+                INSTANCE = instance
+                return instance
             }
         }
 
