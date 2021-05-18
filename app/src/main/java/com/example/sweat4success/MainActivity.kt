@@ -35,16 +35,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     lateinit var navView: NavigationView
 
     //lateinit var toggle: ActionBarDrawerToggle
-    private var account: Account = Account();
-    private var tag1: Tag = Tag();
-    private var exercise1: Exercise  =  Exercise();
-    private lateinit var tagViewModel: TagViewModel;
-    private lateinit var exerciseViewModel: ExerciseViewModel;
+    private var account: Account = Account()
+    private var tag1: Tag = Tag()
+    private var exercise1: Exercise  =  Exercise()
+    private lateinit var tagViewModel: TagViewModel
+    private lateinit var exerciseViewModel: ExerciseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.getDatabaseItems();
+        this.getDatabaseItems()
 
         toolbar = findViewById(R.id.toolbar)
 
@@ -135,28 +135,28 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun getDatabaseItems() {
-        val userDao = AppDatabase.getDatabase(application).userDao();
-        val tagdao = TagDataBase.getDatabase(application).tagDao();
-        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao();
-        tagViewModel = ViewModelProvider(this).get(TagViewModel::class.java);
-        exerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java);
+        val userDao = AppDatabase.getDatabase(application).userDao()
+        val tagdao = TagDataBase.getDatabase(application).tagDao()
+        val exerciseDao = ExerciseDataBase.getDatabase(application).exerciseDao()
+        tagViewModel = ViewModelProvider(this).get(TagViewModel::class.java)
+        exerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java)
         var tag = TagDb(0, "Bizeps")
-        tagViewModel.addTag(tag);
+        tagViewModel.addTag(tag)
 
-        var exercise = ExerciseDb(0, "Liegestütze", "","",0);
-        exerciseViewModel.addExercise(exercise);
+        var exercise = ExerciseDb(0, "Liegestütze", "","",0)
+        exerciseViewModel.addExercise(exercise)
 
         var taglist = listOf<TagDb>()
-        taglist  = tagdao.loadAll();
-        tag1.setTagList(taglist);
+        taglist  = tagdao.loadAll()
+        tag1.setTagList(taglist)
 
-        var exerciseList = listOf<ExerciseDb>();
-        exerciseList = exerciseDao.loadAll();
-        exercise1.setExerciseList(exerciseList);
+        var exerciseList = listOf<ExerciseDb>()
+        exerciseList = exerciseDao.loadAll()
+        exercise1.setExerciseList(exerciseList)
 
-        var userList = listOf<UserDb>();
-        userList = userDao.loadAll();
-        account.setUserList(userList);
+        var userList = listOf<UserDb>()
+        userList = userDao.loadAll()
+        account.setUserList(userList)
 
     }
 }

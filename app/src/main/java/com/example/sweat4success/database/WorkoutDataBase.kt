@@ -11,20 +11,20 @@ abstract class WorkoutDataBase : RoomDatabase() {
 
     companion object{
         @Volatile
-        private var INSTANCE: WorkoutDataBase? = null;
+        private var INSTANCE: WorkoutDataBase? = null
         fun getDatabase(context: Application): WorkoutDataBase{
-            val tempInstance = INSTANCE;
+            val tempInstance = INSTANCE
             if(tempInstance != null){
-                return tempInstance;
+                return tempInstance
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WorkoutDataBase::class.java,
                     "WorkoutDb"
-                ).allowMainThreadQueries().build();
-                INSTANCE = instance;
-                return instance;
+                ).allowMainThreadQueries().build()
+                INSTANCE = instance
+                return instance
             }
         }
 

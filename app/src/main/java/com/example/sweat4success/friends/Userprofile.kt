@@ -1,89 +1,128 @@
 package com.example.sweat4success.friends
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
-import com.example.sweat4success.controller.DataController
+import com.example.sweat4success.controller.WorkoutController
 import com.example.sweat4success.controller.FriendController
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Workouts
+import com.example.sweat4success.modell.viewModel.UserViewModel
+import com.example.sweat4success.modell.viewModel.WorkoutViewModel
+import com.example.sweat4success.workout.ViewWorkout
 import kotlinx.android.synthetic.main.viewprofile.*
 
 
 
 class Userprofile:AppCompatActivity() {
-    private var account: Account = Account();
+    private var account: Account = Account()
+    private lateinit var workoutViewModel: WorkoutViewModel
+    private lateinit var userViewModel: UserViewModel
+    private var workoutModel = Workouts()
+    private lateinit var user: UserDb
+    private var isSelected: Boolean = false;
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.viewprofile)
+        workoutViewModel = ViewModelProvider(this).get(WorkoutViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        setUI()
+        addFriend.setOnClickListener{
+            val friendcont = FriendController()
+            var password = account.getPassword()
+            var username = account.getUsername()
+            var currentUser = userViewModel.findByName(username, password)
+            if(isSelected){
+                var friendList: List<UserDb> = friendcont.getItems(userViewModel) as List<UserDb>
+                friendList += user
+                friendList.forEach{
+                        it  ->
+                    currentUser.friendId = currentUser.friendId +  "," + it.uid
+                }
+                userViewModel.updateUser(currentUser)
+            }else{
+                var friendList: List<UserDb> = friendcont.getItems(userViewModel) as List<UserDb>
+                friendList -= user
+                if(friendList.count() != 0){
+                    friendList.forEach{
+                            it  ->
+                        currentUser.friendId = currentUser.friendId +  "," + it.uid
+                    }
+                }else{
+                    currentUser.friendId = ""
+                }
+                userViewModel.updateUser(currentUser)
+            }
+            isSelected = !isSelected
+        }
     }
 
-    fun setUI() {
-        val dc: DataController = DataController()
-        var userList = account.getUserList();
-        var username = "";
-        var user = userList.find { it.username == username } as UserDb;
-        val favoritesid = user.favoritesId;
-        friendUserName.text = user.username;
-        friendAge.text = user.age.toString();
-        var favorites = dc.getFavorites(user)
-        var favoritesliste = "";
+    private fun setUI() {
+        val dc = WorkoutController()
+        val userList = account.getUserList()
+        val username = account.getFriendName()
+        user = userList.find { it.username == username } as UserDb
+        friendUserName.text = user.username
+        friendAge.text = user.age.toString()
+        val favorites = dc.getFavorites(user, workoutViewModel)
 
         favorites.forEach{
                 favorite ->
-            var friendListLayout: LinearLayout = findViewById(R.id.favoriteWorkoutLayout);
-            var friendName: TextView = TextView(this);
-            friendName.text = favorite.title;
+            val favoriteListLayout: LinearLayout = findViewById(R.id.favoriteWorkoutLayout)
+            val favoriteName = TextView(this)
+            favoriteName.text = favorite.title
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-            friendName.layoutParams = params;
-            friendName.setTextColor(Color.WHITE);
-            friendName.isClickable = true;
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            favoriteName.layoutParams = params
+            favoriteName.setTextColor(Color.WHITE)
+            favoriteName.isClickable = true
 
 
-            friendName.setOnClickListener{
-
+            favoriteName.setOnClickListener{
+                workoutModel.setWorkoutname(favorite.title.toString())
+                startActivity(Intent(this, ViewWorkout::class.java))
             }
-            friendListLayout.addView(friendName);
+            favoriteListLayout.addView(favoriteName)
         }
-        var workouts = dc.getWorkouts(user);
-        var workoutliste = "";
+        val workouts = dc.getWorkouts(user, workoutViewModel)
 
         workouts.forEach{
-                favorite ->
-            var friendListLayout: LinearLayout = findViewById(R.id.workouts);
-            var friendName: TextView = TextView(this);
-            friendName.text = favorite.title;
+                workout ->
+            val workoutListLayout: LinearLayout = findViewById(R.id.workouts)
+            val workoutName = TextView(this)
+            workoutName.text = workout.title
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-            friendName.layoutParams = params;
-            friendName.setTextColor(Color.WHITE);
-            friendName.isClickable = true;
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            workoutName.layoutParams = params
+            workoutName.setTextColor(Color.WHITE)
+            workoutName.isClickable = true
 
 
-            friendName.setOnClickListener{
-
+            workoutName.setOnClickListener{
+                workoutModel.setWorkoutname(workout.title.toString())
+                startActivity(Intent(this, ViewWorkout::class.java))
             }
-            friendListLayout.addView(friendName);
+            workoutListLayout.addView(workoutName)
         }
 
-        var friendcont: FriendController = FriendController();
-        addFriend.isSelected = friendcont.isFriend(user);
-
-        addFriend.setOnClickListener()
+        val friendcont = FriendController()
+        addFriend.isSelected = friendcont.isFriend(user, userViewModel)
+        if(addFriend.isSelected){
+            addFriend.toggle()
+        }
     }
-
-}
-
-private fun ToggleButton.setOnClickListener() {
-        if(isSelected) isSelected=false;
-        else isSelected=true
 }
 
 

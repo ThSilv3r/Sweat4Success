@@ -10,34 +10,34 @@ import kotlinx.coroutines.launch
 
 class TagViewModel(application: Application): AndroidViewModel(application) {
     private val repository: TagRepository
-    val readAllData: LiveData<List<TagDb>>;
+    val readAllData: LiveData<List<TagDb>>
 
     init{
-        val tagDao = TagDataBase.getDatabase(application).tagDao();
+        val tagDao = TagDataBase.getDatabase(application).tagDao()
         repository = TagRepository(tagDao)
         readAllData = repository.readAllData
     }
 
     fun getAll(){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getAll();
+            repository.getAll()
         }
     }
 
     fun getById(id: Int): TagDb{
-            return repository.findById(id);
+            return repository.findById(id)
     }
 
     fun addTag(tag: TagDb){
         viewModelScope.launch(Dispatchers.IO){
-            repository.addTag(tag);
+            repository.addTag(tag)
         }
 
     }
 
     fun deleteTag(tag: TagDb){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.delete(tag);
+            repository.delete(tag)
         }
     }
 }

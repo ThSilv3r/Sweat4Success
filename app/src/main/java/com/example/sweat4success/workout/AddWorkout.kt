@@ -21,16 +21,16 @@ import java.io.IOException
 
 class AddWorkout: AppCompatActivity() {
 
-    private lateinit var mWorkoutViewModel: WorkoutViewModel;
-    private lateinit var mExerciseViewModel: ExerciseViewModel;
-    private lateinit var mTagViewModel: TagViewModel;
-    private lateinit var mUserViewModel: UserViewModel;
-    private var account: Account = Account();
-    private var Tag: Tag = Tag();
-    private var Exercise: Exercise = Exercise();
-    var exerciseSwitchList = mutableListOf<Switch>();
-    var repititionList = mutableListOf<EditText>();
-    var tagSwitchList = mutableListOf<Switch>();
+    private lateinit var mWorkoutViewModel: WorkoutViewModel
+    private lateinit var mExerciseViewModel: ExerciseViewModel
+    private lateinit var mTagViewModel: TagViewModel
+    private lateinit var mUserViewModel: UserViewModel
+    private var account: Account = Account()
+    private var Tag: Tag = Tag()
+    private var Exercise: Exercise = Exercise()
+    var exerciseSwitchList = mutableListOf<Switch>()
+    var repititionList = mutableListOf<EditText>()
+    var tagSwitchList = mutableListOf<Switch>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class AddWorkout: AppCompatActivity() {
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContentView(R.layout.createworkout)
 
-        this.createUIComponents();
+        this.createUIComponents()
 
         addWorkoutButton.setOnClickListener {
             insertDataToDatabase()
@@ -49,85 +49,85 @@ class AddWorkout: AppCompatActivity() {
     }
 
     private fun createUIComponents(){
-        var i = 0;
-        var id = 1000;
-        var id2 = 2000;
+        var i = 1
+        var id = 1001
+        var id2 = 2001
 
-        var tagList = Tag.getTagList();
-        var exerciseList = Exercise.getExerciseList();
+        var tagList = Tag.getTagList()
+        var exerciseList = Exercise.getExerciseList()
 
         if (tagList.count() != 0){
             tagList.forEach{
                     tag ->
-                var tagLayout: LinearLayout = findViewById(R.id.addTagLayout);
-                var tagSwitchButton = Switch(this);
-                tagSwitchButton.text = tag.name;
-                tagLayout.addView(tagSwitchButton);
-                tagSwitchButton.id = i;
-                tagSwitchButton.setTextColor(Color.WHITE);
-                tagSwitchList.add(tagSwitchButton);
-                i++;
+                var tagLayout: LinearLayout = findViewById(R.id.addTagLayout)
+                var tagSwitchButton = Switch(this)
+                tagSwitchButton.text = tag.name
+                tagLayout.addView(tagSwitchButton)
+                tagSwitchButton.id = i
+                tagSwitchButton.setTextColor(Color.WHITE)
+                tagSwitchList.add(tagSwitchButton)
+                i++
             }
         }
 
         if (exerciseList.count() != 0){
             exerciseList.forEach{
                     exercise ->
-                var exerciseListLayout: LinearLayout = findViewById(R.id.addExerciseLayout);
-                var exerciseLayout: LinearLayout = LinearLayout(this);
+                var exerciseListLayout: LinearLayout = findViewById(R.id.addExerciseLayout)
+                var exerciseLayout: LinearLayout = LinearLayout(this)
 
 
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-                var exerciseSwitchButton = Switch(this);
-                exerciseSwitchButton.layoutParams = params;
+                    LinearLayout.LayoutParams.WRAP_CONTENT)
+                var exerciseSwitchButton = Switch(this)
+                exerciseSwitchButton.layoutParams = params
                 exerciseSwitchButton.text = exercise.title
-                exerciseSwitchButton.id = id;
+                exerciseSwitchButton.id = id
                 exerciseSwitchButton.setTextColor(Color.WHITE)
-                exerciseLayout.addView(exerciseSwitchButton);
-                exerciseSwitchList.add(exerciseSwitchButton);
+                exerciseLayout.addView(exerciseSwitchButton)
+                exerciseSwitchList.add(exerciseSwitchButton)
 
 
-                var repetitionText = TextView(this);
+                var repetitionText = TextView(this)
                 repetitionText.text = "Wiederholungen:"
-                repetitionText.layoutParams = params;
-                repetitionText.setTextColor(Color.WHITE);
-                exerciseLayout.addView(repetitionText);
+                repetitionText.layoutParams = params
+                repetitionText.setTextColor(Color.WHITE)
+                exerciseLayout.addView(repetitionText)
 
-                var repetition = EditText(this);
-                repetition.id = id2;
-                exerciseLayout.addView(repetition);
+                var repetition = EditText(this)
+                repetition.id = id2
+                exerciseLayout.addView(repetition)
                 repititionList.add(repetition)
 
-                exerciseListLayout.addView(exerciseLayout);
-                id++;
-                id2++;
+                exerciseListLayout.addView(exerciseLayout)
+                id++
+                id2++
             }
         }
     }
 
 
     private fun insertDataToDatabase() {
-        var userList = account.getUserList();
-        var username = account.getUsername();
-        var user: UserDb = userList.find { it.username == username } as UserDb;
+        var username = account.getUsername()
+        var password = account.getPassword()
+        var user: UserDb = mUserViewModel.findByName(username, password)as UserDb
 
 
         val exercises = exerciseSwitchList.filter { exerercise -> exerercise.isChecked }
         var repetitions = mutableListOf<Int>()
         val tags = tagSwitchList.filter { tag -> tag.isEnabled }
-        val tagId = mutableListOf<Int>();
+        val tagId = mutableListOf<Int>()
         val exerciseId = mutableListOf<Int>()
 
         exercises.forEach{
             exercise ->
-            exerciseId += exercise.id;
+            exerciseId += exercise.id
         }
 
         tags.forEach{
             tag ->
-            tagId += tag.id;
+            tagId += tag.id
         }
 
         exercises.forEach{
@@ -136,24 +136,26 @@ class AddWorkout: AppCompatActivity() {
             repetitions.add(Integer.parseInt(repetitionsEditText?.text.toString()))
         }
 
-        var title: String = editWorkoutitle.text.toString();
-        var description: String = editWorkoutDescription.text.toString();
-        var duration: Editable? = editWorkoutDuration.text;
-        var tagIds: String = tagId.toString();
-        var exerciseIds: String = exerciseId.toString();
+        var title: String = editWorkoutitle.text.toString()
+        var description: String = editWorkoutDescription.text.toString()
+        var duration: Editable? = editWorkoutDuration.text
+        var tagIds: String = tagId.toString()
+        var exerciseIds: String = exerciseId.toString()
 
         if(inputCheck(title, description, duration, tagIds, exerciseIds)){
-            var workout: WorkoutDb = WorkoutDb(0, title, description, 0, tagIds, exerciseIds, 0, repetitions.toString());
+            var workout: WorkoutDb = WorkoutDb(0, title, description, 0, tagIds, exerciseIds, user.uid, repetitions.toString())
             try {
-                mWorkoutViewModel.addWorkout(workout);
-                user.workoutId  = user.workoutId + "," + workout.uid;
-                mUserViewModel.updateUser(user);
+                mWorkoutViewModel.addWorkout(workout)
+                workout = mWorkoutViewModel.findByName(workout.title.toString())
+                user.uid = user.uid
+                user.workoutId  = user.workoutId + "," + workout.uid
+                mUserViewModel.updateUser(user)
             }catch (e: IOException){
-                throw e;
+                throw e
             }
-            Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Succesfully created workout!", Toast.LENGTH_LONG).show()
         }else{
-            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show()
         }
     }
 

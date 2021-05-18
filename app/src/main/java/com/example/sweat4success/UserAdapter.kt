@@ -7,7 +7,7 @@ class UserAdapter {
     private var userList = emptyList<UserDb>()
 
     fun getItemCount(): Int{
-        return userList.size;
+        return userList.size
     }
 
     fun getUser(username: String, password: String){

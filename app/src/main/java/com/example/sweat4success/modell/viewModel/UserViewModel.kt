@@ -14,45 +14,43 @@ import kotlinx.coroutines.launch
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository: UserRepository
-    val readAllData: LiveData<List<UserDb>>;
+    val readAllData: LiveData<List<UserDb>>
 
     init{
-        val userDao = AppDatabase.getDatabase(application).userDao();
+        val userDao = AppDatabase.getDatabase(application).userDao()
         repository = UserRepository(userDao)
         readAllData = repository.readAllData
     }
 
-    fun getAll(){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getAll();
-        }
+    fun getAll():List<UserDb>{
+           return repository.getAll()
     }
 
 
     fun addUser(user: UserDb){
         viewModelScope.launch(Dispatchers.IO){
-            repository.addUser(user);
+            repository.addUser(user)
         }
 
     }
 
     fun findByName(username: String, password: String):UserDb {
-            return repository.findByName(username, password);
+            return repository.findByName(username, password)
     }
 
     fun getById(id: Int): UserDb {
-        return repository.findById(id);
+        return repository.findById(id)
     }
 
     fun deleteUser(user: UserDb){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.delete(user);
+            repository.delete(user)
         }
     }
 
     fun updateUser(user: UserDb){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateUser(user);
+            repository.updateUser(user)
         }
     }
 
