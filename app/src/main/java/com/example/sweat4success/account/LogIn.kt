@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
 import com.example.sweat4success.Workout_Categories
 import com.example.sweat4success.database.AppDatabase
@@ -37,6 +38,7 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.login);
 
         this.getUser();
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         button.setOnClickListener {
             startActivity(Intent(this, CreateAccount::class.java));
@@ -74,11 +76,13 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var username: String = userNameTextBox.text.toString();
         var password: String = passwordTextBox.text.toString();
         account.setUsername(username);
+        account.setPassword(password)
         account.setUserList(userList)
         var a = account.getUserList();
 
             try {
                 var user = mUserViewModel.findByName(username, password)
+                var id = user.uid
 
             }catch (e: IOException){
                 throw e

@@ -7,8 +7,8 @@ class UserRepository (private val userDao: UserDao){
 
     val readAllData: LiveData<List<UserDb>> = userDao.readAllData()
 
-    fun getAll(){
-        userDao.loadAll()
+    fun getAll(): List<UserDb>{
+        return userDao.loadAll()
     }
 
     suspend fun addUser(user:UserDb){
