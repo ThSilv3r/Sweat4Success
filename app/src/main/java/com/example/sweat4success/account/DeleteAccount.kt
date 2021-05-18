@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.delete.*
 import kotlinx.android.synthetic.main.delete.drawer_layout
 
 
-public class UserController: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+public class DeleteAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
     private lateinit var mUserViewModel: UserViewModel;
     private var userList = listOf<UserDb>();
     private var account: Account = Account();
