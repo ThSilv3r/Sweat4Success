@@ -1,4 +1,4 @@
-package com.example.sweat4success.UnitTests
+package com.example.sweat4success.DatabaseTests
 
 import android.os.Build
 import androidx.room.Room
