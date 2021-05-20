@@ -1,9 +1,7 @@
 package com.example.sweat4success.controller
 
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sweat4success.database.UserDb
-import com.example.sweat4success.database.WorkoutDao
-import com.example.sweat4success.database.WorkoutDb
+import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
@@ -34,7 +32,26 @@ class WorkoutController: AppCompatActivity() {
     }
 
     fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
-        return workoutViewModel.findByTagId(tagId)
+        workoutDao = WorkoutDataBase.getDatabase(application).workoutDao()
+        val filterdWorkouts = mutableListOf<WorkoutDb>()
+        var workouts = workoutDao.loadAll()
+        workouts.forEach{
+            workout->
+            var workoutTagIds = workout.tagIds
+            workoutTagIds = workoutTagIds?.drop(1)
+            workoutTagIds = workoutTagIds?.dropLast(1)
+            val tagIds = mutableListOf<Int>()
+            val tagIdsString = workoutTagIds.toString()
+            val tagIdsStrings = tagIdsString.split(",")
+            tagIdsStrings.forEach { tagId ->
+                val id = tagId.replace("\\s".toRegex(), "")
+                tagIds += id.toInt()
+            }
+            if(tagIds.contains(tagId)){
+                filterdWorkouts += workout
+            }
+        }
+        return filterdWorkouts
     }
 
     private fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
