@@ -1,14 +1,10 @@
 package com.example.sweat4success.controller
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.sweat4success.R
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.database.WorkoutDao
 import com.example.sweat4success.database.WorkoutDb
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
 class WorkoutController: AppCompatActivity() {
@@ -35,6 +31,10 @@ class WorkoutController: AppCompatActivity() {
         var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel);
 
         return workouts
+    }
+
+    fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
+        return workoutViewModel.findByTagId(tagId)
     }
 
     private fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
