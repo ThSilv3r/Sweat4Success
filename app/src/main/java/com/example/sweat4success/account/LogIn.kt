@@ -22,12 +22,12 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.drawer_layout
 import kotlinx.android.synthetic.main.login.toolbar
+import java.lang.Exception
 
 
 public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
     private lateinit var mUserViewModel: UserViewModel;
     private var account: Account = Account();
-    private var userList = listOf <UserDb>();
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
@@ -37,7 +37,6 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        this.getUser();
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         button.setOnClickListener {
@@ -45,7 +44,7 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         logInButton.setOnClickListener {
-            checkDataInDatabase(userList);
+            checkDataInDatabase();
         }
 
         toolbar = findViewById(R.id.toolbar)
@@ -67,28 +66,20 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setNavigationItemSelectedListener(this)
     }
 
-    private fun getUser(){
-        val userDao = AppDatabase.getDatabase(application).userDao();
-        userList  = userDao.loadAll();
-    }
-
-    private fun checkDataInDatabase(userList:List<UserDb>) {
+    private fun checkDataInDatabase() {
         var username: String = userNameTextBox.text.toString();
         var password: String = passwordTextBox.text.toString();
         account.setUsername(username);
         account.setPassword(password)
-        account.setUserList(userList)
-        var a = account.getUserList();
 
             try {
                 var user = mUserViewModel.findByName(username, password)
-                var id = user.uid
-
-            }catch (e: IOException){
-                throw e
+                if(user != null){
+                    startActivity(Intent(this, EditAccount::class.java));
+                }
+            }catch (e: Exception){
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show();
             }
-            startActivity(Intent(this, EditAccount::class.java));
 
     }
 

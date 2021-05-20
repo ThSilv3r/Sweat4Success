@@ -55,22 +55,39 @@ class ViewWorkout: AppCompatActivity() {
         if(title == ""){
             title = "Test"
         }
-        val exercises = mutableListOf<ExerciseDb>()
         val tags = mutableListOf<TagDb>()
 
         workout = mWorkoutViewModel.findByName(title)
-        var workoutExerciseIds = workout.exerciseIds
         var workoutTagIds = workout.tagIds
-        var workoutRepetitions = workout.repetitions
-        workoutExerciseIds = workoutExerciseIds?.drop(1)
-        workoutExerciseIds = workoutExerciseIds?.dropLast(1)
         workoutTagIds = workoutTagIds?.drop(1)
         workoutTagIds = workoutTagIds?.dropLast(1)
-        workoutRepetitions = workoutRepetitions?.drop(1)
-        workoutRepetitions = workoutRepetitions?.dropLast(1)
 
         textView24.text = workout.title
         descriptionWorkout.text = workout.description.toString()
+
+        createExerciseUi(workout)
+
+        val tagIds = mutableListOf<Int>()
+        val tagIdsString = workoutTagIds.toString()
+        val tagIdsStrings = tagIdsString.split(",")
+        tagIdsStrings.forEach { tagId ->
+            val id = tagId.replace("\\s".toRegex(), "")
+            tagIds += id.toInt()}
+        tagIds.forEach {
+                tagId ->
+            val tag: TagDb = mTagViewModel.getById(tagId)
+            tags += tag
+        }
+
+    }
+    private fun createExerciseUi(workoutDb: WorkoutDb){
+        val exercises = mutableListOf<ExerciseDb>()
+        var workoutExerciseIds = workout.exerciseIds
+        var workoutRepetitions = workout.repetitions
+        workoutExerciseIds = workoutExerciseIds?.drop(1)
+        workoutExerciseIds = workoutExerciseIds?.dropLast(1)
+        workoutRepetitions = workoutRepetitions?.drop(1)
+        workoutRepetitions = workoutRepetitions?.dropLast(1)
 
         val exerciseIds = mutableListOf<Int>()
         val exerciseIdsString = workoutExerciseIds.toString()
@@ -89,20 +106,8 @@ class ViewWorkout: AppCompatActivity() {
         val repetitionStrings = repetitionsString.split(",")
         repetitionStrings.forEach { repetition ->
             val rep = repetition.replace("\\s".toRegex(), "")
-            repetitions += rep.toInt()}
-
-        val tagIds = mutableListOf<Int>()
-        val tagIdsString = workoutTagIds.toString()
-        val tagIdsStrings = tagIdsString.split(",")
-        tagIdsStrings.forEach { tagId ->
-            val id = tagId.replace("\\s".toRegex(), "")
-            tagIds += id.toInt()}
-        tagIds.forEach {
-                tagId ->
-            val tag: TagDb = mTagViewModel.getById(tagId)
-            tags += tag
+            repetitions += rep.toInt()
         }
-
 
         if(!exercises.isEmpty()){
             exercises.forEach{exercise ->

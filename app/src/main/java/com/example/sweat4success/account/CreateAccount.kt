@@ -16,7 +16,6 @@ import java.io.IOException
 class CreateAccount: AppCompatActivity() {
     private lateinit var mUserViewModel: UserViewModel
     private var account: Account = Account()
-    private var userList = listOf <UserDb>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,42 +23,30 @@ class CreateAccount: AppCompatActivity() {
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        this.getUser()
-
         Login.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
         }
-
-            createAccountButton.setOnClickListener {
-                insertDataToDatabase(userList)
-            }
-
-    }
-    private fun getUser(){
-        val userDao = AppDatabase.getDatabase(application).userDao()
-
-        userList  = userDao.loadAll()
+        createAccountButton.setOnClickListener {
+            insertDataToDatabase()
+        }
     }
 
-
-    private fun insertDataToDatabase(userlist:List<UserDb>) {
+    private fun insertDataToDatabase() {
         val username: String = userNameTextBoxC.text.toString()
         account.setUsername(username)
-        account.setUserList(userlist)
-        val userList = account.getUserList().toMutableList()
-
+        var userList = account.getUserList()
 
         val password: String = passwordTextBoxC.text.toString()
         val email: String = emailTextBoxC.text.toString()
         val age: Int
-        if(ageTextBoxC.text.toString() != ""){
+        if (ageTextBoxC.text.toString() != "") {
             age = Integer.parseInt(ageTextBoxC.text.toString())
-        }else{
+        } else {
             age = 0
         }
 
-        if(inputCheck(username, password, email)){
-            var user = UserDb(0, username, password, email, age, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","","")
+        if (inputCheck(username, password, email)) {
+            var user = UserDb(0, username, password, email, age,0.0,0.0,0.0,0.0,0.0,0.0,0.0,"","","","")
             try {
                 mUserViewModel.addUser(user)
                 user = mUserViewModel.findByName(user.username.toString(), user.password.toString())
@@ -67,20 +54,16 @@ class CreateAccount: AppCompatActivity() {
                 account.setUserList(userList)
                 account.setUsername(username)
                 account.setPassword(password)
-            }catch (e: IOException){
+            } catch (e: IOException) {
             }
             startActivity(Intent(this, EditAccount::class.java))
             Toast.makeText(this, "Succesfully created account!", Toast.LENGTH_LONG).show()
-        }else{
+        } else {
             Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show()
         }
     }
 
-
     private fun inputCheck(username: String, password: String, email: String): Boolean {
-        return !(username == "" && password == "" && email=="")
+        return !(username == "" && password == "" && email == "")
     }
-
-
-
 }

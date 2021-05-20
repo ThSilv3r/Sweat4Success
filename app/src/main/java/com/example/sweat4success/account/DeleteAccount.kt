@@ -31,8 +31,6 @@ public class UserController: AppCompatActivity(), NavigationView.OnNavigationIte
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.delete)
@@ -66,12 +64,6 @@ public class UserController: AppCompatActivity(), NavigationView.OnNavigationIte
     }
     private fun getUser(){
         val userDao = AppDatabase.getDatabase(application).userDao();
-
-        var username: String = "";
-        var account = account;
-
-        username = account.getUsername();
-
         userList  = userDao.loadAll();
     }
 

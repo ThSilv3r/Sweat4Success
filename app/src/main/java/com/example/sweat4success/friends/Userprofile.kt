@@ -38,33 +38,36 @@ class Userprofile:AppCompatActivity() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setUI()
         addFriend.setOnClickListener{
-            val friendcont = FriendController()
-            var password = account.getPassword()
-            var username = account.getUsername()
-            var currentUser = userViewModel.findByName(username, password)
-            if(isSelected){
-                var friendList: List<UserDb> = friendcont.getItems(userViewModel) as List<UserDb>
-                friendList += user
+            addAndRemoveFriend()
+        }
+    }
+    private fun addAndRemoveFriend(){
+        val friendcont = FriendController()
+        var password = account.getPassword()
+        var username = account.getUsername()
+        var currentUser = userViewModel.findByName(username, password)
+        if(isSelected){
+            var friendList: List<UserDb> = friendcont.getItems(userViewModel) as List<UserDb>
+            friendList += user
+            friendList.forEach{
+                    it  ->
+                currentUser.friendId = currentUser.friendId +  "," + it.uid
+            }
+            userViewModel.updateUser(currentUser)
+        }else{
+            var friendList: List<UserDb> = friendcont.getItems(userViewModel) as List<UserDb>
+            friendList -= user
+            if(friendList.count() != 0){
                 friendList.forEach{
                         it  ->
                     currentUser.friendId = currentUser.friendId +  "," + it.uid
                 }
-                userViewModel.updateUser(currentUser)
             }else{
-                var friendList: List<UserDb> = friendcont.getItems(userViewModel) as List<UserDb>
-                friendList -= user
-                if(friendList.count() != 0){
-                    friendList.forEach{
-                            it  ->
-                        currentUser.friendId = currentUser.friendId +  "," + it.uid
-                    }
-                }else{
-                    currentUser.friendId = ""
-                }
-                userViewModel.updateUser(currentUser)
+                currentUser.friendId = ""
             }
-            isSelected = !isSelected
+            userViewModel.updateUser(currentUser)
         }
+        isSelected = !isSelected
     }
 
     private fun setUI() {

@@ -49,12 +49,13 @@ class AddWorkout: AppCompatActivity() {
     }
 
     private fun createUIComponents(){
+        createTagUi()
+        createExerciseUI()
+    }
+    private fun createTagUi(){
         var i = 1
-        var id = 1001
-        var id2 = 2001
 
         var tagList = Tag.getTagList()
-        var exerciseList = Exercise.getExerciseList()
 
         if (tagList.count() != 0){
             tagList.forEach{
@@ -69,7 +70,12 @@ class AddWorkout: AppCompatActivity() {
                 i++
             }
         }
+    }
 
+    private fun createExerciseUI(){
+        var id = 1001
+        var id2 = 2001
+        var exerciseList = Exercise.getExerciseList()
         if (exerciseList.count() != 0){
             exerciseList.forEach{
                     exercise ->
@@ -107,7 +113,6 @@ class AddWorkout: AppCompatActivity() {
         }
     }
 
-
     private fun insertDataToDatabase() {
         var username = account.getUsername()
         var password = account.getPassword()
@@ -116,7 +121,7 @@ class AddWorkout: AppCompatActivity() {
 
         val exercises = exerciseSwitchList.filter { exerercise -> exerercise.isChecked }
         var repetitions = mutableListOf<Int>()
-        val tags = tagSwitchList.filter { tag -> tag.isEnabled }
+        val tags = tagSwitchList.filter { tag -> tag.isChecked }
         val tagId = mutableListOf<Int>()
         val exerciseId = mutableListOf<Int>()
 
