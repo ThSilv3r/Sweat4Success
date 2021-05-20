@@ -37,10 +37,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.getAndCreateDatabaseItems()
+
         tagViewModel = ViewModelProvider(this).get(TagViewModel::class.java)
         exerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java)
 
+        this.getAndCreateDatabaseItems()
         toolbar = findViewById(R.id.toolbar)
 
         toolbar.setNavigationIcon(R.drawable.workouts_icon)
