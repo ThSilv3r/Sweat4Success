@@ -70,7 +70,6 @@ public class UserController: AppCompatActivity(), NavigationView.OnNavigationIte
     private fun deleteDataFromDatabase(userList: List<UserDb>) {
         var username: String = usernameTextBoxD.text.toString();
         var password: String = passwordTextBoxD.text.toString();
-        var age: Int;
 
 
         if(inputCheck(username, password)){

@@ -74,9 +74,9 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             try {
                 var user = mUserViewModel.findByName(username, password)
-                if(user != null){
+
                     startActivity(Intent(this, EditAccount::class.java));
-                }
+
             }catch (e: Exception){
                 Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show();
             }

@@ -23,36 +23,36 @@ class Account {
     var favoritesId: Int= 0
 
     @JvmName("getUsername1")
-    fun getUsername(): String{
+    public fun getUsername(): String{
         return username
     }
 
 
-    fun setUsername(name: String) {
+    public fun setUsername(name: String) {
         username = name
     }
 
-    fun getPassword(): String {
+    public fun getPassword(): String {
         return password
     }
 
-    fun setPassword(password2: String){
+    public fun setPassword(password2: String){
         password = password2
     }
 
-    fun getUserList(): List<UserDb> {
+    public fun getUserList(): List<UserDb> {
         return userList
     }
 
-    fun setUserList(newUserList: List<UserDb>){
+    public fun setUserList(newUserList: List<UserDb>){
         userList = newUserList
     }
-    fun getFriendName(): String{
+    public fun getFriendName(): String{
         return friendName
     }
 
 
-    fun setFriendName(name: String) {
+    public fun setFriendName(name: String) {
         friendName = name
     }
 

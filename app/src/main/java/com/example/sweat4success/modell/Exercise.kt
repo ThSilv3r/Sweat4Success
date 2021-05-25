@@ -12,11 +12,11 @@ class Exercise {
     var description: String = ""
 
 
-    fun getExerciseList(): List<ExerciseDb> {
+    public fun getExerciseList(): List<ExerciseDb> {
         return Exercise.exerciseList
     }
 
-    fun setExerciseList(newExerciseList: List<ExerciseDb>){
+    public fun setExerciseList(newExerciseList: List<ExerciseDb>){
         exerciseList = newExerciseList
     }
 }

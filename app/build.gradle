@@ -2,6 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
 
 
 android {
@@ -11,6 +20,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    // Specifies one flavor dimension.
+
 
     defaultConfig {
         applicationId "com.example.sweat4success"
@@ -41,6 +52,29 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        free {}
+        paid {}
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        create("demo") {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension = "version"
+            applicationIdSuffix = ".demo"
+            versionNameSuffix = "-demo"
+        }
+        create("full") {
+            dimension = "version"
+            applicationIdSuffix = ".full"
+            versionNameSuffix = "-full"
         }
     }
 }

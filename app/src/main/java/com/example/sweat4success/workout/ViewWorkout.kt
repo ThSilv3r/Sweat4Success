@@ -65,7 +65,7 @@ class ViewWorkout: AppCompatActivity() {
         textView24.text = workout.title
         descriptionWorkout.text = workout.description.toString()
 
-        createExerciseUi(workout)
+        createExerciseUi()
 
         val tagIds = mutableListOf<Int>()
         val tagIdsString = workoutTagIds.toString()
@@ -80,7 +80,7 @@ class ViewWorkout: AppCompatActivity() {
         }
 
     }
-    private fun createExerciseUi(workoutDb: WorkoutDb){
+    private fun createExerciseUi(){
         val exercises = mutableListOf<ExerciseDb>()
         var workoutExerciseIds = workout.exerciseIds
         var workoutRepetitions = workout.repetitions

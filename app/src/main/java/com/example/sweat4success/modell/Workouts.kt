@@ -7,12 +7,12 @@ class Workouts {
         var workoutName = ""
     }
 
-    fun getWorkoutname(): String{
+    public fun getWorkoutname(): String{
         return Workouts.workoutName
     }
 
 
-    fun setWorkoutname(name: String) {
+    public fun setWorkoutname(name: String) {
         Workouts.workoutName = name
     }
 }

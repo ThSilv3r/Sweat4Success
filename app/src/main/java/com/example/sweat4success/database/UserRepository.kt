@@ -7,27 +7,27 @@ class UserRepository (private val userDao: UserDao){
 
     val readAllData: LiveData<List<UserDb>> = userDao.readAllData()
 
-    fun getAll(): List<UserDb>{
+    public fun getAll(): List<UserDb>{
         return userDao.loadAll()
     }
 
-    suspend fun addUser(user:UserDb){
+    public suspend fun addUser(user:UserDb){
         userDao.addUser(user)
     }
 
-    fun findByName(username: String, password: String): UserDb{
+    public fun findByName(username: String, password: String): UserDb{
         return userDao.findByName(username, password)
     }
 
-    fun findById(id: Int): UserDb {
+    public fun findById(id: Int): UserDb {
         return userDao.findById(id)
     }
 
-    fun delete(user: UserDb){
+    public fun delete(user: UserDb){
         userDao.delete(user)
     }
 
-    fun updateUser(user: UserDb){
+    public fun updateUser(user: UserDb){
         userDao.updateUser(user)
     }
 }

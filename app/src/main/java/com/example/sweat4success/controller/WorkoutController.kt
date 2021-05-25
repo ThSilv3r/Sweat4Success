@@ -11,19 +11,19 @@ class WorkoutController: AppCompatActivity() {
     private val workouts = mutableListOf<WorkoutDb>()
 
 
-    fun getFavorites(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+    public fun getFavorites(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
         var favoritesIdString = user.favoritesId
         var favorites = loadWorkouts(favoritesIdString.toString(), workoutViewModel)
 
         return favorites
     }
-    fun getRecievedWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+    public fun getRecievedWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
         var workoutsIdString = user.recievedWorkouts
         var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
         return workouts
     }
 
-    fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+    public fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
 
         var workoutsIdString = user.workoutId
         var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel);
@@ -31,7 +31,7 @@ class WorkoutController: AppCompatActivity() {
         return workouts
     }
 
-    fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
+    public fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
         workoutDao = WorkoutDataBase.getDatabase(application).workoutDao()
         val filterdWorkouts = mutableListOf<WorkoutDb>()
         var workouts = workoutDao.loadAll()
@@ -56,10 +56,9 @@ class WorkoutController: AppCompatActivity() {
 
     private fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
         val workoutsIds = mutableListOf<Int>()
-        var workoutsIdStrings = workoutString?.split(",")
-        var i = workoutsIdStrings?.count()
-        workoutsIdStrings = workoutsIdStrings?.drop(1)
-        workoutsIdStrings?.forEach { workoutId ->
+        var workoutsIdStrings = workoutString.split(",")
+        workoutsIdStrings = workoutsIdStrings.drop(1)
+        workoutsIdStrings.forEach { workoutId ->
             var id = workoutId.replace("\\s".toRegex(), "")
             workoutsIds += id.toInt() }
         workoutsIds.forEach { workoutId ->

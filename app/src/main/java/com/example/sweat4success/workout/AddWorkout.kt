@@ -116,7 +116,7 @@ class AddWorkout: AppCompatActivity() {
     private fun insertDataToDatabase() {
         var username = account.getUsername()
         var password = account.getPassword()
-        var user: UserDb = mUserViewModel.findByName(username, password)as UserDb
+        var user: UserDb = mUserViewModel.findByName(username, password)
 
 
         val exercises = exerciseSwitchList.filter { exerercise -> exerercise.isChecked }
@@ -156,7 +156,7 @@ class AddWorkout: AppCompatActivity() {
                 user.workoutId  = user.workoutId + "," + workout.uid
                 mUserViewModel.updateUser(user)
             }catch (e: IOException){
-                throw e
+
             }
             Toast.makeText(this, "Succesfully created workout!", Toast.LENGTH_LONG).show()
         }else{
