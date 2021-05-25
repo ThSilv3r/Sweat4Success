@@ -1,4 +1,4 @@
-package com.example.sweat4success.account
+package com.example.sweat4success
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,51 +7,65 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
-import com.example.sweat4success.MainActivity
+import com.example.sweat4success.BaseActivity
 import com.example.sweat4success.R
-import com.example.sweat4success.Workout_Categories
+import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
-import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
+import kotlinx.android.synthetic.main.login.*
+import java.io.IOException
+import com.example.sweat4success.modell.Account
+import com.google.android.material.internal.NavigationMenuItemView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.editaccount.*
-import kotlinx.android.synthetic.main.editaccount.drawer_layout
+import kotlinx.android.synthetic.main.login.drawer_layout
 
+class Workout_Categories:AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private var account: Account = Account()
-    private lateinit var mUserViewModel: UserViewModel
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
 
-
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.editaccount)
+        setContentView(R.layout.workout_categories)
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        this.setUITexts()
+        // register all the card views with their appropriate IDs
+        val armsCard: CardView = findViewById(R.id.armsCard)
+        val stretchingCard: CardView = findViewById(R.id.stretchingCard)
+        val cardioCard: CardView = findViewById(R.id.cardioCard)
+        val absCard: CardView = findViewById(R.id.absCard)
+        val weightCard: CardView = findViewById(R.id.weightsCard)
+        val legsCard: CardView = findViewById(R.id.legsCard)
 
-        deleteAccountButton.setOnClickListener {
-            startActivity(Intent(this, UserController::class.java))
+
+
+
+        // handle each of the cards with the OnClickListener
+        armsCard.setOnClickListener {
+            Toast.makeText(this, "Arms", Toast.LENGTH_SHORT).show()
+            //startActivity(Intent(this, arms_Card::class.java))
         }
-
-        editaccount.setOnClickListener {
-            var userList = account.getUserList()
-            var username: String = account.getUsername()
-            var user = userList.find{it.username == username}as UserDb
-            updateUser(user)
+        stretchingCard.setOnClickListener {
+            Toast.makeText(this, "Stretching", Toast.LENGTH_SHORT).show()
+            //startActivity(Intent(this, stretching_Card::class.java))
         }
-
-        logoutButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+        cardioCard.setOnClickListener {
+            Toast.makeText(this, "Cardio", Toast.LENGTH_SHORT).show()
+        }
+        absCard.setOnClickListener {
+            Toast.makeText(this, "Abs", Toast.LENGTH_SHORT).show()
+        }
+        weightCard.setOnClickListener {
+            Toast.makeText(this, "Weights", Toast.LENGTH_SHORT).show()
+        }
+        legsCard.setOnClickListener {
+            Toast.makeText(this, "Legs", Toast.LENGTH_SHORT).show()
         }
 
         toolbar = findViewById(R.id.toolbar)
@@ -71,43 +85,6 @@ class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
         navView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener(this)
-
-    }
-
-    private fun setUITexts(){
-        var username: String = account.getUsername()
-        var password: String = account.getPassword()
-        var user = mUserViewModel.findByName(username, password)
-
-        var age = user.age.toString()
-        var height = user.height.toString()
-        var biceps = user.bicepsWidth.toString()
-        var weight = user.weight.toString()
-        var stomache = user.stomacheWidth.toString()
-        dateOfBirthTextBoxeditacc.setText(age as CharSequence)
-        userNameTextBoxeditacc.setText(user.username as CharSequence)
-        heightTextBoxeditacc.setText(height as CharSequence)
-        weightTextBoxeditacc.setText(weight as CharSequence)
-        bizepsTextBoxeditacc.setText(biceps as CharSequence)
-        waistTextBoxeditacc.setText(stomache as CharSequence)
-    }
-
-
-    private fun updateUser(user: UserDb){
-        var age: Int = dateOfBirthTextBoxeditacc.text.toString().toInt()
-        var height: Double = heightTextBoxeditacc.text.toString().toDouble()
-        var weight: Double = weightTextBoxeditacc.text.toString().toDouble()
-        var bizeps: Double = bizepsTextBoxeditacc.text.toString().toDouble()
-        var waist: Double = waistTextBoxeditacc.text.toString().toDouble()
-
-        user.age = age
-        user.height = height
-        user.weight = weight
-        user.bicepsWidth = bizeps
-        user.stomacheWidth = waist
-
-        mUserViewModel.updateUser(user)
-        startActivity(Intent(this, EditAccount::class.java))
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

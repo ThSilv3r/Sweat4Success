@@ -1,4 +1,4 @@
-package com.example.sweat4success.friend
+package com.example.sweat4success.friends
 
 import android.content.Intent
 import android.graphics.Color
@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
 import com.example.sweat4success.controller.FriendController
 import com.example.sweat4success.database.UserDb
-import com.example.sweat4success.friends.Userprofile
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.friendlist.*
 
 class FriendList: AppCompatActivity() {
@@ -19,25 +20,25 @@ class FriendList: AppCompatActivity() {
     private val friendController: FriendController = FriendController()
     private val friendTextViews = mutableListOf<TextView>()
     private var account = Account()
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.friendlist)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        loadFriends()
-        fillUI()
+        this.loadFriends()
+        this.fillUI()
 
         friendSearchButton.setOnClickListener {
             val name: String = searchFriendName.text.toString()
             searchFriend(name)
         }
-
-        loadFriends()
-        fillUI()
     }
 
 
     private fun loadFriends(){
-        friends = friendController.getFriends()as MutableList<UserDb>
+        friends = friendController.getItems(userViewModel)as MutableList<UserDb>
     }
 
     private fun fillUI(){
@@ -86,7 +87,8 @@ class FriendList: AppCompatActivity() {
 
 
                 friendName.setOnClickListener{
-
+                    account.setFriendName(friend.username.toString())
+                    startActivity(Intent(this, Userprofile::class.java))
                 }
                 friendListLayout.addView(friendName)
                 friendTextViews += friendName

@@ -1,49 +1,64 @@
 package com.example.sweat4success.controller
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.sweat4success.R
-import com.example.sweat4success.database.UserDb
-import com.example.sweat4success.database.WorkoutDao
-import com.example.sweat4success.database.WorkoutDb
+import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
 class WorkoutController: AppCompatActivity() {
     private var account: Account = Account()
     private lateinit var workoutDao: WorkoutDao
-    private val favorites = mutableListOf<WorkoutDb>()
     private val workouts = mutableListOf<WorkoutDb>()
 
 
     fun getFavorites(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
         var favoritesIdString = user.favoritesId
-
-        val favoritesIds = mutableListOf<Int>()
-        var favoritesIdStrings = favoritesIdString?.split(",")
-        favoritesIdStrings = favoritesIdStrings?.drop(1)
-        favoritesIdStrings?.forEach { favoriteId ->
-            var id = favoriteId.replace("\\s".toRegex(), "")
-            favoritesIds += id.toInt() }
-        favoritesIds.forEach { favoriteId ->
-            var favorite: WorkoutDb = workoutViewModel.findById(favoriteId)
-            favorites += favorite
-        }
+        var favorites = loadWorkouts(favoritesIdString.toString(), workoutViewModel)
 
         return favorites
+    }
+    fun getRecievedWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+        var workoutsIdString = user.recievedWorkouts
+        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
+        return workouts
     }
 
     fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
 
         var workoutsIdString = user.workoutId
+        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
 
+        return workouts
+    }
+
+    fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
+        workoutDao = WorkoutDataBase.getDatabase(application).workoutDao()
+        val filterdWorkouts = mutableListOf<WorkoutDb>()
+        var workouts = workoutDao.loadAll()
+        workouts.forEach{
+            workout->
+            var workoutTagIds = workout.tagIds
+            workoutTagIds = workoutTagIds?.drop(1)
+            workoutTagIds = workoutTagIds?.dropLast(1)
+            val tagIds = mutableListOf<Int>()
+            val tagIdsString = workoutTagIds.toString()
+            val tagIdsStrings = tagIdsString.split(",")
+            tagIdsStrings.forEach { tagId ->
+                val id = tagId.replace("\\s".toRegex(), "")
+                tagIds += id.toInt()
+            }
+            if(tagIds.contains(tagId)){
+                filterdWorkouts += workout
+            }
+        }
+        return filterdWorkouts
+    }
+
+    private fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
         val workoutsIds = mutableListOf<Int>()
-        var workoutsIdStrings = workoutsIdString?.split(",")
-        var i = workoutsIdStrings?.count()
-        workoutsIdStrings = workoutsIdStrings?.drop(1)
-        workoutsIdStrings?.forEach { workoutId ->
+        var workoutsIdStrings = workoutString.split(",")
+        workoutsIdStrings = workoutsIdStrings.drop(1)
+        workoutsIdStrings.forEach { workoutId ->
             var id = workoutId.replace("\\s".toRegex(), "")
             workoutsIds += id.toInt() }
         workoutsIds.forEach { workoutId ->

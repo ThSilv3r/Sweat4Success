@@ -49,12 +49,13 @@ class AddWorkout: AppCompatActivity() {
     }
 
     private fun createUIComponents(){
+        createTagUi()
+        createExerciseUI()
+    }
+    private fun createTagUi(){
         var i = 1
-        var id = 1001
-        var id2 = 2001
 
         var tagList = Tag.getTagList()
-        var exerciseList = Exercise.getExerciseList()
 
         if (tagList.count() != 0){
             tagList.forEach{
@@ -69,7 +70,12 @@ class AddWorkout: AppCompatActivity() {
                 i++
             }
         }
+    }
 
+    private fun createExerciseUI(){
+        var id = 1001
+        var id2 = 2001
+        var exerciseList = Exercise.getExerciseList()
         if (exerciseList.count() != 0){
             exerciseList.forEach{
                     exercise ->
@@ -107,16 +113,15 @@ class AddWorkout: AppCompatActivity() {
         }
     }
 
-
     private fun insertDataToDatabase() {
-        var userList = account.getUserList()
         var username = account.getUsername()
-        var user: UserDb = userList.find { it.username == username } as UserDb
+        var password = account.getPassword()
+        var user: UserDb = mUserViewModel.findByName(username, password)
 
 
         val exercises = exerciseSwitchList.filter { exerercise -> exerercise.isChecked }
         var repetitions = mutableListOf<Int>()
-        val tags = tagSwitchList.filter { tag -> tag.isEnabled }
+        val tags = tagSwitchList.filter { tag -> tag.isChecked }
         val tagId = mutableListOf<Int>()
         val exerciseId = mutableListOf<Int>()
 
@@ -151,7 +156,7 @@ class AddWorkout: AppCompatActivity() {
                 user.workoutId  = user.workoutId + "," + workout.uid
                 mUserViewModel.updateUser(user)
             }catch (e: IOException){
-                throw e
+
             }
             Toast.makeText(this, "Succesfully created workout!", Toast.LENGTH_LONG).show()
         }else{

@@ -1,28 +1,56 @@
 package com.example.sweat4success.controller
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.database.UserDao
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.database.WorkoutDb
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
+import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
-class FriendController: AppCompatActivity() {
+class FriendController: AppCompatActivity(), DataController {
     private var account: Account = Account()
     private lateinit var user: UserDb
     private val friends = mutableListOf<UserDb>()
     private lateinit var userDao: UserDao
 
+    fun addFriend(friend: UserDb, userViewModel: UserViewModel){
+        user.friendId = user.friendId + ","+ friend.uid.toString()
+        userViewModel.updateUser(user)
+    }
 
-    fun getFriends(): List<UserDb>{
+    fun getFriend(id: Int, userViewModel: UserViewModel): UserDb{
+        this.getItems(userViewModel)
 
-        var userList = account.getUserList()
+        var user: UserDb = friends.find { it.uid == id }as UserDb
+
+        return user
+    }
+    fun sendWorkout(workout: WorkoutDb, friendId: Int, userViewModel: UserViewModel, workoutViewModel: WorkoutViewModel){
+        var friend = userViewModel.getById(friendId)
+        val workoutController = WorkoutController()
+        var recievedWorkouts = workoutController.getRecievedWorkouts(friend, workoutViewModel)
+        recievedWorkouts += workout
+        recievedWorkouts.forEach{
+                it  ->
+            friend.recievedWorkouts = friend.recievedWorkouts +  "," + it.uid
+        }
+        userViewModel.updateUser(friend)
+    }
+
+    fun isFriend(friend: UserDb, userViewModel: UserViewModel): Boolean{
+        var friendList = this.getItems(userViewModel)
+        var isFriend: Boolean = friendList.contains(friend)
+        return isFriend
+    }
+
+    fun getItems(userViewModel: UserViewModel): List<Any> {
+
         var username = account.getUsername()
-        user = userList.find { it.username == username }as UserDb
+        var password = account.getPassword()
+        user = userViewModel.findByName(username, password)
 
         var friendIdListString = user.friendId
-        friendIdListString = friendIdListString?.drop(1)
-        friendIdListString = friendIdListString?.dropLast(1)
 
         val friendIds = mutableListOf<Int>()
         var friendIdStrings = friendIdListString?.split(",")
@@ -32,29 +60,14 @@ class FriendController: AppCompatActivity() {
             friendIds += id.toInt()}
         friendIds.forEach {
                 friendId ->
-            var friend: UserDb = userDao.findById(friendId)
+            var friend: UserDb = userViewModel.getById(friendId)
             friends += friend
         }
 
         return friends
     }
 
-    fun addFriend(friend: UserDb){
-        user.friendId = user.friendId + ","+ friend.uid.toString()
-        userDao.updateUser(user)
-    }
-
-    fun getFriend(id: Int): UserDb{
-        getFriends()
-
-        var user: UserDb = friends.find { it.uid == id }as UserDb
-
-        return user
-    }
-
-    fun isFriend(friend: UserDb): Boolean{
-        var friendList = getFriends()
-        var isFriend: Boolean = friendList.contains(friend)
-        return isFriend
+    override fun getItems(): List<Any> {
+        TODO("Not yet implemented")
     }
 }

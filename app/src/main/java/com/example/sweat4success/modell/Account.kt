@@ -36,8 +36,8 @@ class Account {
         return password
     }
 
-    fun setPassword(){
-        password = password
+    fun setPassword(password2: String){
+        password = password2
     }
 
     fun getUserList(): List<UserDb> {

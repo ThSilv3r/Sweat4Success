@@ -22,7 +22,7 @@ data class UserDb(
     @ColumnInfo(name = "friendId") var friendId: String?,
     @ColumnInfo(name = "workoutId") var workoutId: String?,
     @ColumnInfo(name = "favoritesId") val favoritesId: String?,
-    @ColumnInfo(name = "recievedWorkouts") val recievedWorkouts: String?
+    @ColumnInfo(name = "recievedWorkouts") var recievedWorkouts: String?
     )
 
 
