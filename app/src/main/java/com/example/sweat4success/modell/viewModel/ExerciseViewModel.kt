@@ -18,31 +18,31 @@ class ExerciseViewModel (application: Application): AndroidViewModel(application
         readAllData = repository.readAllData
     }
 
-    public fun getAll(){
+    fun getAll(){
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAll()
         }
     }
 
-    public fun getById(id: Int): ExerciseDb{
+    fun getById(id: Int): ExerciseDb{
             return repository.findById(id)
     }
 
 
-    public fun addExercise(exercise: ExerciseDb){
+    fun addExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO){
             repository.addExercise(exercise)
         }
 
     }
 
-    public fun deleteExercise(exercise: ExerciseDb){
+    fun deleteExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(exercise)
         }
     }
 
-    public fun updateExercise(exercise: ExerciseDb){
+    fun updateExercise(exercise: ExerciseDb){
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateExercise(exercise)
         }

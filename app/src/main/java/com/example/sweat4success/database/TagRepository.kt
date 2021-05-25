@@ -6,19 +6,19 @@ class TagRepository (private val tagDao: TagDao){
 
     val readAllData: LiveData<List<TagDb>> = tagDao.readAllData()
 
-    public fun getAll(){
+    fun getAll(){
         tagDao.loadAll()
     }
 
-    public suspend fun addTag(tag:TagDb){
+    suspend fun addTag(tag:TagDb){
         tagDao.addTag(tag)
     }
 
-    public fun findById(id: Int): TagDb {
+    fun findById(id: Int): TagDb {
         return tagDao.findById(id)
     }
 
-    public fun delete(tag: TagDb){
+    fun delete(tag: TagDb){
         tagDao.delete(tag)
     }
 

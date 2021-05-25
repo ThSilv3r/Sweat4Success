@@ -9,11 +9,11 @@ class Tag {
         }
         var name: String = ""
 
-        public fun getTagList(): List<TagDb> {
+        fun getTagList(): List<TagDb> {
                 return Tag.tagList
         }
 
-        public fun setTagList(newTagList: List<TagDb>){
+        fun setTagList(newTagList: List<TagDb>){
                 tagList = newTagList
         }
 }

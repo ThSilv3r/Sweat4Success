@@ -11,27 +11,27 @@ class WorkoutController: AppCompatActivity() {
     private val workouts = mutableListOf<WorkoutDb>()
 
 
-    public fun getFavorites(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+    fun getFavorites(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
         var favoritesIdString = user.favoritesId
         var favorites = loadWorkouts(favoritesIdString.toString(), workoutViewModel)
 
         return favorites
     }
-    public fun getRecievedWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+    fun getRecievedWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
         var workoutsIdString = user.recievedWorkouts
         var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
         return workouts
     }
 
-    public fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
+    fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
 
         var workoutsIdString = user.workoutId
-        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel);
+        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
 
         return workouts
     }
 
-    public fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
+    fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
         workoutDao = WorkoutDataBase.getDatabase(application).workoutDao()
         val filterdWorkouts = mutableListOf<WorkoutDb>()
         var workouts = workoutDao.loadAll()

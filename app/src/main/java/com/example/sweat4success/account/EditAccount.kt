@@ -24,8 +24,8 @@ import kotlinx.android.synthetic.main.editaccount.drawer_layout
 
 
 class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private var account: Account = Account();
-    private lateinit var mUserViewModel: UserViewModel;
+    private var account: Account = Account()
+    private lateinit var mUserViewModel: UserViewModel
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
@@ -35,23 +35,23 @@ class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.editaccount)
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java);
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         this.setUITexts()
 
         deleteAccountButton.setOnClickListener {
-            startActivity(Intent(this, UserController::class.java));
+            startActivity(Intent(this, UserController::class.java))
         }
 
         editaccount.setOnClickListener {
-            var userList = account.getUserList();
-            var username: String = account.getUsername();
-            var user = userList.find{it.username == username}as UserDb;
+            var userList = account.getUserList()
+            var username: String = account.getUsername()
+            var user = userList.find{it.username == username}as UserDb
             updateUser(user)
         }
 
         logoutButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java));
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         toolbar = findViewById(R.id.toolbar)
@@ -75,15 +75,15 @@ class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     private fun setUITexts(){
-        var username: String = account.getUsername();
+        var username: String = account.getUsername()
         var password: String = account.getPassword()
-        var user = mUserViewModel.findByName(username, password);
+        var user = mUserViewModel.findByName(username, password)
 
-        var age = user.age.toString();
-        var height = user.height.toString();
-        var biceps = user.bicepsWidth.toString();
-        var weight = user.weight.toString();
-        var stomache = user.stomacheWidth.toString();
+        var age = user.age.toString()
+        var height = user.height.toString()
+        var biceps = user.bicepsWidth.toString()
+        var weight = user.weight.toString()
+        var stomache = user.stomacheWidth.toString()
         dateOfBirthTextBoxeditacc.setText(age as CharSequence)
         userNameTextBoxeditacc.setText(user.username as CharSequence)
         heightTextBoxeditacc.setText(height as CharSequence)
@@ -107,7 +107,7 @@ class EditAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         user.stomacheWidth = waist
 
         mUserViewModel.updateUser(user)
-        startActivity(Intent(this, EditAccount::class.java));
+        startActivity(Intent(this, EditAccount::class.java))
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

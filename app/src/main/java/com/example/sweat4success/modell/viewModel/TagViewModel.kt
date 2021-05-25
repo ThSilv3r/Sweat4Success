@@ -18,24 +18,24 @@ class TagViewModel(application: Application): AndroidViewModel(application) {
         readAllData = repository.readAllData
     }
 
-    public fun getAll(){
+    fun getAll(){
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAll()
         }
     }
 
-    public fun getById(id: Int): TagDb{
+    fun getById(id: Int): TagDb{
             return repository.findById(id)
     }
 
-    public fun addTag(tag: TagDb){
+    fun addTag(tag: TagDb){
         viewModelScope.launch(Dispatchers.IO){
             repository.addTag(tag)
         }
 
     }
 
-    public fun deleteTag(tag: TagDb){
+    fun deleteTag(tag: TagDb){
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(tag)
         }

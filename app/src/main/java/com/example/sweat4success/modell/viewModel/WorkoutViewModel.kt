@@ -19,45 +19,45 @@ class WorkoutViewModel(application: Application):AndroidViewModel(application) {
         readAllData = repository.readAllData
     }
 
-    public fun getAll(){
+    fun getAll(){
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAll()
         }
     }
 
 
-    public fun addWorkout(workout: WorkoutDb){
+    fun addWorkout(workout: WorkoutDb){
         viewModelScope.launch(Dispatchers.IO){
             repository.addWorkout(workout)
         }
 
     }
 
-    public fun findByName(title: String): WorkoutDb {
+    fun findByName(title: String): WorkoutDb {
         //viewModelScope.launch(Dispatchers.IO) {
         return repository.findByName(title)
         //}
     }
 
-    public fun findByTagId(tagId: Int): List<WorkoutDb> {
+    fun findByTagId(tagId: Int): List<WorkoutDb> {
         //viewModelScope.launch(Dispatchers.IO) {
         return repository.findByTag(tagId)
         //}
     }
 
-    public fun findById(id: Int): WorkoutDb {
+    fun findById(id: Int): WorkoutDb {
         //viewModelScope.launch(Dispatchers.IO) {
         return repository.findById(id)
         //}
     }
 
-    public fun deleteWorkout(workout: WorkoutDb){
+    fun deleteWorkout(workout: WorkoutDb){
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(workout)
         }
     }
 
-    public fun updateWorkout(workout: WorkoutDb){
+    fun updateWorkout(workout: WorkoutDb){
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateWorkout(workout)
         }

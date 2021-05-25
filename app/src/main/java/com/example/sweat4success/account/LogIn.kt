@@ -1,4 +1,4 @@
-package com.example.sweat4success.account;
+package com.example.sweat4success.account
 
 import android.content.Intent
 import android.os.Bundle
@@ -25,26 +25,26 @@ import kotlinx.android.synthetic.main.login.toolbar
 import java.lang.Exception
 
 
-public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
-    private lateinit var mUserViewModel: UserViewModel;
-    private var account: Account = Account();
+class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+    private lateinit var mUserViewModel: UserViewModel
+    private var account: Account = Account()
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.login)
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         button.setOnClickListener {
-            startActivity(Intent(this, CreateAccount::class.java));
+            startActivity(Intent(this, CreateAccount::class.java))
         }
 
         logInButton.setOnClickListener {
-            checkDataInDatabase();
+            checkDataInDatabase()
         }
 
         toolbar = findViewById(R.id.toolbar)
@@ -67,18 +67,18 @@ public class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun checkDataInDatabase() {
-        var username: String = userNameTextBox.text.toString();
-        var password: String = passwordTextBox.text.toString();
-        account.setUsername(username);
+        var username: String = userNameTextBox.text.toString()
+        var password: String = passwordTextBox.text.toString()
+        account.setUsername(username)
         account.setPassword(password)
 
             try {
                 var user = mUserViewModel.findByName(username, password)
 
-                    startActivity(Intent(this, EditAccount::class.java));
+                    startActivity(Intent(this, EditAccount::class.java))
 
             }catch (e: Exception){
-                Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show()
             }
 
     }

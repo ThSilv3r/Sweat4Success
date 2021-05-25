@@ -14,21 +14,21 @@ class FriendController: AppCompatActivity(), DataController {
     private val friends = mutableListOf<UserDb>()
     private lateinit var userDao: UserDao
 
-    public fun addFriend(friend: UserDb, userViewModel: UserViewModel){
+    fun addFriend(friend: UserDb, userViewModel: UserViewModel){
         user.friendId = user.friendId + ","+ friend.uid.toString()
         userViewModel.updateUser(user)
     }
 
-    public fun getFriend(id: Int, userViewModel: UserViewModel): UserDb{
+    fun getFriend(id: Int, userViewModel: UserViewModel): UserDb{
         this.getItems(userViewModel)
 
         var user: UserDb = friends.find { it.uid == id }as UserDb
 
         return user
     }
-    public fun sendWorkout(workout: WorkoutDb, friendId: Int, userViewModel: UserViewModel, workoutViewModel: WorkoutViewModel){
-        var friend = userViewModel.getById(friendId);
-        val workoutController = WorkoutController();
+    fun sendWorkout(workout: WorkoutDb, friendId: Int, userViewModel: UserViewModel, workoutViewModel: WorkoutViewModel){
+        var friend = userViewModel.getById(friendId)
+        val workoutController = WorkoutController()
         var recievedWorkouts = workoutController.getRecievedWorkouts(friend, workoutViewModel)
         recievedWorkouts += workout
         recievedWorkouts.forEach{
@@ -38,13 +38,13 @@ class FriendController: AppCompatActivity(), DataController {
         userViewModel.updateUser(friend)
     }
 
-    public fun isFriend(friend: UserDb, userViewModel: UserViewModel): Boolean{
+    fun isFriend(friend: UserDb, userViewModel: UserViewModel): Boolean{
         var friendList = this.getItems(userViewModel)
         var isFriend: Boolean = friendList.contains(friend)
         return isFriend
     }
 
-    public fun getItems(userViewModel: UserViewModel): List<Any> {
+    fun getItems(userViewModel: UserViewModel): List<Any> {
 
         var username = account.getUsername()
         var password = account.getPassword()

@@ -5,31 +5,31 @@ import androidx.lifecycle.LiveData
 class WorkoutRepository(private val workoutDao: WorkoutDao) {
     val readAllData: LiveData<List<WorkoutDb>> = workoutDao.readAllData()
 
-    public fun getAll(){
+    fun getAll(){
         workoutDao.loadAll()
     }
 
-    public suspend fun addWorkout(workout:WorkoutDb){
+    suspend fun addWorkout(workout:WorkoutDb){
         workoutDao.addWorkout(workout)
     }
 
-    public fun findByName(title: String): WorkoutDb{
+    fun findByName(title: String): WorkoutDb{
         return workoutDao.findByName(title)
     }
 
-    public fun findByTag(tagId: Int): List<WorkoutDb>{
+    fun findByTag(tagId: Int): List<WorkoutDb>{
         return workoutDao.findByTag(tagId)
     }
 
-    public fun findById(id: Int): WorkoutDb{
+    fun findById(id: Int): WorkoutDb{
         return workoutDao.findById(id)
     }
 
-    public fun delete(workout: WorkoutDb){
+    fun delete(workout: WorkoutDb){
         workoutDao.delete(workout)
     }
 
-    public fun updateWorkout(workout: WorkoutDb){
+    fun updateWorkout(workout: WorkoutDb){
         workoutDao.updateWorkout(workout)
     }
 }

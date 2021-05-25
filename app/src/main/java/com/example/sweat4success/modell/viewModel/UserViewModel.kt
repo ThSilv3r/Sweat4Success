@@ -22,34 +22,34 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         readAllData = repository.readAllData
     }
 
-    public fun getAll(): List<UserDb> {
+    fun getAll(): List<UserDb> {
         return repository.getAll()
 
     }
 
 
-    public fun addUser(user: UserDb) {
+    fun addUser(user: UserDb) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(user)
         }
 
     }
 
-    public fun findByName(username: String, password: String): UserDb {
+    fun findByName(username: String, password: String): UserDb {
         return repository.findByName(username, password)
     }
 
-    public fun getById(id: Int): UserDb {
+    fun getById(id: Int): UserDb {
         return repository.findById(id)
     }
 
-    public fun deleteUser(user: UserDb) {
+    fun deleteUser(user: UserDb) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(user)
         }
     }
 
-    public fun updateUser(user: UserDb) {
+    fun updateUser(user: UserDb) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateUser(user)
         }
