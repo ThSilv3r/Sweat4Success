@@ -66,12 +66,6 @@ public class DeleteAccount: AppCompatActivity(), NavigationView.OnNavigationItem
     }
     private fun getUser(){
         val userDao = AppDatabase.getDatabase(application).userDao();
-
-        var username: String = "";
-        var account = account;
-
-        username = account.getUsername();
-
         userList  = userDao.loadAll();
     }
 

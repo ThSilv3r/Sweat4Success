@@ -152,7 +152,6 @@ class AddWorkout: AppCompatActivity() {
             try {
                 mWorkoutViewModel.addWorkout(workout)
                 workout = mWorkoutViewModel.findByName(workout.title.toString())
-                user.uid = user.uid
                 user.workoutId  = user.workoutId + "," + workout.uid
                 mUserViewModel.updateUser(user)
             }catch (e: IOException){
