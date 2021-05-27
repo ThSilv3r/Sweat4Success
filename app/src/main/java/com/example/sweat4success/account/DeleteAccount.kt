@@ -23,13 +23,15 @@ import kotlinx.android.synthetic.main.delete.*
 import kotlinx.android.synthetic.main.delete.drawer_layout
 
 
-class UserController: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
-    private lateinit var mUserViewModel: UserViewModel
-    private var userList = listOf<UserDb>()
-    private var account: Account = Account()
+public class DeleteAccount: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+    private lateinit var mUserViewModel: UserViewModel;
+    private var userList = listOf<UserDb>();
+    private var account: Account = Account();
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,25 +65,26 @@ class UserController: AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
     }
     private fun getUser(){
-        val userDao = AppDatabase.getDatabase(application).userDao()
-        userList  = userDao.loadAll()
+        val userDao = AppDatabase.getDatabase(application).userDao();
+        userList  = userDao.loadAll();
     }
 
     private fun deleteDataFromDatabase(userList: List<UserDb>) {
-        var username: String = usernameTextBoxD.text.toString()
-        var password: String = passwordTextBoxD.text.toString()
+        var username: String = usernameTextBoxD.text.toString();
+        var password: String = passwordTextBoxD.text.toString();
+        var age: Int;
 
 
         if(inputCheck(username, password)){
 
-            var user: UserDb = userList.find { it.username == username && it.password ==  password} as UserDb
-            mUserViewModel.deleteUser(user)
+            var user: UserDb = userList.find { it.username == username && it.password ==  password} as UserDb;
+            mUserViewModel.deleteUser(user);
 
 
-            startActivity(Intent(this, MainActivity::class.java))
-            Toast.makeText(this, "Succesfully deleted account!", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, MainActivity::class.java));
+            Toast.makeText(this, "Succesfully deleted account!", Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show();
         }
     }
     private fun inputCheck(username: String, password: String): Boolean {
