@@ -21,14 +21,14 @@ Activity Diagram
         Then The <addFriend> Button will change text
         And The user is  added to the friend list
 
-    Scenario: Remove Friend
-      Given The user started the app
-      And The user is a registerd user
-      And The other user is a friend
-      When The user opens <userProfile>
-      And The user clicks on <addFriend>
-      Then The <addFriend> Button will change text
-      And The user is deleted from the friend list
+        Scenario: Remove Friend
+          Given The user started the app
+          And The user is a registerd user
+          And The other user is a friend
+          When The user opens <userProfile>
+          And The user clicks on <addFriend>
+          Then The <addFriend> Button will change text
+          And The user is deleted from the friend list
 
 ### 2.3 Alternative Flows
 (n/a)
