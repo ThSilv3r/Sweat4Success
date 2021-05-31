@@ -44,8 +44,3 @@ jobs:
     - name: CodeCov report deploy
       run: bash <(curl -s https://codecov.io/bash)
       
-    - name: Build and analyze sonarqube
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: ./gradlew build sonarqube --info 
