@@ -50,6 +50,13 @@
 <td>Nils, Marina, Jonas</td>
 <td></td>
 </tr>
+  <tr>
+<td>&lt;18/May/2021&gt;</td>
+<td>&lt;1.0&gt;</td>
+<td>Updaetd</td>
+<td>Nils</td>
+<td></td>
+</tr>
 <tr>
 <td></td>
 <td></td>
@@ -97,7 +104,7 @@ UC - Use Case</p>
 <td>Sweat for Success</td>
 </tr>
 <tr>
-<td><a href="https://github.com/ThSilv3r/SweatForSuccess">GitHub</a></td>
+<td><a href="https://github.com/ThSilv3r/Sweat4Success">GitHub</a></td>
 <td>Sweat for Success</td>
 </tr>
 </tbody>
@@ -121,7 +128,7 @@ which muscles you want to train. So you won’t lose your motivation you can loo
 <tbody>
 <tr>
 <td>Backend</td>
-<td>Kotlin, Datenbank (TBD)</td>
+<td>Kotlin, Room</td>
 </tr>
 <tr>
 <td>Frontend</td>
@@ -150,7 +157,7 @@ which muscles you want to train. So you won’t lose your motivation you can loo
 <em>3.1.1 Posting Workouts</em><br>
 This allows you to post your own workout plan<br>
 <em>3.1.2 Posting Results</em><br>
-This allows you to share your result for a specific workout<br>
+This allows you to share your result for a specific workout. This function is not part of the original deployment and will be added later<br>
 <em>3.1.3 Creating an Account</em><br>
 User can create their own account and give personal information that can be used for tracking and suggestions.<br>
 <em>3.1.4 Logging in</em><br>
@@ -161,6 +168,8 @@ This allows to terminate the app<br>
 Provides a basic overview over recent workouts and shows progress. Further you can select a workout from this view<br>
 <em>3.1.7. Finding Workouts</em><br>
 See workouts from different people and get inspired</p>
+<em>3.1.7. Share Workouts</em><br>
+Users are able to share workouts they like with their friends. This creates an incentive to make friends and also work together to reach goals</p>
 <h3 id="usability">3.2 Usability</h3>
 <p>The idea is to create a basic, intuitive and simple User Interface that allows users to use the app without much explanation.<br>
 <em>3.2.1 Usability Requirement One</em> TBD</p>
