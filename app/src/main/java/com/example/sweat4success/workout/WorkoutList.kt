@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
+import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.controller.WorkoutController
 import com.example.sweat4success.database.WorkoutDb
 import com.example.sweat4success.friends.Userprofile
@@ -38,9 +39,8 @@ class WorkoutList: AppCompatActivity() {
         this.loadWorkouts()
         this.fillUI()
 
-        workoutSearchButton.setOnClickListener {
-            val name: String = searchFriendName.text.toString()
-            searchWorkout(name)
+        createWorkoutButton.setOnClickListener {
+            startActivity(Intent(this, AddWorkout::class.java))
         }
     }
 

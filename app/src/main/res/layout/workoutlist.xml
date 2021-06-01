@@ -14,27 +14,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/searchWorkoutName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#FFFFFF"
-        android:textColorLink="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/workoutSearchButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
     <Button
-        android:id="@+id/workoutSearchButton"
+        android:id="@+id/createWorkoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
-        app:layout_constraintStart_toEndOf="@+id/searchWorkoutName"
+        android:layout_marginEnd="10dp"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <LinearLayout
@@ -44,7 +30,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchWorkoutName">
+        app:layout_constraintTop_toBottomOf="@+id/createWorkoutButton">
 
     </LinearLayout>
 
