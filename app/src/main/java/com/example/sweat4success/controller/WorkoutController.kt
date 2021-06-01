@@ -31,8 +31,7 @@ class WorkoutController: AppCompatActivity() {
         return workouts
     }
 
-    fun getWorkoutsByTag(workoutViewModel: WorkoutViewModel, tagId:Int): List<WorkoutDb>{
-        workoutDao = WorkoutDataBase.getDatabase(application).workoutDao()
+    fun getWorkoutsByTag(workoutDao: WorkoutDao, tagId:Int): List<WorkoutDb>{
         val filterdWorkouts = mutableListOf<WorkoutDb>()
         var workouts = workoutDao.loadAll()
         workouts.forEach{

@@ -15,6 +15,7 @@ import com.example.sweat4success.R
 import com.example.sweat4success.Workout_Categories
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.friends.FriendList
 import com.example.sweat4success.modell.Account
 import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.google.android.material.navigation.NavigationView
@@ -95,13 +96,17 @@ public class DeleteAccount: AppCompatActivity(), NavigationView.OnNavigationItem
         when(item.itemId){
             R.id.nav_profile -> {
                 Toast.makeText(baseContext, "Profile", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, EditAccount::class.java))
                 //startActivity(Intent(this, ContactsContract.Profile::class.java))
             }
-            R.id.nav_friends -> Toast.makeText(
-                baseContext,
-                "Friends",
-                Toast.LENGTH_SHORT
-            ).show()
+            R.id.nav_friends ->{
+                startActivity(Intent(this, FriendList::class.java))
+                Toast.makeText(
+                    baseContext,
+                    "Friends",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             R.id.nav_login -> {
                 startActivity(Intent(this, LogIn::class.java))
                 Toast.makeText(

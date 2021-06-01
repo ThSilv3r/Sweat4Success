@@ -10,6 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.sweat4success.R
 import com.example.sweat4success.account.CreateAccount
 import com.example.sweat4success.controller.WorkoutController
+import com.example.sweat4success.database.AppDatabase
+import com.example.sweat4success.database.WorkoutDao
+import com.example.sweat4success.database.WorkoutDataBase
 import com.example.sweat4success.database.WorkoutDb
 import com.example.sweat4success.friends.Userprofile
 import com.example.sweat4success.modell.Workouts
@@ -27,11 +30,13 @@ class WorkoutList: AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
     private var tagId: Int = 0;
     private var workoutModell = Workouts();
+    private lateinit var workoutDao: WorkoutDao
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.friendlist)
+        setContentView(R.layout.workoutlist)
+        workoutDao = WorkoutDataBase.getDatabase(application).workoutDao()
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         workoutViewModel = ViewModelProvider(this).get(WorkoutViewModel::class.java)
         tagId = workoutModell.getWorkoutTag()
@@ -45,7 +50,7 @@ class WorkoutList: AppCompatActivity() {
     }
 
     private fun loadWorkouts(){
-        workouts = workoutController.getWorkoutsByTag(workoutViewModel, tagId)as MutableList<WorkoutDb>
+        workouts = workoutController.getWorkoutsByTag(workoutDao, tagId)as MutableList<WorkoutDb>
     }
 
     private fun fillUI(){
@@ -66,7 +71,7 @@ class WorkoutList: AppCompatActivity() {
 
                 workoutTitle.setOnClickListener{
                     workoutModell.setWorkoutname(workout.title.toString())
-                    startActivity(Intent(this, Userprofile::class.java))
+                    startActivity(Intent(this, ViewWorkout::class.java))
                 }
                 workoutListLayout.addView(workoutTitle)
                 workoutTextViews += workoutTitle

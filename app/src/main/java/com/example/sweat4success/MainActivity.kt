@@ -121,15 +121,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         var userList = listOf<UserDb>()
         var exerciseList = listOf<ExerciseDb>()
+        exerciseList = exerciseDao.loadAll()
         var taglist = listOf<TagDb>()
         taglist = tagdao.loadAll()
 
         if (taglist.isEmpty()) {
             createTag()
         }
-
-        var exercise = ExerciseDb(0, "Liegestütze", "", "", 0)
-        exerciseViewModel.addExercise(exercise)
+        if(exerciseList.isEmpty()){
+            createExercises()
+        }
 
         taglist = tagdao.loadAll()
         tag1.setTagList(taglist)
@@ -140,6 +141,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         userList = userDao.loadAll()
         account.setUserList(userList)
 
+    }
+    private fun createExercises(){
+        var exercise = ExerciseDb(0, "Liegestütze", "", "", 0)
+        exerciseViewModel.addExercise(exercise)
     }
 
     private fun createTag() {
