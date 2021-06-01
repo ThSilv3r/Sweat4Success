@@ -8,7 +8,7 @@ This use case describes the Friend System (CRUD).
 (tbd)
 ## 2. Flow of Events
 ### 2.1 Basic Flow
-![](https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/pictures/UCFriendSystem.PNG)
+![](https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/pictures/FriendSystemDiagramm.drawio)
 Activity Diagram
 ### 2.2 Narative
     Feature: Friend System
