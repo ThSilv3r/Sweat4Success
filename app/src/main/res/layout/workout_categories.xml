@@ -8,7 +8,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Workout_Categories"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    android:background="@drawable/grey">
 
 
     <ScrollView

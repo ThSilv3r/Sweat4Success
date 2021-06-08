@@ -15,10 +15,13 @@ import com.example.sweat4success.R
 import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
+import com.example.sweat4success.friends.FriendList
+import com.example.sweat4success.friends.Userprofile
 import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.login.*
 import java.io.IOException
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.workout.ShareWorkout
 import com.google.android.material.internal.NavigationMenuItemView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -91,13 +94,16 @@ class Workout_Categories:AppCompatActivity(), NavigationView.OnNavigationItemSel
         when(item.itemId){
             R.id.nav_profile -> {
                 Toast.makeText(baseContext, "Profile", Toast.LENGTH_SHORT).show()
-                //startActivity(Intent(this, ContactsContract.Profile::class.java))
+                startActivity(Intent(this, Userprofile::class.java))
             }
-            R.id.nav_friends -> Toast.makeText(
+            R.id.nav_friends ->{
+                Toast.makeText(
                 baseContext,
                 "Friends",
                 Toast.LENGTH_SHORT
             ).show()
+                startActivity(Intent(this, FriendList::class.java))
+            }
             R.id.nav_login -> {
                 startActivity(Intent(this, LogIn::class.java))
                 Toast.makeText(
@@ -114,6 +120,15 @@ class Workout_Categories:AppCompatActivity(), NavigationView.OnNavigationItemSel
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            R.id.nav_share -> {
+                startActivity(Intent(this, ShareWorkout::class.java))
+                Toast.makeText(
+                    baseContext,
+                    "Share Workout",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
 
         }
         drawerLayout.closeDrawer(GravityCompat.START)
