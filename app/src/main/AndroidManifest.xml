@@ -25,6 +25,8 @@
         <activity android:name=".controller.WorkoutController" />
         <activity android:name=".friends.FriendList" />
         <activity android:name=".account.DeleteAccount" />
+        <activity android:name=".workout.WorkoutList" />
+        <activity android:name=".Workout_Categories" />
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ Feature: Friend System
     Then The <addFriend> Button will change text
     And The user is  added to the friend list
 
-  Scenario: Add Friend
+  Scenario: Remove Friend
     Given The user started the app
     And The user is a registerd user
     And The other user is a friend

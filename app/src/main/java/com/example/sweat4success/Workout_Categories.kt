@@ -19,6 +19,8 @@ import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.login.*
 import java.io.IOException
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Workouts
+import com.example.sweat4success.workout.WorkoutList
 import com.google.android.material.internal.NavigationMenuItemView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,6 +31,7 @@ class Workout_Categories:AppCompatActivity(), NavigationView.OnNavigationItemSel
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
+    private var workoutModel =  Workouts()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,24 +51,36 @@ class Workout_Categories:AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         // handle each of the cards with the OnClickListener
         armsCard.setOnClickListener {
+            workoutModel.setWorkoutTag(1)
             Toast.makeText(this, "Arms", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
             //startActivity(Intent(this, arms_Card::class.java))
         }
         stretchingCard.setOnClickListener {
+            workoutModel.setWorkoutTag(3)
             Toast.makeText(this, "Stretching", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
             //startActivity(Intent(this, stretching_Card::class.java))
         }
         cardioCard.setOnClickListener {
+            workoutModel.setWorkoutTag(2)
             Toast.makeText(this, "Cardio", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
         }
         absCard.setOnClickListener {
+            workoutModel.setWorkoutTag(4)
             Toast.makeText(this, "Abs", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
         }
         weightCard.setOnClickListener {
+            workoutModel.setWorkoutTag(6)
             Toast.makeText(this, "Weights", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
         }
         legsCard.setOnClickListener {
+            workoutModel.setWorkoutTag(5)
             Toast.makeText(this, "Legs", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
         }
 
         toolbar = findViewById(R.id.toolbar)
