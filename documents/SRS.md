@@ -195,7 +195,7 @@ All code will be written in Kotlin and is supported by Android Studio keeping th
 <p>Not applicable</p>
 <h3 id="interfaces">3.9 Interfaces</h3>
 <p><br>
-<p><em>3.9.1 User Interfaces</em><br>
+<em>3.9.1 User Interfaces</em><br>
 • Login - this page is used to log in<br>
 • Register - provides a registration form<br>
 • Overwiew of personal sessions - shows all the sessions a user participates in • Profile - makes it possible to post information about yourself, might provide    	messaging feature, also shows additional information about users (for   example: Language, country, favorite games, etc.)<br></p>
