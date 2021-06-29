@@ -170,17 +170,17 @@ See workouts from different people and get inspired</p>
 <p>Users are able to share workouts they like with their friends. This creates an incentive to make friends and also work together to reach goals</p>
 <h3 id="usability">3.2 Usability</h3>
 <p>The idea is to create a basic, intuitive and simple User Interface that allows users to use the app without much explanation. User Interface should encourage users to start their first workout right away and continue using the app. Ease of access should help the user stay motivated. The app shall never be a reason for a user to skip a workout or stop working out entirely.<br></p>
-<p><em>3.2.1 No introduction needed</em> Users are able to install the app and start working out right away without have to learn how to use the app</p>
-<em>3.2.2 Familiar look</em> The design of the app is similar to other apps on the market to keep it intuitive</p>    
+<em>3.2.1 No introduction needed</em><p> Users are able to install the app and start working out right away without have to learn how to use the app</p>
+<em>3.2.2 Familiar look</em><p> The design of the app is similar to other apps on the market to keep it intuitive</p>    
 <h3 id="reliability">3.3 Reliability</h3>
 <p>Our app shall be downloadable and useable whereever there is an internet connection. Our goal is to minimize downtimes so that the app neve discourages anyone from working out</p>
 <h3 id="performance">3.4 Performance</h3>
 <p><em>3.4.1 Capacity</em><br>
-The system should be able to manage thousands of requests. Also it should be possible to register as many users as necessary.<br>
+<p>The system should be able to manage thousands of requests. Also it should be possible to register as many users as necessary.<br></p>
 <em>3.4.2 Storage</em><br>
-Smartphones don’t provide much storage. Therefore, we are aiming to keep the needed storage as small as possible.<br>
+<p>Smartphones don’t provide much storage. Therefore, we are aiming to keep the needed storage as small as possible.<br></p>
 <em>3.4.3 App perfomance / Response time</em><br>
-To provide the best App perfomance we aim to keep the response time as low as possible. This will make the user experience much better.</p>
+<p>To provide the best App perfomance we aim to keep the response time as low as possible. This will make the user experience much better.</p>
 <h3 id="supportability">3.5 Supportability</h3>
 <p><em>3.5.1 Coding Standards</em><br>
 We are going to write the code by using the most common clean code standards. For example, we will name our variables and methods by their functionalities. This will keep the code easy to read by everyone and make further development much easier.<br>
