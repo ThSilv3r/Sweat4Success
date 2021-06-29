@@ -29,7 +29,7 @@
     <div class="stackedit__html">
       <h1 id="sweat-for-success">Sweat for Success</h1>
 <h1 id="software-requirements-specification-for-fitness-app">Software Requirements Specification For Fitness App</h1>
-<p>Version &lt;1.0&gt;</p>
+<p>Version &lt;2&gt;</p>
 <h1 id="revision-history">Revision History</h1>
 
 <table>
@@ -175,7 +175,7 @@ See workouts from different people and get inspired</p>
 <h3 id="reliability">3.3 Reliability</h3>
 <p>Our app shall be downloadable and useable whereever there is an internet connection. Our goal is to minimize downtimes so that the app neve discourages anyone from working out</p>
 <h3 id="performance">3.4 Performance</h3>
-<p><em>3.4.1 Capacity</em><br>
+<em>3.4.1 Capacity</em><br>
 <p>The system should be able to manage thousands of requests. Also it should be possible to register as many users as necessary.<br></p>
 <em>3.4.2 Storage</em><br>
 <p>Smartphones don’t provide much storage. Therefore, we are aiming to keep the needed storage as small as possible.<br></p>
@@ -184,7 +184,7 @@ See workouts from different people and get inspired</p>
 <h3 id="supportability">3.5 Supportability</h3>
 <p><em>3.5.1 Coding Standards</em><br>
 We are going to write the code by using the most common clean code standards. For example, we will name our variables and methods by their functionalities. This will keep the code easy to read by everyone and make further development much easier.<br>
-<em>3.5.2 Testing Strategy</em><br>
+<p><em>3.5.2 Testing Strategy</em><br>
 The application will have a high test coverage and all important functionalities and edge cases should be tested. Further mistakes in the implementation will be discovered instantly and it will be easy to locate the error.</p>
 <h3 id="design-constraints">3.6 Design Constraints</h3>
 <p>We want a simple design, the goal is to keep the app intuitive and oriented on the different functionalities. App design should be simple, yet attractive enough to make users want to use the app.
@@ -195,12 +195,12 @@ All code will be written in Kotlin and is supported by Android Studio keeping th
 <p>Not applicable</p>
 <h3 id="interfaces">3.9 Interfaces</h3>
 <p><br>
-<em>3.9.1 User Interfaces</em><br>
+<p><em>3.9.1 User Interfaces</em><br>
 • Login - this page is used to log in<br>
 • Register - provides a registration form<br>
-• Overwiew of personal sessions - shows all the sessions a user participates in • Profile - makes it possible to post information about yourself, might provide    	messaging feature, also shows additional information about users (for   example: Language, country, favorite games, etc.)<br>
+• Overwiew of personal sessions - shows all the sessions a user participates in • Profile - makes it possible to post information about yourself, might provide    	messaging feature, also shows additional information about users (for   example: Language, country, favorite games, etc.)<br></p>
 <em>3.9.2 Hardware Interfaces</em><br>
-N/A<br>
+Not applicable<br>
 <em>3.9.3 Software Interfaces</em><br>
 The app will be runnable on Android 9 and higher. iOS won’t be featured at the moment.<br>
 <em>3.9.4 Communications Interfaces</em><br>
