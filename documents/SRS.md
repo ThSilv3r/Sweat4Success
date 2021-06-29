@@ -199,9 +199,9 @@ All code will be written in Kotlin and is supported by Android Studio keeping th
 • Register - provides a registration form<br>
 • Overwiew of personal sessions - shows all the sessions a user participates in • Profile - makes it possible to post information about yourself, might provide    	messaging feature, also shows additional information about users (for   example: Language, country, favorite games, etc.)<br></p>
 <em>3.9.2 Hardware Interfaces</em><br>
-Not applicable<br>
+<p>Not applicable<br></p>
 <em>3.9.3 Software Interfaces</em><br>
-The app will be runnable on Android 9 and higher. iOS won’t be featured at the moment.<br>
+<p>The app will be runnable on Android 9 and higher. iOS won’t be featured at the moment.<br></p>
 <em>3.9.4 Communications Interfaces</em><br>
 Not applicable</p>
 <h3 id="licensing-requirements">3.10 Licensing Requirements</h3>
