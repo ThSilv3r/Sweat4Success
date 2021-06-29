@@ -10,12 +10,16 @@ This use case describes the creation of a Workout.(CRUD)
 ### 2.1 Basic Flow
 ![Activity Diagram] (https://github.com/ThSilv3r/SweatForSuccess/blob/Jonas/Pictures/UCCreateWorkout.png)
 ### 2.2 Narative
-    Scenario: Create a workout
-    Given: The user is logged in
-    And: The user has opened “Create workout”
-    And: The user enters the needed data in the right places
-    And: The user clicks on the save button
-    Then: “Create workout” should close
+    Scenario: Create workout
+      Given The user started the app
+      And The user is a registerd user
+      When The user opens <createWorkout>
+      And The user added an description <description> and the input is correct
+      And The user choose exercises <exercises>
+      And The user choose categories <category>
+      And The user clicks on save <saveButton>
+      Then The <createWorkout>-page is closed
+      And The workout is saved
 
 ### 2.3 Alternative Flows
 (n/a)

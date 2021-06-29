@@ -1,4 +1,4 @@
-package com.example.sweat4success.account
+package com.example.sweat4success
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,44 +7,80 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
+import com.example.sweat4success.BaseActivity
 import com.example.sweat4success.R
-import com.example.sweat4success.Workout_Categories
+import com.example.sweat4success.account.LogIn
 import com.example.sweat4success.database.AppDatabase
 import com.example.sweat4success.database.UserDb
 import com.example.sweat4success.modell.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.login.*
 import java.io.IOException
 import com.example.sweat4success.modell.Account
+import com.example.sweat4success.modell.Workouts
+import com.example.sweat4success.workout.WorkoutList
+import com.google.android.material.internal.NavigationMenuItemView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.drawer_layout
-import kotlinx.android.synthetic.main.login.toolbar
-import java.lang.Exception
 
+class Workout_Categories:AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
-    private lateinit var mUserViewModel: UserViewModel
-    private var account: Account = Account()
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView : NavigationView
-
+    private var workoutModel =  Workouts()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        setContentView(R.layout.workout_categories)
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        button.setOnClickListener {
-            startActivity(Intent(this, CreateAccount::class.java))
+        // register all the card views with their appropriate IDs
+        val armsCard: CardView = findViewById(R.id.armsCard)
+        val stretchingCard: CardView = findViewById(R.id.stretchingCard)
+        val cardioCard: CardView = findViewById(R.id.cardioCard)
+        val absCard: CardView = findViewById(R.id.absCard)
+        val weightCard: CardView = findViewById(R.id.weightsCard)
+        val legsCard: CardView = findViewById(R.id.legsCard)
+
+
+
+
+        // handle each of the cards with the OnClickListener
+        armsCard.setOnClickListener {
+            workoutModel.setWorkoutTag(1)
+            Toast.makeText(this, "Arms", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
+            //startActivity(Intent(this, arms_Card::class.java))
         }
-
-        logInButton.setOnClickListener {
-            checkDataInDatabase()
+        stretchingCard.setOnClickListener {
+            workoutModel.setWorkoutTag(3)
+            Toast.makeText(this, "Stretching", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
+            //startActivity(Intent(this, stretching_Card::class.java))
+        }
+        cardioCard.setOnClickListener {
+            workoutModel.setWorkoutTag(2)
+            Toast.makeText(this, "Cardio", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
+        }
+        absCard.setOnClickListener {
+            workoutModel.setWorkoutTag(4)
+            Toast.makeText(this, "Abs", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
+        }
+        weightCard.setOnClickListener {
+            workoutModel.setWorkoutTag(6)
+            Toast.makeText(this, "Weights", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
+        }
+        legsCard.setOnClickListener {
+            workoutModel.setWorkoutTag(5)
+            Toast.makeText(this, "Legs", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WorkoutList::class.java))
         }
 
         toolbar = findViewById(R.id.toolbar)
@@ -64,23 +100,6 @@ class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
 
         navView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener(this)
-    }
-
-    private fun checkDataInDatabase() {
-        var username: String = userNameTextBox.text.toString()
-        var password: String = passwordTextBox.text.toString()
-        account.setUsername(username)
-        account.setPassword(password)
-
-            try {
-                var user = mUserViewModel.findByName(username, password)
-
-                    startActivity(Intent(this, EditAccount::class.java))
-
-            }catch (e: Exception){
-                Toast.makeText(this, "Login failed, please enter the right password and username!", Toast.LENGTH_LONG).show()
-            }
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -124,5 +143,4 @@ class LogIn : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListen
             super.onBackPressed()
         }
     }
-
 }

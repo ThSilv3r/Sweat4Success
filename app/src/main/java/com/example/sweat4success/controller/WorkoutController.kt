@@ -1,14 +1,8 @@
 package com.example.sweat4success.controller
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.sweat4success.R
-import com.example.sweat4success.database.UserDb
-import com.example.sweat4success.database.WorkoutDao
-import com.example.sweat4success.database.WorkoutDb
+import com.example.sweat4success.database.*
 import com.example.sweat4success.modell.Account
-import com.example.sweat4success.modell.viewModel.UserViewModel
 import com.example.sweat4success.modell.viewModel.WorkoutViewModel
 
 class WorkoutController: AppCompatActivity() {
@@ -32,17 +26,38 @@ class WorkoutController: AppCompatActivity() {
     fun getWorkouts(user: UserDb, workoutViewModel: WorkoutViewModel): List<WorkoutDb> {
 
         var workoutsIdString = user.workoutId
-        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel);
+        var workouts = loadWorkouts(workoutsIdString.toString(), workoutViewModel)
 
         return workouts
     }
 
+    fun getWorkoutsByTag(workoutDao: WorkoutDao, tagId:Int): List<WorkoutDb>{
+        val filterdWorkouts = mutableListOf<WorkoutDb>()
+        var workouts = workoutDao.loadAll()
+        workouts.forEach{
+            workout->
+            var workoutTagIds = workout.tagIds
+            workoutTagIds = workoutTagIds?.drop(1)
+            workoutTagIds = workoutTagIds?.dropLast(1)
+            val tagIds = mutableListOf<Int>()
+            val tagIdsString = workoutTagIds.toString()
+            val tagIdsStrings = tagIdsString.split(",")
+            tagIdsStrings.forEach { tagId ->
+                val id = tagId.replace("\\s".toRegex(), "")
+                tagIds += id.toInt()
+            }
+            if(tagIds.contains(tagId)){
+                filterdWorkouts += workout
+            }
+        }
+        return filterdWorkouts
+    }
+
     private fun loadWorkouts(workoutString: String,  workoutViewModel: WorkoutViewModel):List<WorkoutDb>{
         val workoutsIds = mutableListOf<Int>()
-        var workoutsIdStrings = workoutString?.split(",")
-        var i = workoutsIdStrings?.count()
-        workoutsIdStrings = workoutsIdStrings?.drop(1)
-        workoutsIdStrings?.forEach { workoutId ->
+        var workoutsIdStrings = workoutString.split(",")
+        workoutsIdStrings = workoutsIdStrings.drop(1)
+        workoutsIdStrings.forEach { workoutId ->
             var id = workoutId.replace("\\s".toRegex(), "")
             workoutsIds += id.toInt() }
         workoutsIds.forEach { workoutId ->

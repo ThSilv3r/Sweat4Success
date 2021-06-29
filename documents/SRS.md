@@ -50,11 +50,18 @@
 <td>Nils, Marina, Jonas</td>
 <td></td>
 </tr>
+  <tr>
+<td>&lt;18/May/2021&gt;</td>
+<td>&lt;1.1&gt;</td>
+<td>Updated</td>
+<td>Nils</td>
+<td></td>
+</tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>&lt;10/June/2021&gt;</td>
+<td>&lt;1.2&gt;</td>
+<td>Revision - prep for client handover</td>
+<td>Nils</td>
 <td></td>
 </tr>
 <tr>
@@ -97,7 +104,7 @@ UC - Use Case</p>
 <td>Sweat for Success</td>
 </tr>
 <tr>
-<td><a href="https://github.com/ThSilv3r/SweatForSuccess">GitHub</a></td>
+<td><a href="https://github.com/ThSilv3r/Sweat4Success">GitHub</a></td>
 <td>Sweat for Success</td>
 </tr>
 </tbody>
@@ -105,8 +112,7 @@ UC - Use Case</p>
 <p>The following chapter provides an overview of this project with vision and Overall Use Case Diagram. The third chapter (Requirements Specification) delivers more details about the specific requirements in terms of functionality, usability and design parameters. Finally there is a chapter with supporting information.</p>
 <h2 id="overall-description">2. Overall Description</h2>
 <h3 id="vision">2.1 Vision</h3>
-<p>Our vision is to make an Android-App which you can use to share workout-plans and look at plans from other people. Through an account you will be able to track things like, weight, heart rate and body measurements. You will be able to track your progress of what exercises you have done and how you improved. The workout plans will be categorized, and you can filter<br>
-which muscles you want to train. So you won’t lose your motivation you can look for different plans and progresses, of other users to motivate you.</p>
+<p>Our vision is to create an Android-App which you can use to share workout plans and get inspiration from other people and their workouts. Through an account you will be able to track different metrics such as weight, heart rate and body measurements. You will be able to track your progress of what exercises you have done and how you improved. The workout plans will be categorized, and you can filter them to find faster what you are looking for and which muscles you want to work on. To ensure you won’t lose motivation you can look for different plans and progress, of other users. Remember we're all in this together.</p>
 <h3 id="use-case-diagram">2.2 Use Case Diagram</h3>
 <p><a href="https://drive.google.com/file/d/1bKyiwrzbFiEMzz4HD5FNjAwqQagxVz_z/view">https://drive.google.com/file/d/1bKyiwrzbFiEMzz4HD5FNjAwqQagxVz_z/view</a></p>
 <h3 id="technologies">2.3 Technologies</h3>
@@ -121,7 +127,7 @@ which muscles you want to train. So you won’t lose your motivation you can loo
 <tbody>
 <tr>
 <td>Backend</td>
-<td>Kotlin, Datenbank (TBD)</td>
+<td>Kotlin, Room</td>
 </tr>
 <tr>
 <td>Frontend</td>
@@ -147,20 +153,22 @@ which muscles you want to train. So you won’t lose your motivation you can loo
 </table><h2 id="specific-requirements">3. Specific Requirements</h2>
 <h3 id="functionality">3.1 Functionality</h3>
 <p>This section shows the different functions we plan to implement in our App<br>
-<em>3.1.1 Posting Workouts</em><br>
-This allows you to post your own workout plan<br>
-<em>3.1.2 Posting Results</em><br>
-This allows you to share your result for a specific workout<br>
-<em>3.1.3 Creating an Account</em><br>
+<em>3.1.1 Post Workouts</em><br>
+This allows you to post your own workout <br>
+<em>3.1.2 Post Results</em><br>
+This allows you to share your result for a specific workout. This function is not part of the original deployment and will be added later<br>
+<em>3.1.3 Create an Account</em><br>
 User can create their own account and give personal information that can be used for tracking and suggestions.<br>
-<em>3.1.4 Logging in</em><br>
+<em>3.1.4 Log in</em><br>
 This app provides the possibility to log into the account and track progress in the app<br>
-<em>3.1.5. Logging out</em><br>
+<em>3.1.5. Log out</em><br>
 This allows to terminate the app<br>
-<em>3.1.6. Getting an overview</em><br>
-Provides a basic overview over recent workouts and shows progress. Further you can select a workout from this view<br>
+<em>3.1.6. Get an overview</em><br>
+Provides a basic overview over recent workouts and shows progress. Further you can select a workout from this view. This will also be added in the second release.<br>
 <em>3.1.7. Finding Workouts</em><br>
 See workouts from different people and get inspired</p>
+<em>3.1.7. Share Workouts</em><br>
+Users are able to share workouts they like with their friends. This creates an incentive to make friends and also work together to reach goals</p>
 <h3 id="usability">3.2 Usability</h3>
 <p>The idea is to create a basic, intuitive and simple User Interface that allows users to use the app without much explanation.<br>
 <em>3.2.1 Usability Requirement One</em> TBD</p>

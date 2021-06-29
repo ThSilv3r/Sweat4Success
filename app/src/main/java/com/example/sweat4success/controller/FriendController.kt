@@ -27,8 +27,8 @@ class FriendController: AppCompatActivity(), DataController {
         return user
     }
     fun sendWorkout(workout: WorkoutDb, friendId: Int, userViewModel: UserViewModel, workoutViewModel: WorkoutViewModel){
-        var friend = userViewModel.getById(friendId);
-        val workoutController = WorkoutController();
+        var friend = userViewModel.getById(friendId)
+        val workoutController = WorkoutController()
         var recievedWorkouts = workoutController.getRecievedWorkouts(friend, workoutViewModel)
         recievedWorkouts += workout
         recievedWorkouts.forEach{
@@ -46,7 +46,6 @@ class FriendController: AppCompatActivity(), DataController {
 
     fun getItems(userViewModel: UserViewModel): List<Any> {
 
-        var userList = account.getUserList()
         var username = account.getUsername()
         var password = account.getPassword()
         user = userViewModel.findByName(username, password)

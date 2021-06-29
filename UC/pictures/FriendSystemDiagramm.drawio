@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" modified="2021-06-01T08:53:21.305Z" agent="5.0 (Windows)" etag="pH3f_1SyglfDsakdwvJZ" version="14.7.3" type="github">
+  <diagram id="mxFwfCJ_ea5rsmRgDolw" name="Page-1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-1" value="User" style="swimlane;" parent="1" vertex="1">
+          <mxGeometry x="110" y="20" width="240" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-4" value="User opens app" style="rounded=1;whiteSpace=wrap;html=1;" parent="dgj0BqMtltZGMOPdDaVj-1" vertex="1">
+          <mxGeometry x="60" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-9" value="User clicks on AddFriend-button" style="rounded=1;whiteSpace=wrap;html=1;" parent="dgj0BqMtltZGMOPdDaVj-1" vertex="1">
+          <mxGeometry x="60" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-2" value="System" style="swimlane;" parent="1" vertex="1">
+          <mxGeometry x="350" y="20" width="240" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-6" value="Fetches data from database" style="rounded=1;whiteSpace=wrap;html=1;" parent="dgj0BqMtltZGMOPdDaVj-2" vertex="1">
+          <mxGeometry x="60" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-10" value="System adds user-Id to the friendIds" style="rounded=1;whiteSpace=wrap;html=1;" parent="dgj0BqMtltZGMOPdDaVj-2" vertex="1">
+          <mxGeometry x="64" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-3" value="UI" style="swimlane;" parent="1" vertex="1">
+          <mxGeometry x="590" y="20" width="240" height="420" as="geometry">
+            <mxRectangle x="590" y="20" width="40" height="23" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-8" value="shows profil from other&amp;nbsp; user" style="rounded=1;whiteSpace=wrap;html=1;" parent="dgj0BqMtltZGMOPdDaVj-3" vertex="1">
+          <mxGeometry x="60" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-12" value="Addfriens-button shows remove friend" style="rounded=1;whiteSpace=wrap;html=1;" parent="dgj0BqMtltZGMOPdDaVj-3" vertex="1">
+          <mxGeometry x="50" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="dgj0BqMtltZGMOPdDaVj-4" target="dgj0BqMtltZGMOPdDaVj-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="dgj0BqMtltZGMOPdDaVj-6" target="dgj0BqMtltZGMOPdDaVj-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="dgj0BqMtltZGMOPdDaVj-8" target="dgj0BqMtltZGMOPdDaVj-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="dgj0BqMtltZGMOPdDaVj-9" target="dgj0BqMtltZGMOPdDaVj-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dgj0BqMtltZGMOPdDaVj-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="dgj0BqMtltZGMOPdDaVj-10" target="dgj0BqMtltZGMOPdDaVj-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-1" value="User" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="110" y="450" width="240" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-2" value="User opens app" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="_gCklaBptlTKH92X1Ec0-1">
+          <mxGeometry x="60" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-3" value="User clicks on RemoveFriend-button" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="_gCklaBptlTKH92X1Ec0-1">
+          <mxGeometry x="60" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-4" value="System" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="350" y="450" width="240" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-5" value="Fetches data from database" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="_gCklaBptlTKH92X1Ec0-4">
+          <mxGeometry x="60" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-6" value="System adds user-Id to the friendIds" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="_gCklaBptlTKH92X1Ec0-4">
+          <mxGeometry x="64" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-7" value="UI" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="590" y="450" width="240" height="420" as="geometry">
+            <mxRectangle x="590" y="20" width="40" height="23" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-8" value="shows profil from other&amp;nbsp; user" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="_gCklaBptlTKH92X1Ec0-7">
+          <mxGeometry x="60" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-9" value="Addfriens-button shows remove friend" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="_gCklaBptlTKH92X1Ec0-7">
+          <mxGeometry x="50" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_gCklaBptlTKH92X1Ec0-2" target="_gCklaBptlTKH92X1Ec0-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_gCklaBptlTKH92X1Ec0-5" target="_gCklaBptlTKH92X1Ec0-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_gCklaBptlTKH92X1Ec0-8" target="_gCklaBptlTKH92X1Ec0-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_gCklaBptlTKH92X1Ec0-3" target="_gCklaBptlTKH92X1Ec0-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_gCklaBptlTKH92X1Ec0-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_gCklaBptlTKH92X1Ec0-6" target="_gCklaBptlTKH92X1Ec0-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
