@@ -194,7 +194,6 @@ All code will be written in Kotlin and is supported by Android Studio keeping th
 <h3 id="purchased-components">3.8 Purchased Components</h3>
 <p>Not applicable</p>
 <h3 id="interfaces">3.9 Interfaces</h3>
-<p><br>
 <em>3.9.1 User Interfaces</em><br>
 • Login - this page is used to log in<br>
 • Register - provides a registration form<br>
