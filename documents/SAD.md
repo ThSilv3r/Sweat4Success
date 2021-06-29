@@ -73,7 +73,7 @@ The application uses MVC as architectural pattern to separate the backend logic 
 ## 4. Use-Case View
 Here you can find our Use Case Diagram:
 
-<img src="https://app.diagrams.net/#G1bKyiwrzbFiEMzz4HD5FNjAwqQagxVz_z"/>
+<img srchttps://github.com/ThSilv3r/Sweat4Success/blob/master/documents/pictures/Use%20Case%20Diagram%20aktuell.jpeg"/>
 
 ### Following is a list of our Use Case realizations
 <ol>
