@@ -54,8 +54,8 @@ This document describes the technical architecture of the SweatForSuccess projec
 <td>SweatForSuccess</td>
 </tr>
   <tr>
-  <td><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/SRS.md">SAD</a></td>
-<td>18.05.2021</td>
+  <td><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/documents/SRS.md">SRS</a></td>
+<td>29.06.2021</td>
 <td>SweatForSuccess </td>
 </tr>
 </tbody>
