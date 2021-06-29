@@ -153,21 +153,21 @@ UC - Use Case</p>
 <h3 id="functionality">3.1 Functionality</h3>
 <p>This section shows the different functions we plan to implement in our App<br>
 <em>3.1.1 Create an Account</em><br>
-User can create their own account and give personal information that can be used for tracking and suggestions.<br>
+<p>User can create their own account and give personal information that can be used for tracking and suggestions.<br></p>
 <em>3.1.2 Log in</em><br>
-This app provides the possibility to log into the account and track progress in the app<br>
+<p>This app provides the possibility to log into the account and track progress in the app<br></p>
 <em>3.1.3. Log out</em><br>
-This allows to terminate the app<br>
+<p>This allows to terminate the app<br></p>
 <em>3.1.4 Post Workouts</em><br>
-This allows you to post your own workout <br>
+      <p>This allows you to post your own workout<br></p>
 <em>3.1.5 Post Results</em><br>
-This allows you to share your result for a specific workout. This function is not part of the original deployment and will be added later<br>
+<p>This allows you to share your result for a specific workout. This function is not part of the original deployment and will be added later<br></p>
 <em>3.1.6. Get an overview</em><br>
-Provides a basic overview over recent workouts and shows progress. Further you can select a workout from this view. This will also be added in the second release.<br>
+<p>Provides a basic overview over recent workouts and shows progress. Further you can select a workout from this view. This will also be added in the second release.<br></p>
 <em>3.1.7. Finding Workouts</em><br>
 See workouts from different people and get inspired</p>
-<em>3.1.7. Share Workouts</em><br>
-Users are able to share workouts they like with their friends. This creates an incentive to make friends and also work together to reach goals</p>
+<em>3.1.8. Share Workouts</em><br>
+<p>Users are able to share workouts they like with their friends. This creates an incentive to make friends and also work together to reach goals</p>
 <h3 id="usability">3.2 Usability</h3>
 <p>The idea is to create a basic, intuitive and simple User Interface that allows users to use the app without much explanation. User Interface should encourage users to start their first workout right away and continue using the app. Ease of access should help the user stay motivated. The app shall never be a reason for a user to skip a workout or stop working out entirely.<br></p>
 <p><em>3.2.1 No introduction needed</em> Users are able to install the app and start working out right away without have to learn how to use the app</p>
