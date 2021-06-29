@@ -83,17 +83,19 @@ Here you can find our Use Case Diagram:
 <li><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/pictures/UCcommentWorkout.md">UC Comment Workout</a></li>
 <li><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/pictures/UC%20searchWorkout.png">UC Search Workout</a></li>
 <li><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/UCShowWorkoutList.md>UC Show List of Workout</a></li>
-<li><a href="/https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/UCShowAcount.md">UC Show Workout</a></li>
+<li><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/pictures/UCshowListOfWorkouts.md">UC Show Workout</a></li>
+<li><a href="https://github.com/ThSilv3r/Sweat4Success/blob/master/UC/UCLogIn.md">UC Login</a></li>   
 </ol>
   
 ## 5. Logical View
 
 ### 5.1 Overview
-TBD
-
-### 5.2 Architecturally Significant Design Packages
 <img src="https://github.com/ThSilv3r/Sweat4Success/blob/master/documents/Screenshot%20(289).png" alt="Alt-Text" title="" />
 
+
+### 5.2 Architecturally Significant Design Packages
+n/a
+    
 ## 6. Process View
 n/a
 
