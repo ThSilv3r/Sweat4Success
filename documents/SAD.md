@@ -92,7 +92,7 @@ Here you can find our Use Case Diagram:
 TBD
 
 ### 5.2 Architecturally Significant Design Packages
-[??Was muss hier](https://github.com/ThSilv3r/Sweat4Success/blob/Nils/Package%20sweat4success.svg)
+<img src="https://www.edrawmax.com/server/public/s/max/f0578451900415" alt="Alt-Text" title="" />
 
 ## 6. Process View
 n/a
@@ -113,7 +113,7 @@ n/a
 n/a
 
 ## 10. Size and Performance
-n/a
-
+The app should be fairly small, very fast and easy to access. Any interaction with the app should be prompt so that the user does not have to wait for the app to start a workout.
 ## 11. Quality/Metrics
-n/a
+Since we are a unity project our metrics are a little bit more complicated and special.
+We are explaining everything on our blog: https://sweatforsuccess689030981.wordpress.com/2021/05/30/s2-w7-metrics/
