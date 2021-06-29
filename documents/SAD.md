@@ -92,7 +92,7 @@ Here you can find our Use Case Diagram:
 TBD
 
 ### 5.2 Architecturally Significant Design Packages
-<img src="https://www.edrawmax.com/server/public/s/max/f0578451900415" alt="Alt-Text" title="" />
+<img src="https://github.com/ThSilv3r/Sweat4Success/blob/master/documents/Screenshot%20(289).png" alt="Alt-Text" title="" />
 
 ## 6. Process View
 n/a
