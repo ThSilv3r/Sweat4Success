@@ -169,8 +169,9 @@ See workouts from different people and get inspired</p>
 <em>3.1.7. Share Workouts</em><br>
 Users are able to share workouts they like with their friends. This creates an incentive to make friends and also work together to reach goals</p>
 <h3 id="usability">3.2 Usability</h3>
-<p>The idea is to create a basic, intuitive and simple User Interface that allows users to use the app without much explanation. User Interface should encourage users to start their first workout right away and continue using the app. Ease of access should help the user stay motivated. The app shall never be a reason for a user to skip a workout or stop working out entirely.<br>
-<em>3.2.1 Usability Requirement One</em> TBD</p>
+<p>The idea is to create a basic, intuitive and simple User Interface that allows users to use the app without much explanation. User Interface should encourage users to start their first workout right away and continue using the app. Ease of access should help the user stay motivated. The app shall never be a reason for a user to skip a workout or stop working out entirely.<br></p>
+<p><em>3.2.1 No introduction needed</em> Users are able to install the app and start working out right away without have to learn how to use the app</p>
+<em>3.2.2 Familiar look</em> The design of the app is similar to other apps on the market to keep it intuitive</p>    
 <h3 id="reliability">3.3 Reliability</h3>
 <p>Our app shall be downloadable and useable whereever there is an internet connection. Our goal is to minimize downtimes so that the app neve discourages anyone from working out</p>
 <h3 id="performance">3.4 Performance</h3>
