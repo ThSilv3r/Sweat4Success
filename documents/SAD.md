@@ -100,19 +100,13 @@ n/a
 n/a
 
 ## 7. Deployment View
-n/a
+Our app runs on the user's device and the data is provided by an external data base. We frequently test our app on physical devices. 
 
 ## 8. Implementation View
 n/a
 
-### 8.1 Overview
-n/a
-
-### 8.2 Layers
-n/a
-
 ## 9. Data View
-n/a
+Because we use Android Room as our Database the diffrent Objects are stored in diffrent Tables. <a href="https://sweatforsuccess689030981.wordpress.com/2020/11/15/w7-class-diagram/">Here</a> you can find infos how our Database is build.
 
 ## 10. Size and Performance
 The app should be fairly small, very fast and easy to access. Any interaction with the app should be prompt so that the user does not have to wait for the app to start a workout.
